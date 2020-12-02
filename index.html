@@ -366,6 +366,9 @@
                     <a href="#cancel" class="toc-h2 toc-link" data-title="Cancel">Cancel</a>
                   </li>
                   <li>
+                    <a href="#cash-in" class="toc-h2 toc-link" data-title="Cash-in">Cash-in</a>
+                  </li>
+                  <li>
                     <a href="#create" class="toc-h2 toc-link" data-title="Create">Create</a>
                   </li>
                   <li>
@@ -1832,6 +1835,302 @@ This operation does not require authentication
 To perform this operation, you must be authenticated by means of one of the following methods:
 jwtAuth ( Scopes: positions ), cookieAuth
 </aside>
+<h2 id='cash-in'>Cash-in</h2>
+<p><a id="opIdPosition_cashin"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/positions/cash-in"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:1000,</span><span class="se">\"</span><span class="s">pid</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">99c470e1-2e03-4486-a37f-1255e08178b1</span><span class="se">\"</span><span class="s">}"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"Bearer {access-token}"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/positions/cash-in</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span><span class="na">amount</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="na">pid</span><span class="p">:</span> <span class="dl">'</span><span class="s1">99c470e1-2e03-4486-a37f-1255e08178b1</span><span class="dl">'</span><span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/positions/cash-in <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"amount":1000,"pid":"99c470e1-2e03-4486-a37f-1255e08178b1"}'</span>
+</code></pre></div>
+<p><code>POST /positions/cash-in</code></p>
+
+<p>Retrieves part of one running position&#39;s PL.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99c470e1-2e03-4486-a37f-1255e08178b1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="cash-in-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>Payload with data relative to the process.</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>Amount of PL to cash-in (in sats)</td>
+</tr>
+<tr>
+<td>» pid</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>Position ID from which to retrieve PL</td>
+</tr>
+</tbody></table>
+<h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
+<p><strong>body</strong>: Payload with data relative to the process.</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"249dc818-f8a5-4713-a3a3-8fe85f2e8969"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">666</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"takeprofit_wi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"takeprofit"</span><span class="p">:</span><span class="w"> </span><span class="mi">13337</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stoploss_wi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stoploss"</span><span class="p">:</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">8888</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">-13640</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"market_wi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"market_filled_ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020-09-15T10:50:40.332Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"margin_wi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mi">424242</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"liquidation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creation_ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020-09-15T10:50:40.332Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="cash-in-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Cash-in successfully retrieved and new position informations are sent back.</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="cash-in-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» pid</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>UUID of the position</td>
+</tr>
+<tr>
+<td>» id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Position ID to be deprecated</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Position type [l,m]</td>
+</tr>
+<tr>
+<td>» side</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Side of the position [s,b]</td>
+</tr>
+<tr>
+<td>» price</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Entry price of the position</td>
+</tr>
+<tr>
+<td>» quantity</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Quantity of the position</td>
+</tr>
+<tr>
+<td>» margin</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Margin used for the position creation</td>
+</tr>
+<tr>
+<td>» leverage</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Leverage of the position</td>
+</tr>
+<tr>
+<td>» liquidation</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Liquidation level when the position will be closed</td>
+</tr>
+<tr>
+<td>» market_filled_ts</td>
+<td>string(date-time)¦null</td>
+<td>false</td>
+<td>none</td>
+<td>When the order was filled</td>
+</tr>
+<tr>
+<td>» market_wi</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Market working indicator [filled, running, closed, canceled]</td>
+</tr>
+<tr>
+<td>» pl</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>PL of the position</td>
+</tr>
+<tr>
+<td>» margin_wi</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Margin working indicator [filled, running, closed, canceled]</td>
+</tr>
+<tr>
+<td>» stoploss</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>stoploss level</td>
+</tr>
+<tr>
+<td>» stoploss_wi</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Stoploss working indicator [filled, running, closed, canceled]</td>
+</tr>
+<tr>
+<td>» takeprofit</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Takeprofit level</td>
+</tr>
+<tr>
+<td>» takeprofit_wi</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Takeprofit working indicator [filled, running, closed, canceled]</td>
+</tr>
+<tr>
+<td>» creation_ts</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>When the position was created</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+jwtAuth ( Scopes: positions ), cookieAuth
+</aside>
 <h2 id='create'>Create</h2>
 <p><a id="opIdPosition_createPosition"></a></p>
 
@@ -1981,7 +2280,7 @@ jwtAuth ( Scopes: positions ), cookieAuth
 <td>Required when using a limit order</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-3'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload with all the information needed to setup a new position.</p>
 <h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
@@ -3349,7 +3648,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 <td>New password wanted by the user</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-3'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-4'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload containing user credentials.</p>
 
 <h3 id="update-password-responses">Responses</h3>
@@ -3962,7 +4261,7 @@ cookieAuth
 <td>Expiration of the token</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-4'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-5'>Detailed descriptions</h4>
 <p><strong>body</strong>: Scopes of authorization that the token will grant to the bearer.</p>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
@@ -4146,7 +4445,7 @@ cookieAuth
 <td>Should be sat by default</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-5'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-6'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload that contains all informations to initialize a new deposit.</p>
 
 <blockquote>
@@ -4326,7 +4625,7 @@ jwtAuth ( Scopes: deposit ), cookieAuth
 <td>Bolt 11 invoice with the same amount as the request withdraw amount</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-6'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-7'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload that countains all informations to initiate a new withdraw.</p>
 
 <blockquote>
@@ -4509,7 +4808,7 @@ jwtAuth ( Scopes: withdraw ), cookieAuth
 <td>Unit (Only sat for now)</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-7'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-8'>Detailed descriptions</h4>
 <p><strong>body</strong>: Amount the user wants to withdraw.</p>
 <h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
