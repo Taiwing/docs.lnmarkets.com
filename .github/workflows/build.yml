@@ -36,6 +36,12 @@ jobs:
       - name: Run index.js
         run: node index.js
 
+     - name: Upload the dist artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist
+
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
