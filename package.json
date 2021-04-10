@@ -7,8 +7,8 @@
   "author": "victor.afanassieff@ito.am",
   "license": "MIT",
   "dependencies": {
-    "@apidevtools/swagger-parser": "^10.0.1",
+    "@apidevtools/swagger-parser": "^10.0.2",
     "widdershins": "^4.0.1",
-    "yaml": "^1.10.0"
+    "yaml": "^1.10.2"
   }
 }

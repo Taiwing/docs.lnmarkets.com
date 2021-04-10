@@ -1,8 +1,8 @@
-name: Build
+name: Pull request
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [api]
 
 jobs:
   node:
@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache@v2
         id: yarn-cache
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Yarn install
@@ -64,7 +64,7 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
           working-directory: ./slate
-      
+
       - name: Install gem
         run: bundle install
         working-directory: ./slate
