@@ -1,8 +1,8 @@
 # LN Markets API Docs
 
-![Slate Branch](https://github.com/lnmarkets/docs/workflows/Slate/badge.svg?branch=master)
+![Api Docs](https://github.com/lnmarkets/docs.lnmarkets.com/actions/workflows/build.yml/badge.svg?branch=api)
 
-This repo contains the LN Markets API documentation.
+This branch contains the LN Markets API documentation.
 
 If you find a typo or an error, please open a pull request.
 
