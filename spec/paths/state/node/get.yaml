@@ -7,7 +7,6 @@ summary: Node informations
 description: |
   Shows informations about the lightning node.
 operationId: State_nodeState
-
 responses:
   200:
     description: |
@@ -20,7 +19,7 @@ responses:
             'version':
               description: LND version
               type: string
-        
+
             'alias':
               description: Node Alias
               type: string
@@ -28,11 +27,11 @@ responses:
             'pubkey':
               description: Node pubkey
               type: string
-            
+
             'uri':
               description: Node URI
               type: string
-               
+
             'onionUri':
               description: Node URI on tor
               type: string

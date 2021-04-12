@@ -10,7 +10,6 @@ summary: Update
 description: |
   Allows user to modify `stoploss` or `takeprofit` parameters of an existing position.
 operationId: Position_updatePosition
-
 requestBody:
   required: true
   content:

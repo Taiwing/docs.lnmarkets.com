@@ -10,7 +10,6 @@ summary: Cash-in
 description: |
   Retrieves part of one running position's PL.
 operationId: Position_cashin
-
 requestBody:
   description: |
     Payload with data relative to the process.
@@ -21,8 +20,8 @@ requestBody:
         type: object
         additionalProperties: false
         required:
-        - 'amount'
-        - 'pid'
+          - 'amount'
+          - 'pid'
         properties:
           'amount':
             description: Amount of PL to cash-in (in sats)

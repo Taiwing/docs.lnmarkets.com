@@ -1,0 +1,60 @@
+tags:
+  - Positions
+
+security:
+  - jwtAuth: ['positions']
+  - cookieAuth: []
+
+deprecated: false
+summary: Close-all
+description: |
+  Close every user position. The PL will be calculated against the current bid or offer
+  depending on the side of the position.
+operationId: Position_closeAllPosition
+
+responses:
+  200:
+    description: |
+      Every position has been successfully closed
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              'closed':
+                description: Is position closed
+                type: boolean
+  
+              'closed_ts':
+                description: Position closed ts
+                type: string
+                format: date-time
+                nullable: true
+  
+              'exit_price':
+                description: At which price the position was closed
+                type: string
+  
+              'pid':
+                description: Position id
+                type: string
+  
+              'pl':
+                description: PL of the position
+                type: integer
+
+          example:
+            data:
+              - pid: a2ca6172-1078-463d-ae3f-8733f36a9b0e
+                exit_price: 2000
+                closed_ts: 020-10-15T10:50:40.332Z
+                closed: true
+                pl: 1337
+
+  400:
+    $ref: '../../responses.yaml#/badParameters'
+
+  401:
+    $ref: '../../responses.yaml#/unauthorized'

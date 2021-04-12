@@ -8,7 +8,6 @@ description: |
   Use the browser extension [Joule](https://lightningjoule.com/) to authenticate user.
   The message has to be obtained using GET /login/joule
 operationId: Login_loginJoule
-
 requestBody:
   required: true
   content:

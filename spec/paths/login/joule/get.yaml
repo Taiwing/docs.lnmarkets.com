@@ -7,7 +7,6 @@ summary: Request message
 description: |
   Generates a message that user can sign with POST /login/joule
 operationId: Login_getJouleMessage
-
 responses:
   200:
     description: Message generated
@@ -23,4 +22,4 @@ responses:
               type: string
 
         example:
-          message: "I am signing this message to login on LN Markets : 09d9bc06786d37eae6b60b537475d83d6b97177af22a74160a1fc3b0721f051e"
+          message: 'I am signing this message to login on LN Markets : 09d9bc06786d37eae6b60b537475d83d6b97177af22a74160a1fc3b0721f051e'

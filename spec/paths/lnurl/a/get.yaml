@@ -10,7 +10,6 @@ description: |
   If JWT is set to true, a JWT will be returned with by default all scopes and an expiry of 1h, they can be changed by setting the query paramater expiry or scopes like POST /user/jwt.
   Else the connected state will be push over websocketsto the client.
 operationId: LNURL_authenticate
-
 parameters:
   - name: k1
     in: query
@@ -104,7 +103,7 @@ responses:
             'token':
               description: JWT if asked
               type: string
-          
+
         example:
           status: 'OK'
           event: 'LOGGEDIN'

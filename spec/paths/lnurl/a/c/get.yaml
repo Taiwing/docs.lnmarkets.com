@@ -10,7 +10,6 @@ description: |
   The user wallet will sign a message using the provided k1 inside the LNURL.
   You need to have a session cookie on the browser you are using to log in.
 operationId: LNURL_authCreate
-
 responses:
   200:
     description: Bech32 encoded string.

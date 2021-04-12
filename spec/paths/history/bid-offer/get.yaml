@@ -7,7 +7,6 @@ summary: Bid & offer history
 description: |
   Retrieves at most 1000 entries between two given timestamps.
 operationId: History_bidOffer
-
 parameters:
   - name: from
     in: query
@@ -47,16 +46,15 @@ responses:
               'offer':
                 description: Offer value at that time
                 type: number
-          
+
           example:
             data:
-            - time: 1605633250615990
-              bid: 15853
-              offer: 15885
+              - time: 1605633250615990
+                bid: 15853
+                offer: 15885
 
   400:
     $ref: '../../../responses.yaml#/badParameters'
 
   401:
     $ref: '../../../responses.yaml#/unauthorized'
-            

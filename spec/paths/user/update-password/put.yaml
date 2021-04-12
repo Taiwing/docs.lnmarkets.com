@@ -10,7 +10,6 @@ summary: Update password
 description: |
   Update the current password to the requested one.
 operationId: User_updateUser
-
 requestBody:
   description: |
     Payload containing user credentials.

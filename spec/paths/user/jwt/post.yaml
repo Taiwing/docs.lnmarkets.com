@@ -9,7 +9,6 @@ summary: Generate API Token
 description: |
   Using the given scopes, allow the token bearer to get access to different parts of the public API.
 operationId: User_CreateJWT
-
 requestBody:
   description: |
     Scopes of authorization that the token will grant to the bearer.
@@ -19,8 +18,8 @@ requestBody:
       schema:
         type: object
         required:
-        - 'scopes'
-        - 'expiry'
+          - 'scopes'
+          - 'expiry'
         properties:
           'scopes':
             description: Scopes of the token

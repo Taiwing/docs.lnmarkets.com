@@ -9,7 +9,6 @@ summary: List API Tokens
 description: |
   Retrieves the list of active JSON Web Token user currently holds.
 operationId: User_GetJWTList
-
 responses:
   200:
     description: |

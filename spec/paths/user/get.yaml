@@ -10,7 +10,6 @@ summary: Informations
 description: |
   Get the user account Information
 operationId: User_getUser
-
 responses:
   200:
     $ref: '../../schemas/user.yaml'

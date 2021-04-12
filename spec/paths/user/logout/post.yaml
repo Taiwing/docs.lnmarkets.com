@@ -8,7 +8,6 @@ summary: Logout
 description: |
   Delete the session cookie.
 operationId: User_logout
-
 responses:
   200:
     description: |

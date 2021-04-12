@@ -8,9 +8,8 @@ security:
 deprecated: false
 summary: Add margin
 description: |
-  Add margin to one running position.
+  Add margin to a running position.
 operationId: Position_addmargin
-
 requestBody:
   description: |
     Payload with data relative to the process.
@@ -21,17 +20,17 @@ requestBody:
         type: object
         additionalProperties: false
         required:
-        - 'amount'
-        - 'pid'
+          - 'amount'
+          - 'pid'
         properties:
           'amount':
-            description: Amount to add (in sats)
+            description: Amount of margin to add (in sats)
             type: integer
             format: int64
             minimum: 1
 
           'pid':
-            description: Position ID to which to add margin
+            description: Position ID from which to retrieve PL
             type: string
             pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
 

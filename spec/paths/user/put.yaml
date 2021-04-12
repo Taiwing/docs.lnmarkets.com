@@ -24,7 +24,7 @@ requestBody:
             type: boolean
 
           'show_username':
-            description: Show the username on LN Marktes public data, if false show 'Anonymous' 
+            description: Show the username on LN Marktes public data, if false show 'Anonymous'
             type: boolean
 
           'username':

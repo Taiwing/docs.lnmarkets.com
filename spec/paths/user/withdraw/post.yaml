@@ -10,7 +10,6 @@ summary: Withdraw via invoice
 description: |
   Move funds from the **[Lightning channel](https://medium.com/suredbits/lightning-101-what-are-lightning-channels-cfb80f440298)** with LN Markets to user wallet by using an invoice directly.
 operationId: User_withdraw
-
 requestBody:
   description: |
     Payload that countains all informations to initiate a new withdraw.
@@ -20,8 +19,8 @@ requestBody:
       schema:
         type: object
         required:
-        - 'amount'
-        - 'invoice'
+          - 'amount'
+          - 'invoice'
         properties:
           'amount':
             description: Amount you want to withdraw

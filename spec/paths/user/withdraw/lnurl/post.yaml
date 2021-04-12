@@ -10,7 +10,6 @@ summary: Withdraw via LNURL
 description: |
   Create a LNURL Withdraw.
 operationId: User_withdrawLnurl
-
 requestBody:
   description: |
     Amount the user wants to withdraw.
@@ -20,7 +19,7 @@ requestBody:
       schema:
         type: object
         required:
-        - 'amount'
+          - 'amount'
         properties:
           'amount':
             description: amount you want to withdraw

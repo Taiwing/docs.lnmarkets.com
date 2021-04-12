@@ -10,7 +10,6 @@ summary: Deposit
 description: |
   Add fund to your LN Markets balance
 operationId: User_deposit
-
 requestBody:
   description: |
     Payload that contains all informations to initialize a new deposit.
@@ -20,7 +19,7 @@ requestBody:
       schema:
         type: object
         required:
-        - 'amount'
+          - 'amount'
         properties:
           'amount':
             description: Amount of sat to deposit on the account

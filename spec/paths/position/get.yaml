@@ -12,7 +12,6 @@ description: |
 
   **If no parameters are sent, all positions are fetched.**
 operationId: Position_getPositionList
-
 parameters:
   - name: type
     in: query

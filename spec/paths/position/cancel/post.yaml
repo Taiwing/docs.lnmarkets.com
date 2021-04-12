@@ -10,7 +10,6 @@ summary: Cancel
 description: |
   Cancel the position linked to the given `pid`.**Only works on positions that are not currently filled**.
 operationId: Position_cancelPosition
-
 requestBody:
   description: Payload containing the position id that will be cancelled.
   required: true
@@ -20,7 +19,7 @@ requestBody:
         additionalProperties: false
         type: object
         required:
-        - 'pid'
+          - 'pid'
         properties:
           'pid':
             description: Position ID

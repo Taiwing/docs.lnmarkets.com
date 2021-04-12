@@ -7,7 +7,6 @@ summary: Get the LN Markets announcements
 description: |
   Get the LN Markets announcements
 operationId: Announcements_getAnnouncements
-
 responses:
   200:
     description: Announcements successfully fetched
@@ -25,15 +24,16 @@ responses:
               'ts':
                 type: integer
 
-        example: [
-          { 
-            title: 'Good news everyone !',
-            text: 'Bitcoin is the world money now !',
-            creation_ts: 1607076175239
-          },
-          { 
-            title: 'Bad news everyone !',
-            text: 'We have too much sats',
-            creation_ts: 1607019462532
-          }
-        ]
+        example:
+          [
+            {
+              title: 'Good news everyone !',
+              text: 'Bitcoin is the world money now !',
+              creation_ts: 1607076175239,
+            },
+            {
+              title: 'Bad news everyone !',
+              text: 'We have too much sats',
+              creation_ts: 1607019462532,
+            },
+          ]

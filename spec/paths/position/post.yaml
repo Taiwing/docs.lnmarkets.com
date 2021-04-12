@@ -12,7 +12,6 @@ description: |
   **If `type="l"`, the property `price` must be included in the request to know when the position should be filled.**
   **You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you choosed**
 operationId: Position_createPosition
-
 requestBody:
   description: |
     Payload with all the information needed to setup a new position.
@@ -23,9 +22,9 @@ requestBody:
         type: object
         additionalProperties: false
         required:
-        - 'side'
-        - 'type'
-        - 'leverage'
+          - 'side'
+          - 'type'
+          - 'leverage'
         properties:
           'type':
             description: Type of the order (Market or Limit)

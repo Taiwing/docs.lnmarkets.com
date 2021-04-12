@@ -10,7 +10,6 @@ summary: Transactions
 description: |
   Retrieves all withdraw or deposit you did with LN Markets or just one page
 operationId: User_getHistory
-
 parameters:
   - name: 'type'
     in: query
@@ -31,7 +30,7 @@ parameters:
       example: 15
   - name: 'index'
     in: query
-    description: Which page we want (offset = nbItem * (index - 1)). 
+    description: Which page we want (offset = nbItem * (index - 1)).
     required: false
     schema:
       type: integer
@@ -137,7 +136,6 @@ responses:
                 fail_ts: null
                 payment_hash: 33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3
                 sucess_ts: 020-09-15T10:50:40.332Z
-
 
   400:
     $ref: '../../../responses.yaml#/badParameters'

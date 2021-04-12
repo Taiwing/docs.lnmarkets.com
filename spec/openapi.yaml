@@ -3,8 +3,8 @@ openapi: '3.0.3'
 info:
   title: API
   description: |
-      Trade derivatives on the **[Lightning Network](https://lightning.network/)**.
-      You can find our website **[here](https://lnmarkets.com/)**.
+    Trade derivatives on the **[Lightning Network](https://lightning.network/)**.
+    You can find our website **[here](https://lnmarkets.com/)**.
   version: '1.0.0'
 
 servers:
@@ -52,14 +52,12 @@ paths:
       $ref: 'paths/history/index/get.yaml'
 
   '/login/credentials':
-    get:
-      $ref: 'paths/login/credentials/get.yaml'
-
-    put:
-      $ref: 'paths/login/credentials/put.yaml'
-
     post:
       $ref: 'paths/login/credentials/post.yaml'
+
+  '/login/credentials/create':
+    post:
+      $ref: 'paths/login/credentials/create/post.yaml'
 
   '/login/token':
     post:
@@ -102,6 +100,10 @@ paths:
   '/positions/add-margin':
     post:
       $ref: 'paths/position/add-margin/post.yaml'
+
+  '/positions/all':
+    delete:
+      $ref: 'paths/position/all.yaml'
 
   '/positions':
     post:

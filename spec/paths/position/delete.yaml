@@ -10,8 +10,7 @@ summary: Close
 description: |
   Close the user position, the PL will be calculated against the current bid or offer
   depending on the side of the position
-operationId:  Position_closePosition
-
+operationId: Position_closePosition
 parameters:
   - name: pid
     in: query

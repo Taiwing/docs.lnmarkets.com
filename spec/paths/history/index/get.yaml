@@ -7,7 +7,6 @@ summary: Index history
 description: |
   Retrieves at most 1000 entries between two given timestamps.
 operationId: History_index
-
 parameters:
   - name: from
     in: query
@@ -42,15 +41,14 @@ responses:
               'index':
                 description: Index value at that time
                 type: number
-          
+
           example:
             data:
-            - time: 1605633250615990
-              index: 15853
+              - time: 1605633250615990
+                index: 15853
 
   400:
     $ref: '../../../responses.yaml#/badParameters'
 
   401:
     $ref: '../../../responses.yaml#/unauthorized'
-            
