@@ -8,11 +8,11 @@
   "servers": [
     {
       "description": "Mainnet API",
-      "url": "https://api.lnmarkets.com"
+      "url": "https://api.lnmarkets.com/v1"
     },
     {
       "description": "Testnet API",
-      "url": "https://api.testnet.lnmarkets.com"
+      "url": "https://api.testnet.lnmarkets.com/v1"
     }
   ],
   "tags": [
@@ -21,8 +21,8 @@
       "description": "Here you can find the different way to auth yourself on LN Markets, mostly use for browser.\n"
     },
     {
-      "name": "Positions",
-      "description": "Interactions with the market and retrive your positions"
+      "name": "Futures",
+      "description": "Interactions with the futures market and retrive your positions"
     },
     {
       "name": "User",
@@ -31,10 +31,6 @@
     {
       "name": "State",
       "description": "LN Markets state with data about our node and api availability\n"
-    },
-    {
-      "name": "History",
-      "description": "LN Markets collected data over time\n"
     },
     {
       "name": "LNURL",
@@ -50,158 +46,6 @@
     }
   ],
   "paths": {
-    "/history/bid-offer": {
-      "get": {
-        "tags": [
-          "History"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "Bid & offer history",
-        "description": "Retrieves at most 1000 entries between two given timestamps.\n",
-        "operationId": "History_bidOffer",
-        "parameters": [
-          {
-            "name": "from",
-            "in": "query",
-            "description": "Starting timestamp (in ms).",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "example": 1605162757621
-            }
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "Ending timestamp (in ms).",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "example": 1605162857621
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Data history",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "time": {
-                        "description": "Timestamp at which the data was recorded (in µs)",
-                        "type": "integer",
-                        "format": "int64"
-                      },
-                      "bid": {
-                        "description": "Bid value at that time",
-                        "type": "number"
-                      },
-                      "offer": {
-                        "description": "Offer value at that time",
-                        "type": "number"
-                      }
-                    }
-                  },
-                  "example": {
-                    "data": [
-                      {
-                        "time": 1605633250615990,
-                        "bid": 15853,
-                        "offer": 15885
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/history/index": {
-      "get": {
-        "tags": [
-          "History"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "Index history",
-        "description": "Retrieves at most 1000 entries between two given timestamps.\n",
-        "operationId": "History_index",
-        "parameters": [
-          {
-            "name": "from",
-            "in": "query",
-            "description": "Starting timestamp (in ms).",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "example": 1605162757621
-            }
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "Ending timestamp (in ms).",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "example": 1605162857621
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Data history",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "time": {
-                        "description": "Timestamp at which the data was recorded (in µs)",
-                        "type": "string"
-                      },
-                      "index": {
-                        "description": "Index value at that time",
-                        "type": "number"
-                      }
-                    }
-                  },
-                  "example": {
-                    "data": [
-                      {
-                        "time": 1605633250615990,
-                        "index": 15853
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
     "/login/credentials": {
       "post": {
         "tags": [
@@ -211,7 +55,7 @@
         "deprecated": false,
         "summary": "Login via credentials",
         "description": "Use existing credentials to log into an account.\n",
-        "operationId": "Login_loginCredentials",
+        "operationId": "V1_Login_loginCredentials",
         "requestBody": {
           "required": true,
           "content": {
@@ -297,7 +141,7 @@
         "deprecated": false,
         "summary": "Register new credentials",
         "description": "Create new user",
-        "operationId": "Login_registerCredentials",
+        "operationId": "V1_Login_registerCredentials",
         "requestBody": {
           "required": true,
           "content": {
@@ -320,11 +164,18 @@
                     "pattern": "^(?=\\S)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).\\S{7,63}",
                     "minLength": 8,
                     "maxLength": 64
+                  },
+                  "email": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
+                    "minLength": 3,
+                    "maxLength": 318
                   }
                 },
                 "example": {
                   "login": "lnmarkets",
-                  "password": "mYUNh4x0r48L3P422w0rd"
+                  "password": "mYUNh4x0r48L3P422w0rd",
+                  "email": "me@mytotallylegitmail.com"
                 }
               }
             }
@@ -380,7 +231,7 @@
         "deprecated": false,
         "summary": "Login with a JWT",
         "description": "Use a JWT to log on LN Markets.\nThe token need to have the 'user' scope and the token will be revoked ater the sucessfull login\n",
-        "operationId": "Login_loginCredentials",
+        "operationId": "V1_Login_loginCredentials",
         "requestBody": {
           "required": true,
           "content": {
@@ -449,6 +300,49 @@
       }
     },
     "/login/credentials/reset": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Request credential reset link via mail",
+        "description": "Use current recovery mail address to reset password\n",
+        "operationId": "V1_Login_loginCredentialsReset",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
+                    "minLength": 3,
+                    "maxLength": 318
+                  }
+                },
+                "example": {
+                  "email": "me@mymailprovider.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Credential reset link request granted"
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          }
+        }
+      },
       "put": {
         "tags": [
           "Login"
@@ -456,21 +350,29 @@
         "security": [],
         "deprecated": false,
         "summary": "Reset password",
-        "description": "Reset password with your payment hash.\n",
-        "operationId": "User_resetUserPassword",
+        "description": "Reset password with your resetToken.\n",
+        "operationId": "V1_User_resetUserPassword",
         "requestBody": {
-          "description": "Payload containing login, payment hash and the new password.\n",
+          "description": "Payload containing resetToken, uid and the new password.\n",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
-                  "login",
-                  "paymentHash",
+                  "resetToken",
+                  "uid",
                   "newPassword"
                 ],
                 "properties": {
+                  "resetToken": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{64}$"
+                  },
+                  "uid": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9-]+$"
+                  },
                   "newPassword": {
                     "description": "New password wanted by the user",
                     "type": "string",
@@ -478,19 +380,11 @@
                     "pattern": "^(?=\\S)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).\\S{7,63}",
                     "minLength": 8,
                     "maxLength": 64
-                  },
-                  "paymentHash": {
-                    "type": "string",
-                    "pattern": "^[a-fA-F0-9]{64}$"
-                  },
-                  "login": {
-                    "type": "string",
-                    "pattern": "^\\S{6,32}$"
                   }
                 },
                 "example": {
-                  "login": "lnmarkets",
-                  "paymentHash": "b45dd2e30309aa708a73f0cfa0e38db5bbbbd16055087a692e0711365e7e08f5",
+                  "resetToken": "b45dd2e30309aa708a73f0cfa0e38db5bbbbd16055087a692e0711365e7e08f5",
+                  "uid": "d068f829-26e6-4743-b10d-ebb5a83b3624",
                   "newPassword": "PleaseDontStealMySats"
                 }
               }
@@ -499,7 +393,7 @@
         },
         "responses": {
           "200": {
-            "description": "Password successfuly reset.\n"
+            "description": "Password successfuly reset."
           },
           "400": {
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
@@ -507,40 +401,7 @@
         }
       }
     },
-    "/lnurl/a/c": {
-      "get": {
-        "tags": [
-          "LNURL"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "Auth 1",
-        "description": "LNURL string used to create an account or connect to a existing account.\nThe user wallet will sign a message using the provided k1 inside the LNURL.\nYou need to have a session cookie on the browser you are using to log in.\n",
-        "operationId": "LNURL_authCreate",
-        "responses": {
-          "200": {
-            "description": "Bech32 encoded string.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "lnurl": {
-                      "description": "LNURL used by the wallet",
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "lnurl": "lnurl1dp68gup69uhkcmmrv9kxsmmnwsarxvpsxqhkcmn4wfkz7cflw3skw0tvdankjm3xdvcn6venvgcrjenpx3nrwdtpxsur2vfsvdjk2dfkxe3kgceexymkgcmrxpjkgc3jvgmrqdnzvvurjwtr89jk2dp4vccrxvmrvvmxzdehxuejv6rdv93n6wpkv56rxcf4xqcxgwfsvsuxget9vymnqcfnv43rgwfjv5ex2cn9vyckgwtyvejrgc3excekyetpx43rvd3nxeskxvm9xqcxvwtpv5mq9uwr0k"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/lnurl/a": {
+    "/lnurl/auth": {
       "get": {
         "tags": [
           "LNURL"
@@ -549,19 +410,8 @@
         "deprecated": false,
         "summary": "Auth 2",
         "description": "Verify the public key with the signature and the k1 to create a account or connect into a existing account.\nIf JWT is set to true, a JWT will be returned with by default all scopes and an expiry of 1h, they can be changed by setting the query paramater expiry or scopes like POST /user/jwt.\nElse the connected state will be push over websocketsto the client.\n",
-        "operationId": "LNURL_authenticate",
+        "operationId": "V1_GET_LNURL_Auth",
         "parameters": [
-          {
-            "name": "k1",
-            "in": "query",
-            "description": "Hex encoded 32 bytes of challenge which is going to be signed by user private key.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "pattern": "^[a-fA-F0-9]{64}$",
-              "example": "kyNVmR6HDtAW2aplYk6XmmpDrIhvzzq6"
-            }
-          },
           {
             "name": "tag",
             "in": "query",
@@ -573,6 +423,17 @@
                 "login"
               ],
               "example": "login"
+            }
+          },
+          {
+            "name": "k1",
+            "in": "query",
+            "description": "Hex encoded 32 bytes of challenge which is going to be signed by user private key.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-fA-F0-9]{64}$",
+              "example": "kyNVmR6HDtAW2aplYk6XmmpDrIhvzzq6"
             }
           },
           {
@@ -638,7 +499,7 @@
           {
             "name": "scopes",
             "in": "query",
-            "description": "Scope of the jwt, default to 'deposit', 'withdraw', 'positions', 'user'",
+            "description": "Scope of the jwt",
             "style": "form",
             "explode": false,
             "schema": {
@@ -680,9 +541,156 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           }
         }
+      },
+      "post": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Auth",
+        "description": "LNURL string used to create an account or connect to a existing account.\nThe user wallet will sign a message using the provided k1 inside the LNURL.\nYou need to have a session cookie on the browser you are using to log in.\n",
+        "operationId": "V1_POST_LNURL_Auth",
+        "responses": {
+          "200": {
+            "description": "Bech32 encoded string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lnurl": {
+                      "description": "LNURL used by the wallet",
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "lnurl": "lnurl1dp68gup69uhkcmmrv9kxsmmnwsarxvpsxqhkcmn4wfkz7cflw3skw0tvdankjm3xdvcn6venvgcrjenpx3nrwdtpxsur2vfsvdjk2dfkxe3kgceexymkgcmrxpjkgc3jvgmrqdnzvvurjwtr89jk2dp4vccrxvmrvvmxzdehxuejv6rdv93n6wpkv56rxcf4xqcxgwfsvsuxget9vymnqcfnv43rgwfjv5ex2cn9vyckgwtyvejrgc3excekyetpx43rvd3nxeskxvm9xqcxvwtpv5mq9uwr0k"
+                }
+              }
+            }
+          }
+        }
       }
     },
-    "/lnurl/w/r": {
+    "/lnurl/withdraw": {
+      "get": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Withdraw 3",
+        "description": "Use LNURL to withdraw from the user balance.",
+        "operationId": "V1_LNURL_Withdraw",
+        "parameters": [
+          {
+            "name": "k1",
+            "in": "query",
+            "required": true,
+            "description": "Random hex string to identify the user Lightning Wallet.",
+            "example": "kyNVmR6HDtAW2aplYk6XmmpDrIhvzzq6",
+            "schema": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            }
+          },
+          {
+            "name": "pr",
+            "in": "query",
+            "required": true,
+            "description": "Bolt 11 invoice.",
+            "example": "<invoice>",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9]+$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfuly withdrawn funds from channel."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Create a LNURL Withdraw",
+        "description": "Create a LNURL Withdraw",
+        "operationId": "V1_POST_LNURL_withdraw",
+        "requestBody": {
+          "description": "Amount to withdraw",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "amount"
+                ],
+                "properties": {
+                  "amount": {
+                    "description": "amount you want to withdraw",
+                    "type": "integer",
+                    "minimum": 1000
+                  },
+                  "unit": {
+                    "description": "Unit (Only sat for now)",
+                    "type": "string",
+                    "enum": [
+                      "sat",
+                      "msat"
+                    ],
+                    "default": "sat"
+                  }
+                },
+                "example": {
+                  "amount": 1000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return the LNURL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lnurl": {
+                      "description": "LNURL for the users wallet",
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "lnurl": "LNURL1DP68GURN8GHJ7UM9WFMXJCM99E3K7MF0V9CXJ0M385EKVCENXC6R2C35XVUKXEFCV5MKVV34X5EKZD3EV56NYD3HXQURZEPEXEJXXEPNXSCRVWFNV9NXZCN9XQ6XYEFHVGCXXCMYXYMNSERXFQ5FNS"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/lnurl/withdraw/request": {
       "get": {
         "tags": [
           "LNURL"
@@ -691,7 +699,7 @@
         "deprecated": false,
         "summary": "Withdraw 2",
         "description": "Ask the Lightning wallet to create an invoice with amount and description.",
-        "operationId": "LNURL_WithdrawRequest",
+        "operationId": "V1_LNURL_WithdrawRequest",
         "parameters": [
           {
             "name": "signature",
@@ -745,6 +753,12 @@
                       "description": "Kind of LNURL",
                       "type": "string"
                     },
+                    "balanceCheck": {
+                      "type": "string"
+                    },
+                    "balanceNotify": {
+                      "type": "string"
+                    },
                     "maxWithdrawable": {
                       "description": "Max withdrawable amount",
                       "type": "integer",
@@ -775,48 +789,6 @@
         }
       }
     },
-    "/lnurl/w": {
-      "get": {
-        "tags": [
-          "LNURL"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "Withdraw 3",
-        "description": "Use LNURL to withdraw from the user balance.",
-        "operationId": "LNURL_Withdraw",
-        "parameters": [
-          {
-            "name": "k1",
-            "in": "query",
-            "required": true,
-            "description": "Random hex string to identify the user Lightning Wallet.",
-            "example": "kyNVmR6HDtAW2aplYk6XmmpDrIhvzzq6",
-            "schema": {
-              "type": "string",
-              "minLength": 64,
-              "maxLength": 64
-            }
-          },
-          {
-            "name": "pr",
-            "in": "query",
-            "required": true,
-            "description": "Bolt 11 invoice.",
-            "example": "<invoice>",
-            "schema": {
-              "type": "string",
-              "pattern": "^[a-zA-Z0-9]+$"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Sucessfuly withdrawn funds from channel."
-          }
-        }
-      }
-    },
     "/login/joule": {
       "post": {
         "tags": [
@@ -826,7 +798,7 @@
         "deprecated": false,
         "summary": "Login via Joule",
         "description": "Use the browser extension [Joule](https://lightningjoule.com/) to authenticate user.\nThe message has to be obtained using GET /login/joule\n",
-        "operationId": "Login_loginJoule",
+        "operationId": "V1_Login_loginJoule",
         "requestBody": {
           "required": true,
           "content": {
@@ -922,7 +894,7 @@
         "deprecated": false,
         "summary": "Request message",
         "description": "Generates a message that user can sign with POST /login/joule\n",
-        "operationId": "Login_getJouleMessage",
+        "operationId": "V1_Login_getJouleMessage",
         "responses": {
           "200": {
             "description": "Message generated",
@@ -946,523 +918,15 @@
         }
       }
     },
-    "/positions/cancel": {
+    "/futures": {
       "post": {
         "tags": [
-          "Positions"
+          "Futures"
         ],
         "security": [
           {
             "jwtAuth": [
-              "positions"
-            ]
-          },
-          {
-            "cookieAuth": []
-          }
-        ],
-        "deprecated": false,
-        "summary": "Cancel",
-        "description": "Cancel the position linked to the given `pid`.**Only works on positions that are not currently filled**.\n",
-        "operationId": "Position_cancelPosition",
-        "requestBody": {
-          "description": "Payload containing the position id that will be cancelled.",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "additionalProperties": false,
-                "type": "object",
-                "required": [
-                  "pid"
-                ],
-                "properties": {
-                  "pid": {
-                    "description": "Position ID",
-                    "type": "string",
-                    "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
-                  }
-                },
-                "example": {
-                  "pid": "b87eef8a-52ab-2fea-1adc-c41fba870b0f"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Position is canceled\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "canceled": {
-                      "description": "Canncel success",
-                      "type": "boolean"
-                    },
-                    "closed_ts": {
-                      "description": "When the position was canceled",
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "pid": {
-                      "description": "Position ID",
-                      "type": "string",
-                      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
-                    }
-                  },
-                  "example": {
-                    "pid": "b87eef8a-52ab-2fea-1adc-c41fba870b0f",
-                    "canceled": true,
-                    "closed_ts": "020-11-15T10:50:40.332Z"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/positions/cash-in": {
-      "post": {
-        "tags": [
-          "Positions"
-        ],
-        "security": [
-          {
-            "jwtAuth": [
-              "positions"
-            ]
-          },
-          {
-            "cookieAuth": []
-          }
-        ],
-        "deprecated": false,
-        "summary": "Cash-in",
-        "description": "Retrieves part of one running position's PL.\n",
-        "operationId": "Position_cashin",
-        "requestBody": {
-          "description": "Payload with data relative to the process.\n",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": [
-                  "amount",
-                  "pid"
-                ],
-                "properties": {
-                  "amount": {
-                    "description": "Amount of PL to cash-in (in sats)",
-                    "type": "integer",
-                    "format": "int64",
-                    "minimum": 1
-                  },
-                  "pid": {
-                    "description": "Position ID from which to retrieve PL",
-                    "type": "string",
-                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-                  }
-                },
-                "example": {
-                  "amount": 1000,
-                  "pid": "99c470e1-2e03-4486-a37f-1255e08178b1"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Cash-in successfully retrieved and new position informations are sent back.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "pid": {
-                      "description": "UUID of the position",
-                      "type": "string"
-                    },
-                    "id": {
-                      "description": "Position ID to be deprecated",
-                      "type": "string"
-                    },
-                    "type": {
-                      "description": "Position type [l,m]",
-                      "type": "string"
-                    },
-                    "side": {
-                      "description": "Side of the position [s,b]",
-                      "type": "string"
-                    },
-                    "price": {
-                      "description": "Entry price of the position",
-                      "type": "string"
-                    },
-                    "quantity": {
-                      "description": "Quantity of the position",
-                      "type": "string"
-                    },
-                    "margin": {
-                      "description": "Margin used for the position creation",
-                      "type": "string"
-                    },
-                    "leverage": {
-                      "description": "Leverage of the position",
-                      "type": "string"
-                    },
-                    "liquidation": {
-                      "description": "Liquidation level when the position will be closed",
-                      "type": "string"
-                    },
-                    "market_filled_ts": {
-                      "description": "When the order was filled",
-                      "type": "string",
-                      "format": "date-time",
-                      "nullable": true
-                    },
-                    "market_wi": {
-                      "description": "Market working indicator [filled, running, closed, canceled]",
-                      "type": "string"
-                    },
-                    "pl": {
-                      "description": "PL of the position",
-                      "type": "string"
-                    },
-                    "margin_wi": {
-                      "description": "Margin working indicator [filled, running, closed, canceled]",
-                      "type": "string"
-                    },
-                    "stoploss": {
-                      "description": "stoploss level",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "stoploss_wi": {
-                      "description": "Stoploss working indicator [filled, running, closed, canceled]",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "takeprofit": {
-                      "description": "Takeprofit level",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "takeprofit_wi": {
-                      "description": "Takeprofit working indicator [filled, running, closed, canceled]",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "creation_ts": {
-                      "description": "When the position was created",
-                      "type": "string",
-                      "format": "date-time"
-                    }
-                  },
-                  "example": {
-                    "pid": "249dc818-f8a5-4713-a3a3-8fe85f2e8969",
-                    "id": 666,
-                    "type": "m",
-                    "takeprofit_wi": "running",
-                    "takeprofit": 13337,
-                    "stoploss_wi": "running",
-                    "stoploss": 1337,
-                    "side": "s",
-                    "quantity": 42,
-                    "price": 8888,
-                    "pl": -13640,
-                    "market_wi": "filled",
-                    "market_filled_ts": "020-09-15T10:50:40.332Z",
-                    "margin_wi": "running",
-                    "margin": 424242,
-                    "liquidation": 1000,
-                    "leverage": 50,
-                    "creation_ts": "020-09-15T10:50:40.332Z"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/positions/add-margin": {
-      "post": {
-        "tags": [
-          "Positions"
-        ],
-        "security": [
-          {
-            "jwtAuth": [
-              "positions"
-            ]
-          },
-          {
-            "cookieAuth": []
-          }
-        ],
-        "deprecated": false,
-        "summary": "Add margin",
-        "description": "Add margin to a running position.\n",
-        "operationId": "Position_addmargin",
-        "requestBody": {
-          "description": "Payload with data relative to the process.\n",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": [
-                  "amount",
-                  "pid"
-                ],
-                "properties": {
-                  "amount": {
-                    "description": "Amount of margin to add (in sats)",
-                    "type": "integer",
-                    "format": "int64",
-                    "minimum": 1
-                  },
-                  "pid": {
-                    "description": "Position ID from which to retrieve PL",
-                    "type": "string",
-                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-                  }
-                },
-                "example": {
-                  "amount": 1000,
-                  "pid": "99c470e1-2e03-4486-a37f-1255e08178b1"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Margin successfully added and new position informations are sent back.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "pid": {
-                      "description": "UUID of the position",
-                      "type": "string"
-                    },
-                    "id": {
-                      "description": "Position ID to be deprecated",
-                      "type": "string"
-                    },
-                    "type": {
-                      "description": "Position type [l,m]",
-                      "type": "string"
-                    },
-                    "side": {
-                      "description": "Side of the position [s,b]",
-                      "type": "string"
-                    },
-                    "price": {
-                      "description": "Entry price of the position",
-                      "type": "string"
-                    },
-                    "quantity": {
-                      "description": "Quantity of the position",
-                      "type": "string"
-                    },
-                    "margin": {
-                      "description": "Margin used for the position creation",
-                      "type": "string"
-                    },
-                    "leverage": {
-                      "description": "Leverage of the position",
-                      "type": "string"
-                    },
-                    "liquidation": {
-                      "description": "Liquidation level when the position will be closed",
-                      "type": "string"
-                    },
-                    "market_filled_ts": {
-                      "description": "When the order was filled",
-                      "type": "string",
-                      "format": "date-time",
-                      "nullable": true
-                    },
-                    "market_wi": {
-                      "description": "Market working indicator [filled, running, closed, canceled]",
-                      "type": "string"
-                    },
-                    "pl": {
-                      "description": "PL of the position",
-                      "type": "string"
-                    },
-                    "margin_wi": {
-                      "description": "Margin working indicator [filled, running, closed, canceled]",
-                      "type": "string"
-                    },
-                    "stoploss": {
-                      "description": "stoploss level",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "stoploss_wi": {
-                      "description": "Stoploss working indicator [filled, running, closed, canceled]",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "takeprofit": {
-                      "description": "Takeprofit level",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "takeprofit_wi": {
-                      "description": "Takeprofit working indicator [filled, running, closed, canceled]",
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "creation_ts": {
-                      "description": "When the position was created",
-                      "type": "string",
-                      "format": "date-time"
-                    }
-                  },
-                  "example": {
-                    "pid": "249dc818-f8a5-4713-a3a3-8fe85f2e8969",
-                    "id": 666,
-                    "type": "m",
-                    "takeprofit_wi": "running",
-                    "takeprofit": 13337,
-                    "stoploss_wi": "running",
-                    "stoploss": 1337,
-                    "side": "s",
-                    "quantity": 42,
-                    "price": 8888,
-                    "pl": -13640,
-                    "market_wi": "filled",
-                    "market_filled_ts": "020-09-15T10:50:40.332Z",
-                    "margin_wi": "running",
-                    "margin": 424242,
-                    "liquidation": 1000,
-                    "leverage": 50,
-                    "creation_ts": "020-09-15T10:50:40.332Z"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/positions/all": {
-      "delete": {
-        "tags": [
-          "Positions"
-        ],
-        "security": [
-          {
-            "jwtAuth": [
-              "positions"
-            ]
-          },
-          {
-            "cookieAuth": []
-          }
-        ],
-        "deprecated": false,
-        "summary": "Close-all",
-        "description": "Close every user position. The PL will be calculated against the current bid or offer\ndepending on the side of the position.\n",
-        "operationId": "Position_closeAllPosition",
-        "responses": {
-          "200": {
-            "description": "Every position has been successfully closed\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "closed": {
-                        "description": "Is position closed",
-                        "type": "boolean"
-                      },
-                      "closed_ts": {
-                        "description": "Position closed ts",
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                      },
-                      "exit_price": {
-                        "description": "At which price the position was closed",
-                        "type": "string"
-                      },
-                      "pid": {
-                        "description": "Position id",
-                        "type": "string"
-                      },
-                      "pl": {
-                        "description": "PL of the position",
-                        "type": "integer"
-                      }
-                    }
-                  },
-                  "example": {
-                    "data": [
-                      {
-                        "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
-                        "exit_price": 2000,
-                        "closed_ts": "020-10-15T10:50:40.332Z",
-                        "closed": true,
-                        "pl": 1337
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/positions": {
-      "post": {
-        "tags": [
-          "Positions"
-        ],
-        "security": [
-          {
-            "jwtAuth": [
-              "positions"
+              "futures"
             ]
           },
           {
@@ -1472,7 +936,7 @@
         "deprecated": false,
         "summary": "Create",
         "description": "Send the order form parameters to add a new position in database.\n**If `type=\"l\"`, the property `price` must be included in the request to know when the position should be filled.**\n**You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you choosed**\n",
-        "operationId": "Position_createPosition",
+        "operationId": "V1_Futures_createPosition",
         "requestBody": {
           "description": "Payload with all the information needed to setup a new position.\n",
           "required": true,
@@ -1685,12 +1149,12 @@
       },
       "put": {
         "tags": [
-          "Positions"
+          "Futures"
         ],
         "security": [
           {
             "jwtAuth": [
-              "positions"
+              "futures"
             ]
           },
           {
@@ -1700,7 +1164,7 @@
         "deprecated": false,
         "summary": "Update",
         "description": "Allows user to modify `stoploss` or `takeprofit` parameters of an existing position.\n",
-        "operationId": "Position_updatePosition",
+        "operationId": "V1_Futures_updatePosition",
         "requestBody": {
           "required": true,
           "content": {
@@ -1771,12 +1235,12 @@
       },
       "delete": {
         "tags": [
-          "Positions"
+          "Futures"
         ],
         "security": [
           {
             "jwtAuth": [
-              "positions"
+              "trading"
             ]
           },
           {
@@ -1786,7 +1250,7 @@
         "deprecated": false,
         "summary": "Close",
         "description": "Close the user position, the PL will be calculated against the current bid or offer\ndepending on the side of the position\n",
-        "operationId": "Position_closePosition",
+        "operationId": "V1_Futures_closePosition",
         "parameters": [
           {
             "name": "pid",
@@ -1852,12 +1316,12 @@
       },
       "get": {
         "tags": [
-          "Positions"
+          "Futures"
         ],
         "security": [
           {
             "jwtAuth": [
-              "positions"
+              "futures"
             ]
           },
           {
@@ -1867,7 +1331,7 @@
         "deprecated": false,
         "summary": "History",
         "description": "Retrieves either opened, closed or all positions.\n\n**If no parameters are sent, all positions are fetched.**\n",
-        "operationId": "Position_getPositionList",
+        "operationId": "V1_Futures_getPositionList",
         "parameters": [
           {
             "name": "type",
@@ -1878,6 +1342,7 @@
               "enum": [
                 "all",
                 "open",
+                "running",
                 "closed"
               ],
               "example": "all"
@@ -2036,6 +1501,688 @@
         }
       }
     },
+    "/futures/history": {
+      "get": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Futures data history",
+        "description": "Retrieves at most 1000 entries between two given timestamps.\n",
+        "operationId": "V1_Futures_History",
+        "parameters": [
+          {
+            "name": "table",
+            "in": "query",
+            "description": "bid_offer or index",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "bid_offer",
+                "index"
+              ],
+              "example": "index"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Starting timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162757621
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Ending timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162857621
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of rows",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 1000,
+              "example": 1000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Futures market data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "time": {
+                        "description": "Timestamp at which the data was recorded (in µs)",
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "bid": {
+                        "description": "Bid value at that time",
+                        "type": "number"
+                      },
+                      "offer": {
+                        "description": "Offer value at that time",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "data": [
+                      {
+                        "time": 1605633250615990,
+                        "bid": 15853,
+                        "offer": 15885
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/cancel": {
+      "post": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "futures"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Cancel",
+        "description": "Cancel the position linked to the given `pid`.**Only works on positions that are not currently filled**.\n",
+        "operationId": "V1_Futures_cancelPosition",
+        "requestBody": {
+          "description": "Payload containing the position id that will be cancelled.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "type": "object",
+                "required": [
+                  "pid"
+                ],
+                "properties": {
+                  "pid": {
+                    "description": "Position ID",
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                  }
+                },
+                "example": {
+                  "pid": "b87eef8a-52ab-2fea-1adc-c41fba870b0f"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Position is canceled\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "canceled": {
+                      "description": "Canncel success",
+                      "type": "boolean"
+                    },
+                    "closed_ts": {
+                      "description": "When the position was canceled",
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "pid": {
+                      "description": "Position ID",
+                      "type": "string",
+                      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                    }
+                  },
+                  "example": {
+                    "pid": "b87eef8a-52ab-2fea-1adc-c41fba870b0f",
+                    "canceled": true,
+                    "closed_ts": "020-11-15T10:50:40.332Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/cash-in": {
+      "post": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "futures"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Cash-in",
+        "description": "Retrieves part of one running position's PL.\n",
+        "operationId": "V1_Futures_cashin",
+        "requestBody": {
+          "description": "Payload with data relative to the process.\n",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "amount",
+                  "pid"
+                ],
+                "properties": {
+                  "amount": {
+                    "description": "Amount of PL to cash-in (in sats)",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1
+                  },
+                  "pid": {
+                    "description": "Position ID from which to retrieve PL",
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                  }
+                },
+                "example": {
+                  "amount": 1000,
+                  "pid": "99c470e1-2e03-4486-a37f-1255e08178b1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cash-in successfully retrieved and new position informations are sent back.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pid": {
+                      "description": "UUID of the position",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Position ID to be deprecated",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Position type [l,m]",
+                      "type": "string"
+                    },
+                    "side": {
+                      "description": "Side of the position [s,b]",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Entry price of the position",
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "description": "Quantity of the position",
+                      "type": "string"
+                    },
+                    "margin": {
+                      "description": "Margin used for the position creation",
+                      "type": "string"
+                    },
+                    "leverage": {
+                      "description": "Leverage of the position",
+                      "type": "string"
+                    },
+                    "liquidation": {
+                      "description": "Liquidation level when the position will be closed",
+                      "type": "string"
+                    },
+                    "market_filled_ts": {
+                      "description": "When the order was filled",
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "market_wi": {
+                      "description": "Market working indicator [filled, running, closed, canceled]",
+                      "type": "string"
+                    },
+                    "pl": {
+                      "description": "PL of the position",
+                      "type": "string"
+                    },
+                    "margin_wi": {
+                      "description": "Margin working indicator [filled, running, closed, canceled]",
+                      "type": "string"
+                    },
+                    "stoploss": {
+                      "description": "stoploss level",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "stoploss_wi": {
+                      "description": "Stoploss working indicator [filled, running, closed, canceled]",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "takeprofit": {
+                      "description": "Takeprofit level",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "takeprofit_wi": {
+                      "description": "Takeprofit working indicator [filled, running, closed, canceled]",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "creation_ts": {
+                      "description": "When the position was created",
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "example": {
+                    "pid": "249dc818-f8a5-4713-a3a3-8fe85f2e8969",
+                    "id": 666,
+                    "type": "m",
+                    "takeprofit_wi": "running",
+                    "takeprofit": 13337,
+                    "stoploss_wi": "running",
+                    "stoploss": 1337,
+                    "side": "s",
+                    "quantity": 42,
+                    "price": 8888,
+                    "pl": -13640,
+                    "market_wi": "filled",
+                    "market_filled_ts": "020-09-15T10:50:40.332Z",
+                    "margin_wi": "running",
+                    "margin": 424242,
+                    "liquidation": 1000,
+                    "leverage": 50,
+                    "creation_ts": "020-09-15T10:50:40.332Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/add-margin": {
+      "post": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "futures"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Add margin",
+        "description": "Add margin to a running position.\n",
+        "operationId": "V1_Futures_addmargin",
+        "requestBody": {
+          "description": "Payload with data relative to the process.\n",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "amount",
+                  "pid"
+                ],
+                "properties": {
+                  "amount": {
+                    "description": "Amount of margin to add (in sats)",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1
+                  },
+                  "pid": {
+                    "description": "Position ID from which to retrieve PL",
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                  }
+                },
+                "example": {
+                  "amount": 1000,
+                  "pid": "99c470e1-2e03-4486-a37f-1255e08178b1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Margin successfully added and new position informations are sent back.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pid": {
+                      "description": "UUID of the position",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Position ID to be deprecated",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Position type [l,m]",
+                      "type": "string"
+                    },
+                    "side": {
+                      "description": "Side of the position [s,b]",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Entry price of the position",
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "description": "Quantity of the position",
+                      "type": "string"
+                    },
+                    "margin": {
+                      "description": "Margin used for the position creation",
+                      "type": "string"
+                    },
+                    "leverage": {
+                      "description": "Leverage of the position",
+                      "type": "string"
+                    },
+                    "liquidation": {
+                      "description": "Liquidation level when the position will be closed",
+                      "type": "string"
+                    },
+                    "market_filled_ts": {
+                      "description": "When the order was filled",
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "market_wi": {
+                      "description": "Market working indicator [filled, running, closed, canceled]",
+                      "type": "string"
+                    },
+                    "pl": {
+                      "description": "PL of the position",
+                      "type": "string"
+                    },
+                    "margin_wi": {
+                      "description": "Margin working indicator [filled, running, closed, canceled]",
+                      "type": "string"
+                    },
+                    "stoploss": {
+                      "description": "stoploss level",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "stoploss_wi": {
+                      "description": "Stoploss working indicator [filled, running, closed, canceled]",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "takeprofit": {
+                      "description": "Takeprofit level",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "takeprofit_wi": {
+                      "description": "Takeprofit working indicator [filled, running, closed, canceled]",
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "creation_ts": {
+                      "description": "When the position was created",
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "example": {
+                    "pid": "249dc818-f8a5-4713-a3a3-8fe85f2e8969",
+                    "id": 666,
+                    "type": "m",
+                    "takeprofit_wi": "running",
+                    "takeprofit": 13337,
+                    "stoploss_wi": "running",
+                    "stoploss": 1337,
+                    "side": "s",
+                    "quantity": 42,
+                    "price": 8888,
+                    "pl": -13640,
+                    "market_wi": "filled",
+                    "market_filled_ts": "020-09-15T10:50:40.332Z",
+                    "margin_wi": "running",
+                    "margin": 424242,
+                    "liquidation": 1000,
+                    "leverage": 50,
+                    "creation_ts": "020-09-15T10:50:40.332Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/all/close": {
+      "delete": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "futures"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Close-all",
+        "description": "Close every user position. The PL will be calculated against the current bid or offer\ndepending on the side of the position.\n",
+        "operationId": "V1_Futures_closeAllPosition",
+        "responses": {
+          "200": {
+            "description": "Every position has been successfully closed\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "closed": {
+                        "description": "Is position closed",
+                        "type": "boolean"
+                      },
+                      "closed_ts": {
+                        "description": "Position closed ts",
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      },
+                      "exit_price": {
+                        "description": "At which price the position was closed",
+                        "type": "string"
+                      },
+                      "pid": {
+                        "description": "Position id",
+                        "type": "string"
+                      },
+                      "pl": {
+                        "description": "PL of the position",
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "example": {
+                    "data": [
+                      {
+                        "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
+                        "exit_price": 2000,
+                        "closed_ts": "020-10-15T10:50:40.332Z",
+                        "closed": true,
+                        "pl": 1337
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/all/cancel": {
+      "delete": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "futures"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Cancel-all",
+        "description": "Cancel all open positions",
+        "operationId": "V1_Futures_cancelAllPosition",
+        "responses": {
+          "200": {
+            "description": "Array with canceled positions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "canceled": {
+                        "description": "Is position canceled",
+                        "type": "boolean"
+                      },
+                      "closed_ts": {
+                        "description": "Position canceled ts",
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      },
+                      "pid": {
+                        "description": "Position id",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "data": [
+                      {
+                        "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
+                        "canceled_ts": "020-10-15T10:50:40.332Z",
+                        "canceled": true,
+                        "margin": 1337
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/state": {
       "get": {
         "tags": [
@@ -2045,7 +2192,7 @@
         "deprecated": false,
         "summary": "API informations",
         "description": "Shows informations about api.\n",
-        "operationId": "State_apiState",
+        "operationId": "V1_State_apiState",
         "responses": {
           "200": {
             "description": "The API is online.\n",
@@ -2111,7 +2258,7 @@
         "deprecated": false,
         "summary": "Node informations",
         "description": "Shows informations about the lightning node.\n",
-        "operationId": "State_nodeState",
+        "operationId": "V1_State_nodeState",
         "responses": {
           "200": {
             "description": "The Node is online.\n",
@@ -2194,7 +2341,7 @@
         "deprecated": false,
         "summary": "Get current Leaderboard",
         "description": "Queries the database to get the 10 users with the biggest posititve PL\n",
-        "operationId": "Leaderboard_getLeaderboard",
+        "operationId": "V1_Leaderboard_getLeaderboard",
         "responses": {
           "200": {
             "description": "Leaderboard successfully fetched",
@@ -2273,7 +2420,7 @@
         "deprecated": false,
         "summary": "Get the LN Markets announcements",
         "description": "Get the LN Markets announcements\n",
-        "operationId": "Announcements_getAnnouncements",
+        "operationId": "V1_Announcements_getAnnouncements",
         "responses": {
           "200": {
             "description": "Announcements successfully fetched",
@@ -2332,7 +2479,7 @@
         "deprecated": false,
         "summary": "Informations",
         "description": "Get the user account Information\n",
-        "operationId": "User_getUser",
+        "operationId": "V1_User_getUser",
         "responses": {
           "200": {
             "description": "User information\n",
@@ -2361,10 +2508,6 @@
                       "description": "Public key used for lnurl or joule account",
                       "type": "string"
                     },
-                    "last_ip": {
-                      "description": "Last login ip",
-                      "type": "string"
-                    },
                     "show_leaderboard": {
                       "description": "Show the user PL in the leaderboard",
                       "type": "boolean"
@@ -2380,7 +2523,6 @@
                     "account_type": "Joule",
                     "username": "Testnet-node",
                     "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a",
-                    "last_ip": "127.0.0.1",
                     "show_username": false,
                     "show_leaderboard": true
                   }
@@ -2410,7 +2552,7 @@
         "deprecated": false,
         "summary": "Update user",
         "description": "Modifies account parameters",
-        "operationId": "User_updateUser",
+        "operationId": "V1_User_updateUser",
         "requestBody": {
           "required": true,
           "content": {
@@ -2432,12 +2574,24 @@
                     "description": "Username displayed on LN Markets public data",
                     "type": "string",
                     "pattern": "^\\S{6,32}$"
+                  },
+                  "email": {
+                    "description": "Email used to recover account",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
+                    "minLength": 3,
+                    "maxLength": 318
+                  },
+                  "resend_email": {
+                    "description": "Ask to resend the confirmation email",
+                    "type": "boolean"
                   }
                 },
                 "example": {
                   "show_username": false,
                   "show_leaderboard": true,
-                  "username": "Cryptoking"
+                  "username": "Cryptoking",
+                  "email": "mememeeee@JeSuisLeBest.com"
                 }
               }
             }
@@ -2471,10 +2625,6 @@
                       "description": "Public key used for lnurl or joule account",
                       "type": "string"
                     },
-                    "last_ip": {
-                      "description": "Last login ip",
-                      "type": "string"
-                    },
                     "show_leaderboard": {
                       "description": "Show the user PL in the leaderboard",
                       "type": "boolean"
@@ -2490,7 +2640,6 @@
                     "account_type": "Joule",
                     "username": "Testnet-node",
                     "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a",
-                    "last_ip": "127.0.0.1",
                     "show_username": false,
                     "show_leaderboard": true
                   }
@@ -2525,7 +2674,7 @@
         "deprecated": false,
         "summary": "Update password",
         "description": "Update the current password to the requested one.\n",
-        "operationId": "User_updateUser",
+        "operationId": "V1_User_updateUser",
         "requestBody": {
           "description": "Payload containing user credentials.\n",
           "required": true,
@@ -2576,192 +2725,6 @@
         }
       }
     },
-    "/user/history": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "security": [
-          {
-            "jwtAuth": [
-              "user"
-            ]
-          },
-          {
-            "cookieAuth": []
-          }
-        ],
-        "deprecated": false,
-        "summary": "Transactions",
-        "description": "Retrieves all withdraw or deposit you did with LN Markets or just one page\n",
-        "operationId": "User_getHistory",
-        "parameters": [
-          {
-            "name": "type",
-            "in": "query",
-            "description": "Which kind of transactions will be fetched.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "pattern": "^[a-z]+$",
-              "enum": [
-                "withdraw",
-                "deposit"
-              ],
-              "example": "deposit"
-            }
-          },
-          {
-            "name": "nbItem",
-            "in": "query",
-            "description": "Maximum length of the returned table.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "example": 15
-            }
-          },
-          {
-            "name": "index",
-            "in": "query",
-            "description": "Which page we want (offset = nbItem * (index - 1)).",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "example": 1
-            }
-          },
-          {
-            "name": "getLength",
-            "in": "query",
-            "description": "Return the length of the date slice given.",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "example": false
-            }
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Start of the time interval (UNIX UTC timestamp)",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "example": 1590969600000
-            }
-          },
-          {
-            "name": "end",
-            "in": "query",
-            "description": "End of the time interval (UNIX UTC timestamp)",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "example": 1603065600000
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "History sucessfully pulled.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "transaction": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "did": {
-                            "description": "Deposit ID in case of deposit",
-                            "type": "string"
-                          },
-                          "wid": {
-                            "description": "Withdraw ID in case of withdraw",
-                            "type": "string"
-                          },
-                          "amount": {
-                            "description": "Amount in sat",
-                            "type": "integer"
-                          },
-                          "creation_ts": {
-                            "description": "When the transaction was initiated",
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "details": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "fail": {
-                            "description": "Is the transaction failed",
-                            "type": "boolean",
-                            "example": false
-                          },
-                          "fail_reason": {
-                            "type": "string",
-                            "nullable": true,
-                            "example": null
-                          },
-                          "fail_ts": {
-                            "description": "When did the transaction failed ?",
-                            "type": "string",
-                            "format": "date-time",
-                            "nullable": true,
-                            "example": null
-                          },
-                          "payment_hash": {
-                            "type": "string",
-                            "example": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3"
-                          },
-                          "success": {
-                            "type": "boolean",
-                            "example": false
-                          },
-                          "sucess_ts": {
-                            "type": "string",
-                            "format": "date-time",
-                            "nullable": true,
-                            "example": null
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "example": {
-                    "transaction": [
-                      {
-                        "did": "269157f3-d4a1-4493-afcb-5e8fdaa49288",
-                        "amount": 99400,
-                        "creation_ts": "020-09-15T10:50:40.332Z",
-                        "details": null,
-                        "fail": false,
-                        "success": true,
-                        "fail_reason": null,
-                        "fail_ts": null,
-                        "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
-                        "sucess_ts": "020-09-15T10:50:40.332Z"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
     "/user/jwt": {
       "get": {
         "tags": [
@@ -2775,7 +2738,7 @@
         "deprecated": false,
         "summary": "List API Tokens",
         "description": "Retrieves the list of active JSON Web Token user currently holds.\n",
-        "operationId": "User_GetJWTList",
+        "operationId": "V1_User_GetJWTList",
         "responses": {
           "200": {
             "description": "Token list retrieved.\n",
@@ -2854,7 +2817,7 @@
         "deprecated": false,
         "summary": "Revoke API Token",
         "description": "Using the `jti` parameter, identifies and revoke usage of a given JWT.\n",
-        "operationId": "User_RevokeJWT",
+        "operationId": "V1_User_RevokeJWT",
         "parameters": [
           {
             "name": "jti",
@@ -2890,7 +2853,7 @@
         "deprecated": false,
         "summary": "Generate API Token",
         "description": "Using the given scopes, allow the token bearer to get access to different parts of the public API.\n",
-        "operationId": "User_CreateJWT",
+        "operationId": "V1_User_CreateJWT",
         "requestBody": {
           "description": "Scopes of authorization that the token will grant to the bearer.\n",
           "required": true,
@@ -2911,7 +2874,7 @@
                       "enum": [
                         "deposit",
                         "withdraw",
-                        "positions",
+                        "futures",
                         "user"
                       ]
                     },
@@ -2982,7 +2945,7 @@
         "deprecated": false,
         "summary": "Deposit",
         "description": "Add fund to your LN Markets balance\n",
-        "operationId": "User_deposit",
+        "operationId": "V1_User_deposit",
         "requestBody": {
           "description": "Payload that contains all informations to initialize a new deposit.\n",
           "required": true,
@@ -3047,6 +3010,146 @@
             "description": "Unauthorized"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "user"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Deposit",
+        "description": "Get deposit history\n",
+        "operationId": "V1_User_getDepositHistory",
+        "parameters": [
+          {
+            "name": "nbItem",
+            "in": "query",
+            "description": "Maximum length of the returned table.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 15
+            }
+          },
+          {
+            "name": "index",
+            "in": "query",
+            "description": "Which page we want (offset = nbItem * (index - 1)).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "getLength",
+            "in": "query",
+            "description": "Return the length of the date slice given.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "example": false
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Start of the time interval (UNIX UTC timestamp)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1590969600000
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "End of the time interval (UNIX UTC timestamp)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1603065600000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "History sucessfully pulled.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transaction": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Deposit ID in case of deposit",
+                            "type": "string"
+                          },
+                          "amount": {
+                            "description": "Amount in sat",
+                            "type": "integer"
+                          },
+                          "creation_ts": {
+                            "description": "When the transaction was initiated",
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "payment_hash": {
+                            "type": "string",
+                            "example": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3"
+                          },
+                          "success": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "sucess_ts": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true,
+                            "example": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "transaction": [
+                      {
+                        "id": "269157f3-d4a1-4493-afcb-5e8fdaa49288",
+                        "amount": 99400,
+                        "creation_ts": "020-09-15T10:50:40.332Z",
+                        "success": true,
+                        "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
+                        "sucess_ts": "020-09-15T10:50:40.332Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
       }
     },
     "/user/withdraw": {
@@ -3064,10 +3167,9 @@
             "cookieAuth": []
           }
         ],
-        "deprecated": false,
         "summary": "Withdraw via invoice",
-        "description": "Move funds from the **[Lightning channel](https://medium.com/suredbits/lightning-101-what-are-lightning-channels-cfb80f440298)** with LN Markets to user wallet by using an invoice directly.\n",
-        "operationId": "User_withdraw",
+        "description": "Withdraw from LN Markets with a Lightning Invoice\n",
+        "operationId": "V1_User_Withdraw",
         "requestBody": {
           "description": "Payload that countains all informations to initiate a new withdraw.\n",
           "required": true,
@@ -3122,7 +3224,7 @@
                       "description": "Payment secret of the settled invoice",
                       "type": "string"
                     },
-                    "wid": {
+                    "id": {
                       "description": "Withdraw ID",
                       "type": "string"
                     },
@@ -3134,7 +3236,7 @@
                   "example": {
                     "amount": 1000,
                     "paymentsecret": "1b84c9852e929f99700b6cbabc4ca9d1593afc3736938b348c4d3d143e418bd4",
-                    "wid": "3fcbd8b7-c35b-4e83-87bc-111d5bd186b7",
+                    "id": "3fcbd8b7-c35b-4e83-87bc-111d5bd186b7",
                     "paymenthash": "fb4d1e4ce4de84fe3a466bcf1d8543c0df56a9ac7a6c6f28bd9434a080a14c80"
                   }
                 }
@@ -3148,17 +3250,15 @@
             "description": "Unauthorized"
           }
         }
-      }
-    },
-    "/user/withdraw/lnurl": {
-      "post": {
+      },
+      "get": {
         "tags": [
           "User"
         ],
         "security": [
           {
             "jwtAuth": [
-              "withdraw"
+              "user"
             ]
           },
           {
@@ -3166,57 +3266,135 @@
           }
         ],
         "deprecated": false,
-        "summary": "Withdraw via LNURL",
-        "description": "Create a LNURL Withdraw.\n",
-        "operationId": "User_withdrawLnurl",
-        "requestBody": {
-          "description": "Amount the user wants to withdraw.\n",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "amount"
-                ],
-                "properties": {
-                  "amount": {
-                    "description": "amount you want to withdraw",
-                    "type": "integer",
-                    "minimum": 1000
-                  },
-                  "unit": {
-                    "description": "Unit (Only sat for now)",
-                    "type": "string",
-                    "enum": [
-                      "sat",
-                      "msat"
-                    ],
-                    "default": "sat"
-                  }
-                },
-                "example": {
-                  "amount": 1000
-                }
-              }
+        "summary": "Withdraw",
+        "description": "Ge withdraw history\n",
+        "operationId": "V1_User_getWithdrawHistory",
+        "parameters": [
+          {
+            "name": "nbItem",
+            "in": "query",
+            "description": "Maximum length of the returned table.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 15
+            }
+          },
+          {
+            "name": "index",
+            "in": "query",
+            "description": "Which page we want (offset = nbItem * (index - 1)).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "getLength",
+            "in": "query",
+            "description": "Return the length of the date slice given.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "example": false
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Start of the time interval (UNIX UTC timestamp)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1590969600000
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "End of the time interval (UNIX UTC timestamp)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1603065600000
             }
           }
-        },
+        ],
         "responses": {
           "200": {
-            "description": "LNURL Bech32 encoded string\n",
+            "description": "History sucessfully pulled.\n",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "lnurl": {
-                      "description": "LNURL for the users wallet",
-                      "type": "string"
+                    "transaction": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Withdraw ID in case of withdraw",
+                            "type": "string"
+                          },
+                          "amount": {
+                            "description": "Amount in sat",
+                            "type": "integer"
+                          },
+                          "creation_ts": {
+                            "description": "When the transaction was initiated",
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "fail": {
+                            "description": "Is the transaction failed",
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "fail_reason": {
+                            "type": "string",
+                            "nullable": true,
+                            "example": null
+                          },
+                          "fail_ts": {
+                            "description": "When did the withdraw failed ?",
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true,
+                            "example": null
+                          },
+                          "payment_hash": {
+                            "type": "string",
+                            "example": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3"
+                          },
+                          "success": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "sucess_ts": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true,
+                            "example": null
+                          }
+                        }
+                      }
                     }
                   },
                   "example": {
-                    "lnurl": "LNURL1DP68GURN8GHJ7UM9WFMXJCM99E3K7MF0V9CXJ0M385EKVCENXC6R2C35XVUKXEFCV5MKVV34X5EKZD3EV56NYD3HXQURZEPEXEJXXEPNXSCRVWFNV9NXZCN9XQ6XYEFHVGCXXCMYXYMNSERXFQ5FNS"
+                    "transaction": [
+                      {
+                        "id": "269157f3-d4a1-4493-afcb-5e8fdaa49288",
+                        "amount": 99400,
+                        "creation_ts": "020-09-15T10:50:40.332Z",
+                        "success": true,
+                        "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
+                        "sucess_ts": "020-09-15T10:50:40.332Z"
+                      }
+                    ]
                   }
                 }
               }
@@ -3240,10 +3418,90 @@
         "deprecated": false,
         "summary": "Logout",
         "description": "Delete the session cookie.\n",
-        "operationId": "User_logout",
+        "operationId": "V1_User_logout",
         "responses": {
           "200": {
             "description": "Sucessfully logged out.\n"
+          }
+        }
+      }
+    },
+    "/user/email-confirm": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "user"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "deprecated": false,
+        "summary": "Confirm recovery email with confirmationToken",
+        "description": "Confirm recovery email so that the user can reset his password if he loses it\n",
+        "operationId": "V1_User_emailConfirm",
+        "requestBody": {
+          "description": "Payload that countains the token to confirm the recovery email.\n",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "confirmationToken"
+                ],
+                "properties": {
+                  "confirmationToken": {
+                    "description": "One-time use token to confirm email address",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]{64}$"
+                  }
+                },
+                "example": {
+                  "confirmationToken": "682f2afb2a551a4dd5e5e29800b95547ff54b232b2da3ffa9a97173037d464bc"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Recovery Email is confirmed and therfore usable\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "confirmationSuccess",
+                    "confirmedEmail"
+                  ],
+                  "properties": {
+                    "confirmationSuccess": {
+                      "description": "Success of the recovery email confirmation",
+                      "type": "boolean"
+                    },
+                    "confirmedEmail": {
+                      "description": "Recovery email address confirmed",
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "emailConfirmed": "dogecoin@touzemoune.com"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
