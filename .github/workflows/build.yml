@@ -89,11 +89,4 @@ jobs:
         with:
           branch: gh-pages
           folder: build
-          target-folder: api
-
-      - name: Deploy open api 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          branch: gh-pages
-          folder: dist
-          target-folder: open-api
+          target-folder: api/v1
