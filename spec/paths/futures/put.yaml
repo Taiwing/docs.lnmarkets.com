@@ -1,15 +1,15 @@
 tags:
-  - Positions
+  - Futures
 
 security:
-  - jwtAuth: ['positions']
+  - jwtAuth: ['futures']
   - cookieAuth: []
 
 deprecated: false
 summary: Update
 description: |
   Allows user to modify `stoploss` or `takeprofit` parameters of an existing position.
-operationId: Position_updatePosition
+operationId: V1_Futures_updatePosition
 requestBody:
   required: true
   content:

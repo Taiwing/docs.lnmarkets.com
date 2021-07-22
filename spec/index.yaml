@@ -8,22 +8,26 @@ info:
   version: '1.0.0'
 
 servers:
-  - description: Legacy mainnet API
-    url: https://api.lnmarkets.com/
-  - description: Legacy testnet API
-    url: https://api.testnet.lnmarkets.com/
+  - description: Mainnet API
+    url: https://api.lnmarkets.com/v1
+  - description: Testnet API
+    url: https://api.testnet.lnmarkets.com/v1
 
 tags:
   - name: Login
     description: |
       Here you can find the different way to auth yourself on LN Markets, mostly use for browser.
 
-  - name: Positions
-    description: Interactions with the market and retrive your positions
+  - name: Futures
+    description: Interactions with the futures market and retrive your positions
 
   - name: User
     description: |
       You can retrieve your user data and modify it
+
+  - name: State
+    description: |
+      LN Markets state with data about our node and api availability
 
   - name: LNURL
     description: |
@@ -53,21 +57,21 @@ paths:
     put:
       $ref: 'paths/login/credentials/reset/put.yaml'
 
-  '/lnurl/a/c':
+  '/lnurl/auth':
     get:
-      $ref: 'paths/lnurl/a/c/get.yaml'
+      $ref: 'paths/lnurl/auth/get.yaml'
+    post:
+      $ref: 'paths/lnurl/auth/post.yaml'
 
-  '/lnurl/a':
+  '/lnurl/withdraw':
     get:
-      $ref: 'paths/lnurl/a/get.yaml'
+      $ref: 'paths/lnurl/withdraw/get.yaml'
+    post:
+      $ref: 'paths/lnurl/withdraw/post.yaml'
 
-  '/lnurl/w/r':
+  '/lnurl/withdraw/request':
     get:
-      $ref: 'paths/lnurl/w/r/get.yaml'
-
-  '/lnurl/w':
-    get:
-      $ref: 'paths/lnurl/w/get.yaml'
+      $ref: 'paths/lnurl/withdraw/request/get.yaml'
 
   '/login/joule':
     post:
@@ -75,31 +79,55 @@ paths:
     get:
       $ref: 'paths/login/joule/get.yaml'
 
-  '/positions/cancel':
+  '/futures':
     post:
-      $ref: 'paths/position/cancel/post.yaml'
-
-  '/positions/cash-in':
-    post:
-      $ref: 'paths/position/cash-in/post.yaml'
-
-  '/positions/add-margin':
-    post:
-      $ref: 'paths/position/add-margin/post.yaml'
-
-  '/positions/all':
-    delete:
-      $ref: 'paths/position/all.yaml'
-
-  '/positions':
-    post:
-      $ref: 'paths/position/post.yaml'
+      $ref: 'paths/futures/post.yaml'
     put:
-      $ref: 'paths/position/put.yaml'
+      $ref: 'paths/futures/put.yaml'
     delete:
-      $ref: 'paths/position/delete.yaml'
+      $ref: 'paths/futures/delete.yaml'
     get:
-      $ref: 'paths/position/get.yaml'
+      $ref: 'paths/futures/get.yaml'
+
+  '/futures/history':
+    get:
+      $ref: 'paths/futures/history/get.yaml'
+
+  '/futures/cancel':
+    post:
+      $ref: 'paths/futures/cancel/post.yaml'
+
+  '/futures/cash-in':
+    post:
+      $ref: 'paths/futures/cash-in/post.yaml'
+
+  '/futures/add-margin':
+    post:
+      $ref: 'paths/futures/add-margin/post.yaml'
+
+  '/futures/all/close':
+    delete:
+      $ref: 'paths/futures/all/close/delete.yaml'
+
+  '/futures/all/cancel':
+    delete:
+      $ref: 'paths/futures/all/cancel/delete.yaml'
+
+  '/state':
+    get:
+      $ref: 'paths/state/get.yaml'
+
+  '/state/node':
+    get:
+      $ref: 'paths/state/node/get.yaml'
+
+  '/state/leaderboard':
+    get:
+      $ref: 'paths/state/leaderboard/get.yaml'
+
+  '/state/announcements':
+    get:
+      $ref: 'paths/state/announcements/get.yaml'
 
   '/user':
     get:
@@ -110,10 +138,6 @@ paths:
   '/user/update-password':
     put:
       $ref: 'paths/user/update-password/put.yaml'
-
-  '/user/history':
-    get:
-      $ref: 'paths/user/history/get.yaml'
 
   '/user/jwt':
     get:
@@ -126,22 +150,20 @@ paths:
   '/user/deposit':
     post:
       $ref: 'paths/user/deposit/post.yaml'
+    get:
+      $ref: 'paths/user/deposit/get.yaml'
 
   '/user/withdraw':
     post:
       $ref: 'paths/user/withdraw/post.yaml'
-
-  '/user/withdraw/lnurl':
-    post:
-      $ref: 'paths/user/withdraw/lnurl/post.yaml'
+    get:
+      $ref: 'paths/user/withdraw/get.yaml'
 
   '/user/logout':
     post:
       $ref: 'paths/user/logout/post.yaml'
 
   '/user/email-confirm':
-    post:
-      $ref: 'paths/user/email-confirm/post.yaml'
     put:
       $ref: 'paths/user/email-confirm/put.yaml'
 

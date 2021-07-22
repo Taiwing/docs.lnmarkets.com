@@ -8,7 +8,7 @@ security:
 deprecated: false
 summary: Update user
 description: Modifies account parameters
-operationId: User_updateUser
+operationId: V1_User_updateUser
 
 requestBody:
   required: true

@@ -8,7 +8,7 @@ summary: Login with a JWT
 description: |
   Use a JWT to log on LN Markets.
   The token need to have the 'user' scope and the token will be revoked ater the sucessfull login
-operationId: Login_loginCredentials
+operationId: V1_Login_loginCredentials
 requestBody:
   required: true
   content:

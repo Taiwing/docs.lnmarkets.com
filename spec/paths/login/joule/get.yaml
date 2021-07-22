@@ -6,7 +6,7 @@ deprecated: false
 summary: Request message
 description: |
   Generates a message that user can sign with POST /login/joule
-operationId: Login_getJouleMessage
+operationId: V1_Login_getJouleMessage
 responses:
   200:
     description: Message generated

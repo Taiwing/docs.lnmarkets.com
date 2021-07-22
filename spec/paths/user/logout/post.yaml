@@ -7,7 +7,7 @@ deprecated: false
 summary: Logout
 description: |
   Delete the session cookie.
-operationId: User_logout
+operationId: V1_User_logout
 responses:
   200:
     description: |

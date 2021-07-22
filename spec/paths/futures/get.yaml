@@ -1,8 +1,8 @@
 tags:
-  - Positions
+  - Futures
 
 security:
-  - jwtAuth: ['positions']
+  - jwtAuth: ['futures']
   - cookieAuth: []
 
 deprecated: false
@@ -11,7 +11,7 @@ description: |
   Retrieves either opened, closed or all positions.
 
   **If no parameters are sent, all positions are fetched.**
-operationId: Position_getPositionList
+operationId: V1_Futures_getPositionList
 parameters:
   - name: type
     in: query

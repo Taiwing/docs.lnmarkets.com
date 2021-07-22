@@ -1,18 +1,20 @@
 tags:
-  - Positions
+  - Futures
 
 security:
-  - jwtAuth: ['positions']
+  - jwtAuth: ['futures']
   - cookieAuth: []
 
 deprecated: false
-summary: Add margin
+summary: Create
 description: |
-  Add margin to a running position.
-operationId: Position_addmargin
+  Send the order form parameters to add a new position in database.
+  **If `type="l"`, the property `price` must be included in the request to know when the position should be filled.**
+  **You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you choosed**
+operationId: V1_Futures_createPosition
 requestBody:
   description: |
-    Payload with data relative to the process.
+    Payload with all the information needed to setup a new position.
   required: true
   content:
     application/json:
@@ -20,28 +22,79 @@ requestBody:
         type: object
         additionalProperties: false
         required:
-          - 'amount'
-          - 'pid'
+          - 'side'
+          - 'type'
+          - 'leverage'
         properties:
-          'amount':
-            description: Amount of margin to add (in sats)
-            type: integer
-            format: int64
-            minimum: 1
-
-          'pid':
-            description: Position ID from which to retrieve PL
+          'type':
+            description: Type of the order (Market or Limit)
             type: string
-            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            enum: ['l', 'm']
+
+          'side':
+            description: Side of the order (Buy or Sell)
+            type: string
+            enum: ['b', 's']
+
+          'margin':
+            description: Margin or quantity should be filled
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 1000000
+
+          'leverage':
+            description: Leverage of the order
+            type: number
+            format: double
+            multipleOf: 0.01
+            minimum: 1
+            maximum: 100
+
+          'quantity':
+            description: Quantity or margin should be filled
+            format: double
+            multipleOf: 0.5
+            minimum: 1
+            maximum: 10000000
+
+          'takeprofit':
+            description: Takeprofit level
+            type: number
+            format: double
+            multipleOf: 0.5
+            minimum: 1
+            maximum: 10000000
+
+          'stoploss':
+            description: Stoploss level
+            type: number
+            format: double
+            multipleOf: 0.5
+            minimum: 1
+            maximum: 10000000
+
+          'price':
+            description: Required when using a limit order
+            type: number
+            format: double
+            multipleOf: 0.5
+            minimum: 1
+            maximum: 10000000
 
         example:
-          amount: 1000
-          pid: 99c470e1-2e03-4486-a37f-1255e08178b1
+          type: l
+          side: b
+          price: 10000
+          stoploss: 9000
+          takeprofit: 11000
+          quantity: 100
+          leverage: 50
 
 responses:
   200:
     description: |
-      Margin successfully added and new position informations are sent back.
+      Position sucessfully created.
     content:
       application/json:
         schema:
@@ -147,7 +200,7 @@ responses:
             creation_ts: 020-09-15T10:50:40.332Z
 
   400:
-    $ref: '../../../responses.yaml#/badParameters'
+    $ref: '../../responses.yaml#/badParameters'
 
   401:
-    $ref: '../../../responses.yaml#/unauthorized'
+    $ref: '../../responses.yaml#/unauthorized'

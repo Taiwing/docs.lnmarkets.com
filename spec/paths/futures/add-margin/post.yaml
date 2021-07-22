@@ -1,15 +1,15 @@
 tags:
-  - Positions
+  - Futures
 
 security:
-  - jwtAuth: ['positions']
+  - jwtAuth: ['futures']
   - cookieAuth: []
 
 deprecated: false
-summary: Cash-in
+summary: Add margin
 description: |
-  Retrieves part of one running position's PL.
-operationId: Position_cashin
+  Add margin to a running position.
+operationId: V1_Futures_addmargin
 requestBody:
   description: |
     Payload with data relative to the process.
@@ -24,7 +24,7 @@ requestBody:
           - 'pid'
         properties:
           'amount':
-            description: Amount of PL to cash-in (in sats)
+            description: Amount of margin to add (in sats)
             type: integer
             format: int64
             minimum: 1
@@ -41,7 +41,7 @@ requestBody:
 responses:
   200:
     description: |
-      Cash-in successfully retrieved and new position informations are sent back.
+      Margin successfully added and new position informations are sent back.
     content:
       application/json:
         schema:

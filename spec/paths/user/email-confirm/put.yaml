@@ -9,7 +9,7 @@ deprecated: false
 summary: Confirm recovery email with confirmationToken
 description: |
   Confirm recovery email so that the user can reset his password if he loses it
-operationId: User_emailConfirm
+operationId: V1_User_emailConfirm
 requestBody:
   description: |
     Payload that countains the token to confirm the recovery email.

@@ -6,20 +6,11 @@ security:
   - cookieAuth: []
 
 deprecated: false
-summary: Transactions
+summary: Deposit
 description: |
-  Retrieves all withdraw or deposit you did with LN Markets or just one page
-operationId: User_getHistory
+  Get deposit history
+operationId: V1_User_getDepositHistory
 parameters:
-  - name: 'type'
-    in: query
-    description: Which kind of transactions will be fetched.
-    required: true
-    schema:
-      type: string
-      pattern: '^[a-z]+$'
-      enum: ['withdraw', 'deposit']
-      example: deposit
   - name: 'nbItem'
     in: query
     description: Maximum length of the returned table.
@@ -28,6 +19,7 @@ parameters:
       type: integer
       minimum: 1
       example: 15
+
   - name: 'index'
     in: query
     description: Which page we want (offset = nbItem * (index - 1)).
@@ -36,6 +28,7 @@ parameters:
       type: integer
       minimum: 1
       example: 1
+
   - name: 'getLength'
     in: query
     description: Return the length of the date slice given.
@@ -43,6 +36,7 @@ parameters:
     schema:
       type: boolean
       example: false
+
   - name: 'start'
     in: query
     description: Start of the time interval (UNIX UTC timestamp)
@@ -50,6 +44,7 @@ parameters:
     schema:
       type: integer
       example: 1590969600000
+
   - name: 'end'
     in: query
     description: End of the time interval (UNIX UTC timestamp)
@@ -72,12 +67,8 @@ responses:
               items:
                 type: object
                 properties:
-                  'depositId':
+                  'id':
                     description: Deposit ID in case of deposit
-                    type: string
-
-                  'withdrawId':
-                    description: Withdraw ID in case of withdraw
                     type: string
 
                   'amount':
@@ -88,23 +79,6 @@ responses:
                     description: When the transaction was initiated
                     type: string
                     format: date-time
-
-                  'fail':
-                    description: Is the transaction failed
-                    type: boolean
-                    example: false
-
-                  'fail_reason':
-                    type: string
-                    nullable: true
-                    example: null
-
-                  'fail_ts':
-                    description: When did the transaction failed ?
-                    type: string
-                    format: date-time
-                    nullable: true
-                    example: null
 
                   'payment_hash':
                     type: string

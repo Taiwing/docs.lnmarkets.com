@@ -1,8 +1,8 @@
 tags:
-  - Positions
+  - Futures
 
 security:
-  - jwtAuth: ['positions']
+  - jwtAuth: ['futures']
   - cookieAuth: []
 
 deprecated: false
@@ -10,8 +10,7 @@ summary: Close-all
 description: |
   Close every user position. The PL will be calculated against the current bid or offer
   depending on the side of the position.
-operationId: Position_closeAllPosition
-
+operationId: V1_Futures_closeAllPosition
 responses:
   200:
     description: |
@@ -26,21 +25,21 @@ responses:
               'closed':
                 description: Is position closed
                 type: boolean
-  
+
               'closed_ts':
                 description: Position closed ts
                 type: string
                 format: date-time
                 nullable: true
-  
+
               'exit_price':
                 description: At which price the position was closed
                 type: string
-  
+
               'pid':
                 description: Position id
                 type: string
-  
+
               'pl':
                 description: PL of the position
                 type: integer
@@ -54,7 +53,7 @@ responses:
                 pl: 1337
 
   400:
-    $ref: '../../responses.yaml#/badParameters'
+    $ref: '../../../../responses.yaml#/badParameters'
 
   401:
-    $ref: '../../responses.yaml#/unauthorized'
+    $ref: '../../../../responses.yaml#/unauthorized'

@@ -6,7 +6,7 @@ security: []
 deprecated: false
 summary: Withdraw 3
 description: Use LNURL to withdraw from the user balance.
-operationId: LNURL_Withdraw
+operationId: V1_LNURL_Withdraw
 
 parameters:
   - name: k1

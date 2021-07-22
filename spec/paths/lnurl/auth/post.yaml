@@ -4,12 +4,12 @@ tags:
 security: []
 
 deprecated: false
-summary: Auth 1
+summary: Auth
 description: |
   LNURL string used to create an account or connect to a existing account.
   The user wallet will sign a message using the provided k1 inside the LNURL.
   You need to have a session cookie on the browser you are using to log in.
-operationId: LNURL_authCreate
+operationId: V1_POST_LNURL_Auth
 responses:
   200:
     description: Bech32 encoded string.

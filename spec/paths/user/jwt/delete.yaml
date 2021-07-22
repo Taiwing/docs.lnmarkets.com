@@ -8,7 +8,7 @@ deprecated: false
 summary: Revoke API Token
 description: |
   Using the `jti` parameter, identifies and revoke usage of a given JWT.
-operationId: User_RevokeJWT
+operationId: V1_User_RevokeJWT
 parameters:
   - name: jti
     in: query

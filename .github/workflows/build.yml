@@ -2,7 +2,7 @@ name: Build and deploy to Github Pages
 
 on:
   push:
-    branches: [api-legacy]
+    branches: [api-v1]
 
 jobs:
   node:

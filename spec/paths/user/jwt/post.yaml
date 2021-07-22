@@ -8,7 +8,7 @@ deprecated: false
 summary: Generate API Token
 description: |
   Using the given scopes, allow the token bearer to get access to different parts of the public API.
-operationId: User_CreateJWT
+operationId: V1_User_CreateJWT
 requestBody:
   description: |
     Scopes of authorization that the token will grant to the bearer.
@@ -26,7 +26,7 @@ requestBody:
             type: array
             items:
               type: string
-              enum: ['deposit', 'withdraw', 'positions', 'user']
+              enum: ['deposit', 'withdraw', 'futures', 'user']
             uniqueItems: true
             maxItems: 4
 

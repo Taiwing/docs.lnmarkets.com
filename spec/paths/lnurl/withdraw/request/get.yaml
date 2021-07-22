@@ -6,7 +6,7 @@ security: []
 deprecated: false
 summary: Withdraw 2
 description: Ask the Lightning wallet to create an invoice with amount and description.
-operationId: LNURL_WithdrawRequest
+operationId: V1_LNURL_WithdrawRequest
 
 parameters:
   - name: signature
@@ -52,6 +52,12 @@ responses:
 
             'tag':
               description: Kind of LNURL
+              type: string
+
+            'balanceCheck':
+              type: string
+
+            'balanceNotify':
               type: string
 
             'maxWithdrawable':

@@ -1,8 +1,8 @@
 tags:
-  - Positions
+  - Futures
 
 security:
-  - jwtAuth: ['positions']
+  - jwtAuth: ['trading']
   - cookieAuth: []
 
 deprecated: false
@@ -10,7 +10,7 @@ summary: Close
 description: |
   Close the user position, the PL will be calculated against the current bid or offer
   depending on the side of the position
-operationId: Position_closePosition
+operationId: V1_Futures_closePosition
 parameters:
   - name: pid
     in: query

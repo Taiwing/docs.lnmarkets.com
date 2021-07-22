@@ -5,11 +5,10 @@ security:
   - jwtAuth: ['withdraw']
   - cookieAuth: []
 
-deprecated: false
 summary: Withdraw via invoice
 description: |
-  Move funds from the **[Lightning channel](https://medium.com/suredbits/lightning-101-what-are-lightning-channels-cfb80f440298)** with LN Markets to user wallet by using an invoice directly.
-operationId: User_withdraw
+  Withdraw from LN Markets with a Lightning Invoice
+operationId: V1_User_Withdraw
 requestBody:
   description: |
     Payload that countains all informations to initiate a new withdraw.
@@ -56,12 +55,12 @@ responses:
               description: Amount withdrawnd
               type: integer
 
-            'id':
-              description: Withdraw ID
-              type: string
-
             'paymentsecret':
               description: Payment secret of the settled invoice
+              type: string
+
+            'id':
+              description: Withdraw ID
               type: string
 
             'paymenthash':
@@ -70,8 +69,8 @@ responses:
 
           example:
             amount: 1000
-            id: 3fcbd8b7-c35b-4e83-87bc-111d5bd186b7
             paymentsecret: 1b84c9852e929f99700b6cbabc4ca9d1593afc3736938b348c4d3d143e418bd4
+            id: 3fcbd8b7-c35b-4e83-87bc-111d5bd186b7
             paymenthash: fb4d1e4ce4de84fe3a466bcf1d8543c0df56a9ac7a6c6f28bd9434a080a14c80
 
   400:
