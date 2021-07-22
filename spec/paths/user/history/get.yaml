@@ -72,11 +72,11 @@ responses:
               items:
                 type: object
                 properties:
-                  'did':
+                  'depositId':
                     description: Deposit ID in case of deposit
                     type: string
 
-                  'wid':
+                  'withdrawId':
                     description: Withdraw ID in case of withdraw
                     type: string
 
@@ -88,10 +88,6 @@ responses:
                     description: When the transaction was initiated
                     type: string
                     format: date-time
-
-                  'details':
-                    type: string
-                    nullable: true
 
                   'fail':
                     description: Is the transaction failed
@@ -126,14 +122,10 @@ responses:
 
           example:
             transaction:
-              - did: 269157f3-d4a1-4493-afcb-5e8fdaa49288
+              - id: 269157f3-d4a1-4493-afcb-5e8fdaa49288
                 amount: 99400
                 creation_ts: 020-09-15T10:50:40.332Z
-                details: null
-                fail: false
                 success: true
-                fail_reason: null
-                fail_ts: null
                 payment_hash: 33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3
                 sucess_ts: 020-09-15T10:50:40.332Z
 

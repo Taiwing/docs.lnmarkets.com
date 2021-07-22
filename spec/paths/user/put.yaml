@@ -32,10 +32,22 @@ requestBody:
             type: string
             pattern: '^\S{6,32}$'
 
+          'email':
+            description: Email used to recover account
+            type: string
+            pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+            minLength: 3
+            maxLength: 318
+
+          'resend_email':
+            description: Ask to resend the confirmation email
+            type: boolean
+
         example:
           show_username: false
           show_leaderboard: true
           username: 'Cryptoking'
+          email: 'mememeeee@JeSuisLeBest.com'
 
 responses:
   200:

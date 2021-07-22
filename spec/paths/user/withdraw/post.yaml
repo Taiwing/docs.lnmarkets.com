@@ -56,12 +56,12 @@ responses:
               description: Amount withdrawnd
               type: integer
 
-            'paymentsecret':
-              description: Payment secret of the settled invoice
+            'id':
+              description: Withdraw ID
               type: string
 
-            'wid':
-              description: Withdraw ID
+            'paymentsecret':
+              description: Payment secret of the settled invoice
               type: string
 
             'paymenthash':
@@ -70,8 +70,8 @@ responses:
 
           example:
             amount: 1000
+            id: 3fcbd8b7-c35b-4e83-87bc-111d5bd186b7
             paymentsecret: 1b84c9852e929f99700b6cbabc4ca9d1593afc3736938b348c4d3d143e418bd4
-            wid: 3fcbd8b7-c35b-4e83-87bc-111d5bd186b7
             paymenthash: fb4d1e4ce4de84fe3a466bcf1d8543c0df56a9ac7a6c6f28bd9434a080a14c80
 
   400:

@@ -25,10 +25,6 @@ content:
           description: Public key used for lnurl or joule account
           type: string
 
-        'last_ip':
-          description: Last login ip
-          type: string
-
         'show_leaderboard':
           description: Show the user PL in the leaderboard
           type: boolean
@@ -43,6 +39,5 @@ content:
         account_type: Joule
         username: Testnet-node
         linkingpublickey: 035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a
-        last_ip: 127.0.0.1
         show_username: false
         show_leaderboard: true

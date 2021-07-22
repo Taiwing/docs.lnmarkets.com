@@ -8,10 +8,10 @@ info:
   version: '1.0.0'
 
 servers:
-  - description: Mainnet API
-    url: https://api.lnmarkets.com
-  - description: Testnet API
-    url: https://api.testnet.lnmarkets.com
+  - description: Legacy mainnet API
+    url: https://api.lnmarkets.com/
+  - description: Legacy testnet API
+    url: https://api.testnet.lnmarkets.com/
 
 tags:
   - name: Login
@@ -25,14 +25,6 @@ tags:
     description: |
       You can retrieve your user data and modify it
 
-  - name: State
-    description: |
-      LN Markets state with data about our node and api availability
-
-  - name: History
-    description: |
-      LN Markets collected data over time
-
   - name: LNURL
     description: |
       Interaction with the lightning network using the [LNURL procotocol](https://github.com/btcontract/lnurl-rfc/)
@@ -43,14 +35,6 @@ security:
   - jwtAuth: []
 
 paths:
-  '/history/bid-offer':
-    get:
-      $ref: 'paths/history/bid-offer/get.yaml'
-
-  '/history/index':
-    get:
-      $ref: 'paths/history/index/get.yaml'
-
   '/login/credentials':
     post:
       $ref: 'paths/login/credentials/post.yaml'
@@ -64,6 +48,8 @@ paths:
       $ref: 'paths/login/token/post.yaml'
 
   '/login/credentials/reset':
+    post:
+      $ref: 'paths/login/credentials/reset/post.yaml'
     put:
       $ref: 'paths/login/credentials/reset/put.yaml'
 
@@ -108,36 +94,16 @@ paths:
   '/positions':
     post:
       $ref: 'paths/position/post.yaml'
-
     put:
       $ref: 'paths/position/put.yaml'
-
     delete:
       $ref: 'paths/position/delete.yaml'
-
     get:
       $ref: 'paths/position/get.yaml'
-
-  '/state':
-    get:
-      $ref: 'paths/state/get.yaml'
-
-  '/state/node':
-    get:
-      $ref: 'paths/state/node/get.yaml'
-
-  '/state/leaderboard':
-    get:
-      $ref: 'paths/state/leaderboard/get.yaml'
-
-  '/state/announcements':
-    get:
-      $ref: 'paths/state/announcements/get.yaml'
 
   '/user':
     get:
       $ref: 'paths/user/get.yaml'
-
     put:
       $ref: 'paths/user/put.yaml'
 
@@ -152,10 +118,8 @@ paths:
   '/user/jwt':
     get:
       $ref: 'paths/user/jwt/get.yaml'
-
     delete:
       $ref: 'paths/user/jwt/delete.yaml'
-
     post:
       $ref: 'paths/user/jwt/post.yaml'
 
@@ -174,6 +138,12 @@ paths:
   '/user/logout':
     post:
       $ref: 'paths/user/logout/post.yaml'
+
+  '/user/email-confirm':
+    post:
+      $ref: 'paths/user/email-confirm/post.yaml'
+    put:
+      $ref: 'paths/user/email-confirm/put.yaml'
 
 components:
   securitySchemes:
