@@ -337,19 +337,7 @@
             <a href="#api-login" class="toc-h1 toc-link" data-title="Login">Login</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#login-via-credentials" class="toc-h2 toc-link" data-title="Login via credentials">Login via credentials</a>
-                  </li>
-                  <li>
-                    <a href="#register-new-credentials" class="toc-h2 toc-link" data-title="Register new credentials">Register new credentials</a>
-                  </li>
-                  <li>
                     <a href="#login-with-a-jwt" class="toc-h2 toc-link" data-title="Login with a JWT">Login with a JWT</a>
-                  </li>
-                  <li>
-                    <a href="#request-credential-reset-link-via-mail" class="toc-h2 toc-link" data-title="Request credential reset link via mail">Request credential reset link via mail</a>
-                  </li>
-                  <li>
-                    <a href="#reset-password" class="toc-h2 toc-link" data-title="Reset password">Reset password</a>
                   </li>
                   <li>
                     <a href="#login-via-joule" class="toc-h2 toc-link" data-title="Login via Joule">Login via Joule</a>
@@ -404,31 +392,22 @@
                     <a href="#update-user" class="toc-h2 toc-link" data-title="Update user">Update user</a>
                   </li>
                   <li>
-                    <a href="#update-password" class="toc-h2 toc-link" data-title="Update password">Update password</a>
-                  </li>
-                  <li>
-                    <a href="#list-api-tokens" class="toc-h2 toc-link" data-title="List API Tokens">List API Tokens</a>
-                  </li>
-                  <li>
-                    <a href="#revoke-api-token" class="toc-h2 toc-link" data-title="Revoke API Token">Revoke API Token</a>
-                  </li>
-                  <li>
-                    <a href="#generate-api-token" class="toc-h2 toc-link" data-title="Generate API Token">Generate API Token</a>
-                  </li>
-                  <li>
                     <a href="#deposit" class="toc-h2 toc-link" data-title="Deposit">Deposit</a>
+                  </li>
+                  <li>
+                    <a href="#deposit-history" class="toc-h2 toc-link" data-title="Deposit History">Deposit History</a>
                   </li>
                   <li>
                     <a href="#withdraw-via-invoice" class="toc-h2 toc-link" data-title="Withdraw via invoice">Withdraw via invoice</a>
                   </li>
                   <li>
-                    <a href="#withdraw" class="toc-h2 toc-link" data-title="Withdraw">Withdraw</a>
+                    <a href="#withdraw-history" class="toc-h2 toc-link" data-title="Withdraw History">Withdraw History</a>
                   </li>
                   <li>
                     <a href="#logout" class="toc-h2 toc-link" data-title="Logout">Logout</a>
                   </li>
                   <li>
-                    <a href="#confirm-recovery-email-with-confirmationtoken" class="toc-h2 toc-link" data-title="Confirm recovery email with confirmationToken">Confirm recovery email with confirmationToken</a>
+                    <a href="#confirm-recovery-email" class="toc-h2 toc-link" data-title="Confirm recovery email">Confirm recovery email</a>
                   </li>
               </ul>
           </li>
@@ -436,10 +415,16 @@
             <a href="#api-state" class="toc-h1 toc-link" data-title="State">State</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#api-informations" class="toc-h2 toc-link" data-title="API informations">API informations</a>
+                    <a href="#api" class="toc-h2 toc-link" data-title="API">API</a>
                   </li>
                   <li>
-                    <a href="#node-informations" class="toc-h2 toc-link" data-title="Node informations">Node informations</a>
+                    <a href="#node" class="toc-h2 toc-link" data-title="Node">Node</a>
+                  </li>
+                  <li>
+                    <a href="#leaderboard" class="toc-h2 toc-link" data-title="Leaderboard">Leaderboard</a>
+                  </li>
+                  <li>
+                    <a href="#announcements" class="toc-h2 toc-link" data-title="Announcements">Announcements</a>
                   </li>
               </ul>
           </li>
@@ -464,18 +449,16 @@
               </ul>
           </li>
           <li>
-            <a href="#api-leaderboard" class="toc-h1 toc-link" data-title="Leaderboard">Leaderboard</a>
+            <a href="#api-api-token" class="toc-h1 toc-link" data-title="API Token">API Token</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-current-leaderboard" class="toc-h2 toc-link" data-title="Get current Leaderboard">Get current Leaderboard</a>
+                    <a href="#list" class="toc-h2 toc-link" data-title="List">List</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#api-announcements" class="toc-h1 toc-link" data-title="Announcements">Announcements</a>
-              <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-the-ln-markets-announcements" class="toc-h2 toc-link" data-title="Get the LN Markets announcements">Get the LN Markets announcements</a>
+                    <a href="#revoke" class="toc-h2 toc-link" data-title="Revoke">Revoke</a>
+                  </li>
+                  <li>
+                    <a href="#generate" class="toc-h2 toc-link" data-title="Generate">Generate</a>
                   </li>
               </ul>
           </li>
@@ -629,365 +612,6 @@ You can find our website <strong><a href="https://lnmarkets.com/">here</a></stro
 <h1 id="api-login">Login</h1>
 
 <p>Here you can find the different way to auth yourself on LN Markets, mostly use for browser.</p>
-<h2 id='login-via-credentials'>Login via credentials</h2>
-<p><a id="opIdV1_Login_loginCredentials"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/login/credentials"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"login"</span><span class="p">:</span> <span class="s">"lnmarkets"</span><span class="p">,</span>
-    <span class="s">"password"</span><span class="p">:</span> <span class="s">"mYUNh4x0r48L3P422w0rd"</span>
-<span class="p">}</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-    <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/login/credentials</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span> <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span><span class="na">login</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lnmarkets</span><span class="dl">'</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mYUNh4x0r48L3P422w0rd</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/login/credentials <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"login":"lnmarkets","password":"mYUNh4x0r48L3P422w0rd"}'</span>
-</code></pre></div>
-<p><code>POST /login/credentials</code></p>
-
-<p>Use existing credentials to log into an account.</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnmarkets"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mYUNh4x0r48L3P422w0rd"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="login-via-credentials-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» login</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» password</td>
-<td>body</td>
-<td>string(password)</td>
-<td>true</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnmarkets"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credentials"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1337</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="login-via-credentials-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Successfuly logged into the account.</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="login-via-credentials-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» username</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>User choosen username (May differe from login)</td>
-</tr>
-<tr>
-<td>» balance</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>User current balance</td>
-</tr>
-<tr>
-<td>» account_type</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>User account type, here credentials</td>
-</tr>
-</tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Set-Cookie</td>
-<td>string</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-<h2 id='register-new-credentials'>Register new credentials</h2>
-<p><a id="opIdV1_Login_registerCredentials"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/login/credentials/create"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"login"</span><span class="p">:</span> <span class="s">"lnmarkets"</span><span class="p">,</span>
-    <span class="s">"password"</span><span class="p">:</span> <span class="s">"mYUNh4x0r48L3P422w0rd"</span><span class="p">,</span>
-    <span class="s">"email"</span><span class="p">:</span> <span class="s">"me@mytotallylegitmail.com"</span>
-<span class="p">}</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-    <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/login/credentials/create</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span> <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">login</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lnmarkets</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mYUNh4x0r48L3P422w0rd</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">me@mytotallylegitmail.com</span><span class="dl">'</span>
-  <span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/login/credentials/create <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"login":"lnmarkets","password":"mYUNh4x0r48L3P422w0rd","email":"me@mytotallylegitmail.com"}'</span>
-</code></pre></div>
-<p><code>POST /login/credentials/create</code></p>
-
-<p>Create new user</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnmarkets"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mYUNh4x0r48L3P422w0rd"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mytotallylegitmail.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="register-new-credentials-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» login</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» password</td>
-<td>body</td>
-<td>string(password)</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» email</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnmarkets"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credentials"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1337</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="register-new-credentials-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>User successfuly created and logged.</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="register-new-credentials-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» username</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>User chosen username (May differ from login)</td>
-</tr>
-<tr>
-<td>» balance</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>User current balance</td>
-</tr>
-<tr>
-<td>» account_type</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>User account type, here credentials</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-This operation does not require authentication
-</aside>
 <h2 id='login-with-a-jwt'>Login with a JWT</h2>
 <p><a id="opIdV1_Login_loginCredentials"></a></p>
 
@@ -1157,7 +781,7 @@ The token need to have the &#39;user&#39; scope and the token will be revoked at
 <td>User account type, here credentials</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+<h3 id='response-headers'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1173,236 +797,6 @@ The token need to have the &#39;user&#39; scope and the token will be revoked at
 <td>string</td>
 <td></td>
 <td>none</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-<h2 id='request-credential-reset-link-via-mail'>Request credential reset link via mail</h2>
-<p><a id="opIdV1_Login_loginCredentialsReset"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/login/credentials/reset"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">"email"</span><span class="p">:</span> <span class="s">"me@mymailprovider.com"</span><span class="p">}</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/login/credentials/reset</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span><span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">me@mymailprovider.com</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/login/credentials/reset <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"email":"me@mymailprovider.com"}'</span>
-</code></pre></div>
-<p><code>POST /login/credentials/reset</code></p>
-
-<p>Use current recovery mail address to reset password</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@mymailprovider.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="request-credential-reset-link-via-mail-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» email</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h3 id="request-credential-reset-link-via-mail-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Credential reset link request granted</td>
-<td>None</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-<h2 id='reset-password'>Reset password</h2>
-<p><a id="opIdV1_User_resetUserPassword"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/login/credentials/reset"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"resetToken"</span><span class="p">:</span> <span class="s">"b45dd2e30309aa708a73f0cfa0e38db5bbbbd16055087a692e0711365e7e08f5"</span><span class="p">,</span>
-    <span class="s">"uid"</span><span class="p">:</span> <span class="s">"d068f829-26e6-4743-b10d-ebb5a83b3624"</span><span class="p">,</span>
-    <span class="s">"newPassword"</span><span class="p">:</span> <span class="s">"PleaseDontStealMySats"</span>
-<span class="p">}</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PUT</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/login/credentials/reset</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">resetToken</span><span class="p">:</span> <span class="dl">'</span><span class="s1">b45dd2e30309aa708a73f0cfa0e38db5bbbbd16055087a692e0711365e7e08f5</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">uid</span><span class="p">:</span> <span class="dl">'</span><span class="s1">d068f829-26e6-4743-b10d-ebb5a83b3624</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">newPassword</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PleaseDontStealMySats</span><span class="dl">'</span>
-  <span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> PUT <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/login/credentials/reset <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"resetToken":"b45dd2e30309aa708a73f0cfa0e38db5bbbbd16055087a692e0711365e7e08f5","uid":"d068f829-26e6-4743-b10d-ebb5a83b3624","newPassword":"PleaseDontStealMySats"}'</span>
-</code></pre></div>
-<p><code>PUT /login/credentials/reset</code></p>
-
-<p>Reset password with your resetToken.</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"resetToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b45dd2e30309aa708a73f0cfa0e38db5bbbbd16055087a692e0711365e7e08f5"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d068f829-26e6-4743-b10d-ebb5a83b3624"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"newPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PleaseDontStealMySats"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="reset-password-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>true</td>
-<td>Payload containing resetToken, uid and the new password.</td>
-</tr>
-<tr>
-<td>» resetToken</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» uid</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» newPassword</td>
-<td>body</td>
-<td>string(password)</td>
-<td>true</td>
-<td>New password wanted by the user</td>
-</tr>
-</tbody></table>
-<h4 id='detailed-descriptions'>Detailed descriptions</h4>
-<p><strong>body</strong>: Payload containing resetToken, uid and the new password.</p>
-
-<h3 id="reset-password-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Password successfuly reset.</td>
-<td>None</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
-<td>None</td>
 </tr>
 </tbody></table>
 
@@ -1591,7 +985,7 @@ The message has to be obtained using GET /login/joule</p>
 <td>Account type</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-3'>Response Headers</h3>
+<h3 id='response-headers-2'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1863,7 +1257,7 @@ This operation does not require authentication
 <td>Required when using a limit order</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload with all the information needed to setup a new position.</p>
 <h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
@@ -2441,7 +1835,7 @@ depending on the side of the position</p>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-jwtAuth ( Scopes: trading ), cookieAuth
+jwtAuth ( Scopes: futures ), cookieAuth
 </aside>
 <h2 id='history'>History</h2>
 <p><a id="opIdV1_Futures_getPositionList"></a></p>
@@ -3210,7 +2604,7 @@ jwtAuth ( Scopes: futures ), cookieAuth
 <td>Position ID from which to retrieve PL</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-3'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload with data relative to the process.</p>
 
 <blockquote>
@@ -3509,7 +2903,7 @@ jwtAuth ( Scopes: futures ), cookieAuth
 <td>Position ID from which to retrieve PL</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-4'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-3'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload with data relative to the process.</p>
 
 <blockquote>
@@ -4374,369 +3768,24 @@ jwtAuth ( Scopes: user ), cookieAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 jwtAuth ( Scopes: user ), cookieAuth
 </aside>
-<h2 id='update-password'>Update password</h2>
-<p><a id="opIdV1_User_updateUser"></a></p>
+<h2 id='deposit'>Deposit</h2>
+<p><a id="opIdV1_User_deposit"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/update-password"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/deposit"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"previousPassword"</span><span class="p">:</span> <span class="s">"previousUnguessablePassword"</span><span class="p">,</span>
-    <span class="s">"newPassword"</span><span class="p">:</span> <span class="s">"PleaseDontStealMySats"</span>
+    <span class="s">"amount"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s">"unit"</span><span class="p">:</span> <span class="s">"sat"</span>
 <span class="p">}</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
     <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer {access-token}"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PUT</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/update-password</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">previousPassword</span><span class="p">:</span> <span class="dl">'</span><span class="s1">previousUnguessablePassword</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">newPassword</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PleaseDontStealMySats</span><span class="dl">'</span>
-  <span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> PUT <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/update-password <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"previousPassword":"previousUnguessablePassword","newPassword":"PleaseDontStealMySats"}'</span>
-</code></pre></div>
-<p><code>PUT /user/update-password</code></p>
-
-<p>Update the current password to the requested one.</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"previousPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"previousUnguessablePassword"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"newPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PleaseDontStealMySats"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="update-password-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>true</td>
-<td>Payload containing user credentials.</td>
-</tr>
-<tr>
-<td>» previousPassword</td>
-<td>body</td>
-<td>string(password)</td>
-<td>true</td>
-<td>Old password</td>
-</tr>
-<tr>
-<td>» newPassword</td>
-<td>body</td>
-<td>string(password)</td>
-<td>true</td>
-<td>New password wanted by the user</td>
-</tr>
-</tbody></table>
-<h4 id='detailed-descriptions-5'>Detailed descriptions</h4>
-<p><strong>body</strong>: Payload containing user credentials.</p>
-
-<h3 id="update-password-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Password successfuly updated.</td>
-<td>None</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
-<td>None</td>
-</tr>
-<tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-jwtAuth ( Scopes: user ), cookieAuth
-</aside>
-<h2 id='list-api-tokens'>List API Tokens</h2>
-<p><a id="opIdV1_User_GetJWTList"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/jwt"</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/jwt</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/jwt <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span>
-</code></pre></div>
-<p><code>GET /user/jwt</code></p>
-
-<p>Retrieves the list of active JSON Web Token user currently holds.</p>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"deposit"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020-09-15T10:50:40.332Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020-09-15T10:50:40.332Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ckea35me20019r8u36374585f"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"revoked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<h3 id="list-api-tokens-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Token list retrieved.</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="list-api-tokens-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» aud</td>
-<td>[string]</td>
-<td>false</td>
-<td>none</td>
-<td>Scopes of the token</td>
-</tr>
-<tr>
-<td>» exp</td>
-<td>string(date-time)</td>
-<td>false</td>
-<td>none</td>
-<td>Expiration of the token</td>
-</tr>
-<tr>
-<td>» iat</td>
-<td>string(date-time)</td>
-<td>false</td>
-<td>none</td>
-<td>When the token was issued</td>
-</tr>
-<tr>
-<td>» jti</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>Unique id of the token</td>
-</tr>
-<tr>
-<td>» revoked</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-<td>Is it revoked or not</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-cookieAuth
-</aside>
-<h2 id='revoke-api-token'>Revoke API Token</h2>
-<p><a id="opIdV1_User_RevokeJWT"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/jwt"</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/jwt</span><span class="dl">'</span><span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/jwt
-</code></pre></div>
-<p><code>DELETE /user/jwt</code></p>
-
-<p>Using the <code>jti</code> parameter, identifies and revoke usage of a given JWT.</p>
-
-<h3 id="revoke-api-token-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>jti</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>Token unique identifier.</td>
-</tr>
-</tbody></table>
-
-<h3 id="revoke-api-token-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Token successfuly revoked.</td>
-<td>None</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
-<td>None</td>
-</tr>
-<tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-cookieAuth
-</aside>
-<h2 id='generate-api-token'>Generate API Token</h2>
-<p><a id="opIdV1_User_CreateJWT"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/jwt"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"expiry"</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span>
-    <span class="s">"scopes"</span><span class="p">:</span> <span class="p">[</span><span class="s">"deposit"</span><span class="p">,</span> <span class="s">"withdraw"</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-    <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -4746,9 +3795,13 @@ cookieAuth
 
 <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/jwt</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span> <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span> <span class="p">{</span><span class="na">expiry</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span> <span class="na">scopes</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">deposit</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">withdraw</span><span class="dl">'</span><span class="p">]},</span>
+  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/deposit</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span><span class="na">amount</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="na">unit</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sat</span><span class="dl">'</span><span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">};</span>
 
@@ -4759,27 +3812,25 @@ cookieAuth
 <span class="p">});</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/jwt <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/deposit <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Bearer {access-token}'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"expiry":86400,"scopes":["deposit","withdraw"]}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"amount":1000,"unit":"sat"}'</span>
 </code></pre></div>
-<p><code>POST /user/jwt</code></p>
+<p><code>POST /user/deposit</code></p>
 
-<p>Using the given scopes, allow the token bearer to get access to different parts of the public API.</p>
+<p>Add fund to your LN Markets balance</p>
 
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"withdraw"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sat"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="generate-api-token-parameters">Parameters</h3>
+<h3 id="deposit-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4795,49 +3846,25 @@ cookieAuth
 <td>body</td>
 <td>object</td>
 <td>true</td>
-<td>Scopes of authorization that the token will grant to the bearer.</td>
+<td>Payload that contains all informations to initialize a new deposit.</td>
 </tr>
 <tr>
-<td>» scopes</td>
+<td>» amount</td>
 <td>body</td>
-<td>[string]</td>
+<td>integer</td>
 <td>true</td>
-<td>Scopes of the token</td>
+<td>Amount of sat to deposit on the account</td>
 </tr>
 <tr>
-<td>» expiry</td>
+<td>» unit</td>
 <td>body</td>
-<td>integer(int32)</td>
-<td>true</td>
-<td>Expiration of the token</td>
+<td>string</td>
+<td>false</td>
+<td>Should be sat by default</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-6'>Detailed descriptions</h4>
-<p><strong>body</strong>: Scopes of authorization that the token will grant to the bearer.</p>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» scopes</td>
-<td>deposit</td>
-</tr>
-<tr>
-<td>» scopes</td>
-<td>withdraw</td>
-</tr>
-<tr>
-<td>» scopes</td>
-<td>futures</td>
-</tr>
-<tr>
-<td>» scopes</td>
-<td>user</td>
-</tr>
-</tbody></table>
+<h4 id='detailed-descriptions-4'>Detailed descriptions</h4>
+<p><strong>body</strong>: Payload that contains all informations to initialize a new deposit.</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -4845,10 +3872,11 @@ cookieAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJpYXQiOjE1OTgwNTg2NDQsInNjb3BlcyI6WyJ3aXRoZHJhdyIsImRlcG9zaXQiXX0.xJ3f5eMeRiN0eSzo3IDviny9B9v_-bLg4t_EWmXFBxc"</span><span class="w">
+  </span><span class="nl">"paymentRequest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lntb100u1p0jrfz0pp5q0ntrkf052dvep8w6vf0z77rek3fz8xm6c2yau4zhy7f4mzauqgsdzcf3hy6ctjddjhgueqg3jhqmmnd96zqgmxxquryvesvv6z6dehv43z6drpvycj6wfevs6j6dmyxcunxefcxccxxvn9cqzpgxqzpdsp5z40mxcrfqtsxf55u9ju3lvqdw36htsjh4xl2ujrzdff3953fg2yq9qy9qsqv7gfvp0tryme3e8r5xfrpg39j645302fkggps4h5j0aj708lzdgh2dq3pdz6lqazgvkt3wm7qq20vcff46vu5549m3v2d6h0uw3sjacqrkjqcv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="generate-api-token-responses">Responses</h3>
+<h3 id="deposit-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4861,7 +3889,7 @@ cookieAuth
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Token successfuly created, its Base64URL encoded signature is returned for future use.</td>
+<td>New deposit entry in database waiting for payment. Using <code>paymentRequest</code> afterwards, user will confirm the deposit and funds will be added to his account.</td>
 <td>Inline</td>
 </tr>
 <tr>
@@ -4878,7 +3906,7 @@ cookieAuth
 </tr>
 </tbody></table>
 
-<h3 id="generate-api-token-responseschema">Response Schema</h3>
+<h3 id="deposit-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -4892,19 +3920,26 @@ cookieAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>» token</td>
+<td>» paymentRequest</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>JWT</td>
+<td>Invoice you should pay to add balance to your account</td>
+</tr>
+<tr>
+<td>» expiry</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>When the invoice will expiry</td>
 </tr>
 </tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-cookieAuth
+jwtAuth ( Scopes: deposit ), cookieAuth
 </aside>
-<h2 id='deposit'>Deposit</h2>
+<h2 id='deposit-history'>Deposit History</h2>
 <p><a id="opIdV1_User_getDepositHistory"></a></p>
 
 <blockquote>
@@ -4945,7 +3980,7 @@ cookieAuth
 
 <p>Get deposit history</p>
 
-<h3 id="deposit-parameters">Parameters</h3>
+<h3 id="deposit-history-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5011,7 +4046,7 @@ cookieAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="deposit-responses">Responses</h3>
+<h3 id="deposit-history-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5041,7 +4076,7 @@ cookieAuth
 </tr>
 </tbody></table>
 
-<h3 id="deposit-responseschema">Response Schema</h3>
+<h3 id="deposit-history-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -5217,7 +4252,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 <td>Bolt 11 invoice with the same amount as the request withdraw amount</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-7'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-5'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload that countains all informations to initiate a new withdraw.</p>
 
 <blockquote>
@@ -5309,7 +4344,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 jwtAuth ( Scopes: withdraw ), cookieAuth
 </aside>
-<h2 id='withdraw'>Withdraw</h2>
+<h2 id='withdraw-history'>Withdraw History</h2>
 <p><a id="opIdV1_User_getWithdrawHistory"></a></p>
 
 <blockquote>
@@ -5350,7 +4385,7 @@ jwtAuth ( Scopes: withdraw ), cookieAuth
 
 <p>Ge withdraw history</p>
 
-<h3 id="withdraw-parameters">Parameters</h3>
+<h3 id="withdraw-history-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5416,7 +4451,7 @@ jwtAuth ( Scopes: withdraw ), cookieAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="withdraw-responses">Responses</h3>
+<h3 id="withdraw-history-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5446,7 +4481,7 @@ jwtAuth ( Scopes: withdraw ), cookieAuth
 </tr>
 </tbody></table>
 
-<h3 id="withdraw-responseschema">Response Schema</h3>
+<h3 id="withdraw-history-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -5586,7 +4621,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h2 id='confirm-recovery-email-with-confirmationtoken'>Confirm recovery email with confirmationToken</h2>
+<h2 id='confirm-recovery-email'>Confirm recovery email</h2>
 <p><a id="opIdV1_User_emailConfirm"></a></p>
 
 <blockquote>
@@ -5646,7 +4681,7 @@ This operation does not require authentication
   </span><span class="nl">"confirmationToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"682f2afb2a551a4dd5e5e29800b95547ff54b232b2da3ffa9a97173037d464bc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="confirm-recovery-email-with-confirmationtoken-parameters">Parameters</h3>
+<h3 id="confirm-recovery-email-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5672,7 +4707,7 @@ This operation does not require authentication
 <td>One-time use token to confirm email address</td>
 </tr>
 </tbody></table>
-<h4 id='detailed-descriptions-8'>Detailed descriptions</h4>
+<h4 id='detailed-descriptions-6'>Detailed descriptions</h4>
 <p><strong>body</strong>: Payload that countains the token to confirm the recovery email.</p>
 
 <blockquote>
@@ -5684,7 +4719,7 @@ This operation does not require authentication
   </span><span class="nl">"emailConfirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dogecoin@touzemoune.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="confirm-recovery-email-with-confirmationtoken-responses">Responses</h3>
+<h3 id="confirm-recovery-email-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5714,7 +4749,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="confirm-recovery-email-with-confirmationtoken-responseschema">Response Schema</h3>
+<h3 id="confirm-recovery-email-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -5751,7 +4786,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 <h1 id="api-state">State</h1>
 
 <p>LN Markets state with data about our node and api availability</p>
-<h2 id='api-informations'>API informations</h2>
+<h2 id='api'>API</h2>
 <p><a id="opIdV1_State_apiState"></a></p>
 
 <blockquote>
@@ -5804,7 +4839,7 @@ jwtAuth ( Scopes: user ), cookieAuth
   </span><span class="nl">"accountCreation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="api-informations-responses">Responses</h3>
+<h3 id="api-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5822,7 +4857,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 </tr>
 </tbody></table>
 
-<h3 id="api-informations-responseschema">Response Schema</h3>
+<h3 id="api-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -5889,7 +4924,7 @@ jwtAuth ( Scopes: user ), cookieAuth
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h2 id='node-informations'>Node informations</h2>
+<h2 id='node'>Node</h2>
 <p><a id="opIdV1_State_nodeState"></a></p>
 
 <blockquote>
@@ -5944,7 +4979,7 @@ This operation does not require authentication
   </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03bae2db4b57738c1ec1ffa1c5e5a4423968cc592b3b39cddf7d495e72919d6431@34.192.102.161:9735"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="node-informations-responses">Responses</h3>
+<h3 id="node-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5962,7 +4997,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="node-informations-responseschema">Response Schema</h3>
+<h3 id="node-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -6044,6 +5079,253 @@ This operation does not require authentication
 <td>false</td>
 <td>none</td>
 <td>Node block heigth</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id='leaderboard'>Leaderboard</h2>
+<p><a id="opIdV1_Leaderboard_getLeaderboard"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/state/leaderboard"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/state/leaderboard</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/v1/state/leaderboard <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span>
+</code></pre></div>
+<p><code>GET /state/leaderboard</code></p>
+
+<p>Queries the database to get the 10 users with the biggest posititve PL</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">4242424242</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean-Kevin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">3491941</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roger"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">24013441</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Laura"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">23126094</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414019</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Charles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">242918</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antoine"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">99999</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXxRoBeRtLeBgDu24xXX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">61491</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRYPTOKING"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<h3 id="leaderboard-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Leaderboard successfully fetched</td>
+<td>Inline</td>
+</tr>
+</tbody></table>
+
+<h3 id="leaderboard-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» username</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Username or &#39;Anonymous&#39; if the Leaderboard view is disabled</td>
+</tr>
+<tr>
+<td>» pl</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Sum of every profits and losses of the user</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id='announcements'>Announcements</h2>
+<p><a id="opIdV1_Announcements_getAnnouncements"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/state/announcements"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/state/announcements</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/v1/state/announcements <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span>
+</code></pre></div>
+<p><code>GET /state/announcements</code></p>
+
+<p>Get the list of LN Markets announcements</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Good news everyone !"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin is the world money now !"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creation_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607076175239</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad news everyone !"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We have too much sats"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creation_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607019462532</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<h3 id="announcements-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Announcements successfully fetched</td>
+<td>Inline</td>
+</tr>
+</tbody></table>
+
+<h3 id="announcements-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» title</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» ts</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
 </tr>
 </tbody></table>
 
@@ -6178,7 +5460,7 @@ Else the connected state will be push over websocketsto the client.</p>
 <td>Scope of the jwt</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6524,7 +5806,7 @@ This operation does not require authentication
 <td>Unit (Only sat for now)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6791,16 +6073,16 @@ cookieAuth
 This operation does not require authentication
 </aside>
 
-<h1 id="api-leaderboard">Leaderboard</h1>
-<h2 id='get-current-leaderboard'>Get current Leaderboard</h2>
-<p><a id="opIdV1_Leaderboard_getLeaderboard"></a></p>
+<h1 id="api-api-token">API Token</h1>
+<h2 id='list'>List</h2>
+<p><a id="opIdV1_User_GetJWTList"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/state/leaderboard"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/jwt"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
 
@@ -6811,7 +6093,7 @@ This operation does not require authentication
 
 <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/state/leaderboard</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/jwt</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">}</span>
 <span class="p">};</span>
 
@@ -6822,12 +6104,12 @@ This operation does not require authentication
 <span class="p">});</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/state/leaderboard <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/jwt <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span>
 </code></pre></div>
-<p><code>GET /state/leaderboard</code></p>
+<p><code>GET /user/jwt</code></p>
 
-<p>Queries the database to get the 10 users with the biggest posititve PL</p>
+<p>Retrieves the list of active JSON Web Token user currently holds.</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -6836,48 +6118,18 @@ This operation does not require authentication
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">4242424242</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean-Kevin"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">3491941</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roger"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">24013441</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Laura"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">23126094</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marcus"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414019</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Charles"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">242918</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antoine"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">99999</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXxRoBeRtLeBgDu24xXX"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">61491</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRYPTOKING"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEY"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pl"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deposit"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020-09-15T10:50:40.332Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020-09-15T10:50:40.332Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ckea35me20019r8u36374585f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"revoked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<h3 id="get-current-leaderboard-responses">Responses</h3>
+<h3 id="list-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -6890,12 +6142,18 @@ This operation does not require authentication
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Leaderboard successfully fetched</td>
+<td>Token list retrieved.</td>
 <td>Inline</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td>None</td>
 </tr>
 </tbody></table>
 
-<h3 id="get-current-leaderboard-responseschema">Response Schema</h3>
+<h3 id="list-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -6909,48 +6167,62 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>» username</td>
+<td>» aud</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>Scopes of the token</td>
+</tr>
+<tr>
+<td>» exp</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>Expiration of the token</td>
+</tr>
+<tr>
+<td>» iat</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>When the token was issued</td>
+</tr>
+<tr>
+<td>» jti</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Username or &#39;Anonymous&#39; if the Leaderboard view is disabled</td>
+<td>Unique id of the token</td>
 </tr>
 <tr>
-<td>» pl</td>
-<td>integer</td>
+<td>» revoked</td>
+<td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>Sum of every profits and losses of the user</td>
+<td>Is it revoked or not</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+cookieAuth
 </aside>
-
-<h1 id="api-announcements">Announcements</h1>
-<h2 id='get-the-ln-markets-announcements'>Get the LN Markets announcements</h2>
-<p><a id="opIdV1_Announcements_getAnnouncements"></a></p>
+<h2 id='revoke'>Revoke</h2>
+<p><a id="opIdV1_User_RevokeJWT"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/state/announcements"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/jwt"</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/state/announcements</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">}</span>
-<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/jwt</span><span class="dl">'</span><span class="p">};</span>
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
@@ -6958,33 +6230,34 @@ This operation does not require authentication
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://api.lnmarkets.com/v1/state/announcements <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/jwt
 </code></pre></div>
-<p><code>GET /state/announcements</code></p>
+<p><code>DELETE /user/jwt</code></p>
 
-<p>Get the LN Markets announcements</p>
+<p>Using the <code>jti</code> parameter, identifies and revoke usage of a given JWT.</p>
 
-<blockquote>
-<p>Example responses</p>
+<h3 id="revoke-parameters">Parameters</h3>
 
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Good news everyone !"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin is the world money now !"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"creation_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607076175239</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad news everyone !"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We have too much sats"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"creation_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607019462532</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<h3 id="get-the-ln-markets-announcements-responses">Responses</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jti</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Token unique identifier.</td>
+</tr>
+</tbody></table>
+
+<h3 id="revoke-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -6997,12 +6270,186 @@ This operation does not require authentication
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Announcements successfully fetched</td>
-<td>Inline</td>
+<td>Token successfuly revoked.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td>None</td>
 </tr>
 </tbody></table>
 
-<h3 id="get-the-ln-markets-announcements-responseschema">Response Schema</h3>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+cookieAuth
+</aside>
+<h2 id='generate'>Generate</h2>
+<p><a id="opIdV1_User_CreateJWT"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.lnmarkets.com/v1/user/jwt"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"expiry"</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span>
+    <span class="s">"scopes"</span><span class="p">:</span> <span class="p">[</span><span class="s">"deposit"</span><span class="p">,</span> <span class="s">"withdraw"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.lnmarkets.com/v1/user/jwt</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span> <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span><span class="na">expiry</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span> <span class="na">scopes</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">deposit</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">withdraw</span><span class="dl">'</span><span class="p">]},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.lnmarkets.com/v1/user/jwt <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"expiry":86400,"scopes":["deposit","withdraw"]}'</span>
+</code></pre></div>
+<p><code>POST /user/jwt</code></p>
+
+<p>Using the given scopes, allow the token bearer to get access to different parts of the public API.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withdraw"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="generate-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>Scopes of authorization that the token will grant to the bearer.</td>
+</tr>
+<tr>
+<td>» scopes</td>
+<td>body</td>
+<td>[string]</td>
+<td>true</td>
+<td>Scopes of the token</td>
+</tr>
+<tr>
+<td>» expiry</td>
+<td>body</td>
+<td>integer(int32)</td>
+<td>true</td>
+<td>Expiration of the token</td>
+</tr>
+</tbody></table>
+<h4 id='detailed-descriptions-7'>Detailed descriptions</h4>
+<p><strong>body</strong>: Scopes of authorization that the token will grant to the bearer.</p>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» scopes</td>
+<td>deposit</td>
+</tr>
+<tr>
+<td>» scopes</td>
+<td>withdraw</td>
+</tr>
+<tr>
+<td>» scopes</td>
+<td>futures</td>
+</tr>
+<tr>
+<td>» scopes</td>
+<td>user</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJpYXQiOjE1OTgwNTg2NDQsInNjb3BlcyI6WyJ3aXRoZHJhdyIsImRlcG9zaXQiXX0.xJ3f5eMeRiN0eSzo3IDviny9B9v_-bLg4t_EWmXFBxc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="generate-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Token successfuly created, its Base64URL encoded signature is returned for future use.</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="generate-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -7016,30 +6463,17 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>» title</td>
+<td>» token</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» text</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» ts</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
+<td>JWT</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+cookieAuth
 </aside>
 
 <p>undefined</p>
