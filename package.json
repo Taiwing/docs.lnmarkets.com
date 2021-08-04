@@ -1,14 +1,41 @@
 {
-  "name": "ln-markets-docs",
+  "name": "ln-markets-api-docs",
   "version": "1.0.0",
-  "description": "LN Markets Documentation",
+  "description": "LN Markets API Documentation",
   "main": "index.js",
   "repository": "https://github.com/lnmarkets/api-doc",
   "author": "victor.afanassieff@ito.am",
   "license": "MIT",
+  "scripts": {
+    "prepare": "is-docker || is-ci || husky install"
+  },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.0.2",
-    "widdershins": "^4.0.1",
-    "yaml": "^1.10.2"
+    "widdershins": "^4.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^13.1.0",
+    "commitlint": "^13.1.0",
+    "husky": "^7.0.1",
+    "is-ci": "^3.0.0",
+    "is-docker": "^2.2.1",
+    "lint-staged": "^11.1.1",
+    "prettier": "^2.3.2"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "always"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.js": "prettier --write"
   }
 }
