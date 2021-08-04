@@ -23,7 +23,7 @@ const main = async () => {
       ],
       language_clients: [
         { shell: 'curl' },
-        { 'javascript--node': 'request' },
+        { 'javascript--node': 'native' },
         { python: 'requests' },
       ],
     }
