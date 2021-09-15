@@ -18,7 +18,7 @@
   "tags": [
     {
       "name": "Login",
-      "description": "Here you can find the different way to auth yourself on LN Markets, mostly use for browser.\n"
+      "description": "Here you can find the different way to auth yourself on LN Markets, mostly use for browser."
     },
     {
       "name": "Futures",
@@ -26,11 +26,11 @@
     },
     {
       "name": "User",
-      "description": "You can retrieve your user data and modify it\n"
+      "description": "You can retrieve your user data and modify it"
     },
     {
       "name": "State",
-      "description": "LN Markets state with data about our node and api availability\n"
+      "description": "LN Markets state with data about our node and api availability"
     },
     {
       "name": "LNURL",
@@ -45,6 +45,20 @@
       "jwtAuth": []
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "session"
+      },
+      "jwtAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
   "paths": {
     "/login/token": {
       "post": {
@@ -333,7 +347,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Sucessfuly withdrawn funds from channel."
+            "description": "Sucessfuly withdrawn funds from account"
           }
         }
       },
@@ -344,45 +358,17 @@
         "security": [
           {
             "cookieAuth": []
+          },
+          {
+            "jwtAuth": [
+              "user"
+            ]
           }
         ],
         "deprecated": false,
         "summary": "Create a LNURL Withdraw",
         "description": "Create a LNURL Withdraw",
         "operationId": "V1_POST_LNURL_withdraw",
-        "requestBody": {
-          "description": "Amount to withdraw",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "amount"
-                ],
-                "properties": {
-                  "amount": {
-                    "description": "amount you want to withdraw",
-                    "type": "integer",
-                    "minimum": 1000
-                  },
-                  "unit": {
-                    "description": "Unit (Only sat for now)",
-                    "type": "string",
-                    "enum": [
-                      "sat",
-                      "msat"
-                    ],
-                    "default": "sat"
-                  }
-                },
-                "example": {
-                  "amount": 1000
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Return the LNURL",
@@ -439,8 +425,8 @@
             "description": "Nonce.",
             "schema": {
               "type": "string",
-              "minLength": 64,
-              "maxLength": 64
+              "minLength": 16,
+              "maxLength": 16
             }
           },
           {
@@ -452,6 +438,16 @@
               "type": "integer",
               "minimum": 0,
               "example": 1599841538304
+            }
+          },
+          {
+            "name": "uid",
+            "in": "query",
+            "description": "User id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -504,6 +500,401 @@
                   "minWithdrawable": 1000,
                   "defaultDescription": "LN Markets withdraw",
                   "callback": "https://api.lnmarkets.com/lnurl/w"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lnurl/withdraw/address": {
+      "get": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "jwtAuth": [
+              "user"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Withdraw to Lightning Address",
+        "description": "Use Lightning Address to withdraw your sat !",
+        "operationId": "V1_LNURL_Withdraw_Address",
+        "parameters": [
+          {
+            "name": "amount",
+            "in": "query",
+            "required": true,
+            "description": "Amount to withdraw in sat",
+            "example": 1000,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "description": "Lightning Address username@service.org",
+            "example": "satoshi@lightning.ovh",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfuly withdrawn funds from account."
+          }
+        }
+      }
+    },
+    "/lnurl/pay": {
+      "post": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "jwtAuth": [
+              "user"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Create a LNURL Pay",
+        "description": "Create a LNURL Pay",
+        "operationId": "V1_POST_LNURL_pay",
+        "responses": {
+          "200": {
+            "description": "Return the LNURL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lnurl": {
+                      "description": "LNURL for the users wallet",
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "lnurl": "LNURL1DP68GURN8GHJ7UM9WFMXJCM99E3K7MF0V9CXJ0M385EKVCENXC6R2C35XVUKXEFCV5MKVV34X5EKZD3EV56NYD3HXQURZEPEXEJXXEPNXSCRVWFNV9NXZCN9XQ6XYEFHVGCXXCMYXYMNSERXFQ5FNS"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "LNURL Pay",
+        "description": "LNURL Pay",
+        "operationId": "V1_LNURL_Pay",
+        "parameters": [
+          {
+            "name": "signature",
+            "in": "query",
+            "required": true,
+            "description": "HMAC payload signature.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "required": true,
+            "description": "Nonce",
+            "schema": {
+              "type": "string",
+              "minLength": 16,
+              "maxLength": 16
+            }
+          },
+          {
+            "name": "uid",
+            "in": "query",
+            "description": "User id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Username",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "expiry",
+            "in": "query",
+            "description": "When the lnurl pay is expired",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "description": "Amount to deposit in msat",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1000000,
+              "maximum": 1000000000
+            }
+          },
+          {
+            "name": "nonce",
+            "in": "query",
+            "description": "An optional parameter used to prevent server response caching",
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 16
+            }
+          },
+          {
+            "name": "fromnodes",
+            "in": "query",
+            "description": "An optional parameter with value set to comma separated nodeIds if payer wishes a service to provide payment routes starting from specified LN nodeIds",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "description": "An optional parameter to pass the LN WALLET user's comment to LN SERVICE",
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "minLength": 0,
+              "maxLength": 1500
+            }
+          },
+          {
+            "name": "proofofpayer",
+            "in": "query",
+            "description": "An optional ephemeral secp256k1 public key generated by payer, a corresponding private key should be retained by payer, a payee may later ask payer to provide a public key itself or sign a random message using corresponding private key and thus provide a proof of payer.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "LNURL pay response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pr": {
+                      "description": "bech32-serialized lightning invoice",
+                      "type": "string"
+                    },
+                    "disposable": {
+                      "type": "boolean"
+                    },
+                    "routes": {
+                      "type": "array"
+                    },
+                    "successAction": {
+                      "type": "object",
+                      "properties": {
+                        "tag": {
+                          "description": "message",
+                          "type": "string"
+                        },
+                        "message": {
+                          "description": "message",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "disposable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lnurl/pay/request": {
+      "get": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "LNURL Pay request",
+        "description": "Response from the LNURL",
+        "operationId": "V1_LNURL_PayRequest",
+        "parameters": [
+          {
+            "name": "signature",
+            "in": "query",
+            "required": true,
+            "description": "HMAC payload signature.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "required": true,
+            "description": "Nonce",
+            "schema": {
+              "type": "string",
+              "minLength": 16,
+              "maxLength": 16
+            }
+          },
+          {
+            "name": "uid",
+            "in": "query",
+            "description": "User id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "LNURL pay request response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "callback": {
+                      "description": "Callback URL used by the wallet",
+                      "type": "string"
+                    },
+                    "tag": {
+                      "description": "Type of LNURL, payRequest here.",
+                      "type": "string"
+                    },
+                    "maxSendable": {
+                      "description": "Max sendable amount in msat",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "minSendable": {
+                      "description": "Min sendable amount in msat",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "metadata": {
+                      "description": "Metadata json as string",
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "tag": "payRequest",
+                  "minSendable": 1000,
+                  "maxSendable": 1000000,
+                  "callback": "https://api.lnmarkets.com/v1/lnurl/pay",
+                  "metadata": "{}"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lnurl/pay/address": {
+      "get": {
+        "tags": [
+          "LNURL"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Lightning Address",
+        "description": "Lightning Address",
+        "operationId": "V1_Lightning_Address",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "description": "Username",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "LNURL pay request response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "callback": {
+                      "description": "Callback URL used by the wallet",
+                      "type": "string"
+                    },
+                    "tag": {
+                      "description": "Type of LNURL, payRequest here.",
+                      "type": "string"
+                    },
+                    "maxSendable": {
+                      "description": "Max sendable amount in msat",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "minSendable": {
+                      "description": "Min sendable amount in msat",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "metadata": {
+                      "description": "Metadata json as string",
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "tag": "payRequest",
+                  "minSendable": 1000,
+                  "maxSendable": 1000000,
+                  "callback": "https://api.lnmarkets.com/v1/lnurl/pay",
+                  "metadata": "{}"
                 }
               }
             }
@@ -1052,28 +1443,61 @@
         ],
         "deprecated": false,
         "summary": "History",
-        "description": "Retrieves either opened, closed or all positions.\n\n**If no parameters are sent, all positions are fetched.**\n",
+        "description": "Fetch users positions",
         "operationId": "V1_Futures_getPositionList",
         "parameters": [
           {
             "name": "type",
             "in": "query",
-            "description": "List opened positions.",
+            "description": "Choose wich kind of positions you need to fetch",
+            "required": true,
             "schema": {
               "type": "string",
               "enum": [
-                "all",
                 "open",
                 "running",
                 "closed"
               ],
-              "example": "all"
+              "example": "open"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Starting timestamp (in ms) (only used for closed positions)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162757621
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Ending timestamp (in ms) (only used for closed positions)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162857621
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of rows (only used for closed positions)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 100,
+              "example": 100
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Positions history sucessfully fetched.\n",
+            "description": "Positions history sucessfully fetched.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1082,12 +1506,9 @@
                     "type": "object",
                     "properties": {
                       "pid": {
-                        "description": "UUID of the position",
-                        "type": "string"
-                      },
-                      "id": {
-                        "description": "Position ID to be deprecated",
-                        "type": "string"
+                        "description": "id of the position",
+                        "type": "string",
+                        "format": "uuid"
                       },
                       "type": {
                         "description": "Position type [l,m]",
@@ -1099,27 +1520,27 @@
                       },
                       "pl": {
                         "description": "PL of the position",
-                        "type": "string"
+                        "type": "number"
                       },
                       "price": {
                         "description": "Entry price of the position",
-                        "type": "string"
+                        "type": "number"
                       },
                       "quantity": {
                         "description": "Quantity of the position",
-                        "type": "string"
+                        "type": "number"
                       },
                       "leverage": {
                         "description": "Leverage of the position",
-                        "type": "string"
+                        "type": "number"
                       },
                       "liquidation": {
                         "description": "Liquidation level when the position will be closed",
-                        "type": "string"
+                        "type": "number"
                       },
                       "margin": {
                         "description": "Margin used for the position creation",
-                        "type": "string"
+                        "type": "number"
                       },
                       "margin_wi": {
                         "description": "Margin working indicator [filled, running, closed, canceled]",
@@ -1127,8 +1548,7 @@
                       },
                       "market_filled_ts": {
                         "description": "When the order was filled",
-                        "type": "string",
-                        "format": "date-time",
+                        "type": "number",
                         "nullable": true
                       },
                       "market_wi": {
@@ -1145,23 +1565,22 @@
                       },
                       "closed_ts": {
                         "description": "When the position was closed",
-                        "type": "string",
-                        "format": "date-time",
+                        "type": "number",
                         "nullable": true
                       },
                       "creation_ts": {
                         "description": "When the position was created",
-                        "type": "string",
+                        "type": "number",
                         "format": "date-time"
                       },
                       "exit_price": {
                         "description": "At which price the position was closed",
-                        "type": "string",
+                        "type": "number",
                         "nullable": true
                       },
                       "stoploss": {
                         "description": "stoploss level",
-                        "type": "string",
+                        "type": "number",
                         "nullable": true
                       },
                       "stoploss_wi": {
@@ -1178,6 +1597,10 @@
                         "description": "Takeprofit working indicator [filled, running, closed, canceled]",
                         "type": "string",
                         "nullable": true
+                      },
+                      "sum_carry_fees": {
+                        "description": "Sum of the positions carry fees",
+                        "type": "integer"
                       }
                     }
                   },
@@ -1197,16 +1620,17 @@
                         "price": 8888,
                         "pl": -13640,
                         "market_wi": "filled",
-                        "market_filled_ts": "020-09-15T10:50:40.332Z",
+                        "market_filled_ts": 1630568137340,
                         "margin_wi": "closed",
                         "margin": 424242,
                         "liquidation": 1000,
                         "leverage": 50,
                         "exit_price": 2000,
-                        "creation_ts": "020-09-15T10:50:40.332Z",
-                        "closed_ts": "020-10-15T10:50:40.332Z",
+                        "creation_ts": 1630568137340,
+                        "closed_ts": 1630568137340,
                         "closed": false,
-                        "canceled": true
+                        "canceled": true,
+                        "sum_carry_fees": 4242
                       }
                     ]
                   }
@@ -1223,31 +1647,16 @@
         }
       }
     },
-    "/futures/history": {
+    "/futures/history/index": {
       "get": {
         "tags": [
           "Futures"
         ],
         "security": [],
-        "deprecated": false,
-        "summary": "Futures data history",
-        "description": "Retrieves at most 1000 entries between two given timestamps.\n",
-        "operationId": "V1_Futures_History",
+        "summary": "Futures index history",
+        "description": "Retrieves index history at most 1000 entries between two given timestamps.",
+        "operationId": "V1_Futures_History_Index",
         "parameters": [
-          {
-            "name": "table",
-            "in": "query",
-            "description": "bid_offer or index",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "bid_offer",
-                "index"
-              ],
-              "example": "index"
-            }
-          },
           {
             "name": "from",
             "in": "query",
@@ -1277,14 +1686,100 @@
               "format": "int64",
               "default": 100,
               "minimum": 1,
-              "maximum": 1000,
-              "example": 1000
+              "maximum": 100,
+              "example": 100
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Futures market data",
+            "description": "Futures index history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "time": {
+                        "description": "Timestamp at which the data was recorded (in µs)",
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "index": {
+                        "description": "Index value at that time",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "data": [
+                      {
+                        "time": 1605633250615990,
+                        "index": 15853
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/history/bid-offer": {
+      "get": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [],
+        "summary": "Futures bid and offer history",
+        "description": "Retrieves bid and offer at most 1000 entries between two given timestamps.",
+        "operationId": "V1_Futures_History_Bid_Offer",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Starting timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162757621
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Ending timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162857621
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of rows",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 100,
+              "example": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Futures bid offer history",
             "content": {
               "application/json": {
                 "schema": {
@@ -1313,6 +1808,102 @@
                         "time": 1605633250615990,
                         "bid": 15853,
                         "offer": 15885
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/futures/history/fixing": {
+      "get": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [],
+        "summary": "Futures fixing history",
+        "description": "Retrieves at most 1000 entries between two given timestamps",
+        "operationId": "V1_Futures_History_Fixing",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Starting timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162757621
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Ending timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162857621
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of rows",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 100,
+              "example": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fixing history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ts": {
+                        "description": "Timestamp in ms whent the fixing occured",
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "id": {
+                        "description": "Fixing uuid",
+                        "type": "number"
+                      },
+                      "fixing_price": {
+                        "description": "Fixing price",
+                        "type": "number"
+                      },
+                      "fee_bp_value": {
+                        "description": "BP value of fees",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "data": [
+                      {
+                        "ts": 1605633250615990,
+                        "id": "46b6cd74-d91d-4f25-8a55-1cde32a9341c",
+                        "fixing_price": 15885,
+                        "fee_bp_value": 10
                       }
                     ]
                   }
@@ -1905,6 +2496,190 @@
         }
       }
     },
+    "/futures/leaderboard": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Leaderboard",
+        "description": "Queries the database to get the 10 users with the biggest posititve PL\n",
+        "operationId": "V1_Leaderboard_getLeaderboard",
+        "responses": {
+          "200": {
+            "description": "Leaderboard successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "username": {
+                        "type": "string",
+                        "description": "Username or 'Anonymous' if the Leaderboard view is disabled\n"
+                      },
+                      "pl": {
+                        "type": "integer",
+                        "description": "Sum of every profits and losses of the user"
+                      }
+                    }
+                  }
+                },
+                "example": [
+                  {
+                    "username": "Bob",
+                    "pl": 4242424242
+                  },
+                  {
+                    "username": "Jean-Kevin",
+                    "pl": 3491941
+                  },
+                  {
+                    "username": "Roger",
+                    "pl": 24013441
+                  },
+                  {
+                    "username": "Laura",
+                    "pl": 23126094
+                  },
+                  {
+                    "username": "Marcus",
+                    "pl": 1414019
+                  },
+                  {
+                    "username": "Charles",
+                    "pl": 242918
+                  },
+                  {
+                    "username": "Antoine",
+                    "pl": 99999
+                  },
+                  {
+                    "username": "XXxRoBeRtLeBgDu24xXX",
+                    "pl": 61491
+                  },
+                  {
+                    "username": "CRYPTOKING",
+                    "pl": 10000
+                  },
+                  {
+                    "username": "HEY",
+                    "pl": 3
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/futures/carry-fees": {
+      "get": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [
+          {
+            "jwtAuth": [
+              "futures"
+            ]
+          },
+          {
+            "cookieAuth": []
+          }
+        ],
+        "summary": "Futures carry fees history",
+        "description": "Retrieves carry fees for user",
+        "operationId": "V1_Futures_Carry_Fees",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Starting timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162757621
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Ending timestamp (in ms).",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162857621
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of rows",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 100,
+              "example": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Carry fees event of the position",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ts": {
+                        "description": "Timestamp in ms whent the fixing occured",
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "pid": {
+                        "description": "Position id",
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "fixing": {
+                        "description": "Fixing uuid",
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "fees": {
+                        "description": "Fees that were taken from the position",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "data": [
+                      {
+                        "fixing": "fc342986-f59d-43f7-937b-0dcaa74b5f20",
+                        "index": 1337
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/state": {
       "get": {
         "tags": [
@@ -2048,85 +2823,6 @@
                     "uri": "03bae2db4b57738c1ec1ffa1c5e5a4423968cc592b3b39cddf7d495e72919d6431@34.192.102.161:9735"
                   }
                 }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/state/leaderboard": {
-      "get": {
-        "tags": [
-          "State"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "Leaderboard",
-        "description": "Queries the database to get the 10 users with the biggest posititve PL\n",
-        "operationId": "V1_Leaderboard_getLeaderboard",
-        "responses": {
-          "200": {
-            "description": "Leaderboard successfully fetched",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "username": {
-                        "type": "string",
-                        "description": "Username or 'Anonymous' if the Leaderboard view is disabled\n"
-                      },
-                      "pl": {
-                        "type": "integer",
-                        "description": "Sum of every profits and losses of the user"
-                      }
-                    }
-                  }
-                },
-                "example": [
-                  {
-                    "username": "Bob",
-                    "pl": 4242424242
-                  },
-                  {
-                    "username": "Jean-Kevin",
-                    "pl": 3491941
-                  },
-                  {
-                    "username": "Roger",
-                    "pl": 24013441
-                  },
-                  {
-                    "username": "Laura",
-                    "pl": 23126094
-                  },
-                  {
-                    "username": "Marcus",
-                    "pl": 1414019
-                  },
-                  {
-                    "username": "Charles",
-                    "pl": 242918
-                  },
-                  {
-                    "username": "Antoine",
-                    "pl": 99999
-                  },
-                  {
-                    "username": "XXxRoBeRtLeBgDu24xXX",
-                    "pl": 61491
-                  },
-                  {
-                    "username": "CRYPTOKING",
-                    "pl": 10000
-                  },
-                  {
-                    "username": "HEY",
-                    "pl": 3
-                  }
-                ]
               }
             }
           }
@@ -2295,25 +2991,13 @@
                   "username": {
                     "description": "Username displayed on LN Markets public data",
                     "type": "string",
-                    "pattern": "^\\S{6,32}$"
-                  },
-                  "email": {
-                    "description": "Email used to recover account",
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$",
-                    "minLength": 3,
-                    "maxLength": 318
-                  },
-                  "resend_email": {
-                    "description": "Ask to resend the confirmation email",
-                    "type": "boolean"
+                    "pattern": "[a-zA-Z0-9_.]{3,32}$"
                   }
                 },
                 "example": {
                   "show_username": false,
                   "show_leaderboard": true,
-                  "username": "Cryptoking",
-                  "email": "mememeeee@JeSuisLeBest.com"
+                  "username": "Cryptoking"
                 }
               }
             }
@@ -2684,39 +3368,7 @@
         "operationId": "V1_User_getDepositHistory",
         "parameters": [
           {
-            "name": "nbItem",
-            "in": "query",
-            "description": "Maximum length of the returned table.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "example": 15
-            }
-          },
-          {
-            "name": "index",
-            "in": "query",
-            "description": "Which page we want (offset = nbItem * (index - 1)).",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "example": 1
-            }
-          },
-          {
-            "name": "getLength",
-            "in": "query",
-            "description": "Return the length of the date slice given.",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "example": false
-            }
-          },
-          {
-            "name": "start",
+            "name": "from",
             "in": "query",
             "description": "Start of the time interval (UNIX UTC timestamp)",
             "required": false,
@@ -2726,13 +3378,24 @@
             }
           },
           {
-            "name": "end",
+            "name": "to",
             "in": "query",
             "description": "End of the time interval (UNIX UTC timestamp)",
             "required": false,
             "schema": {
               "type": "integer",
               "example": 1603065600000
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "number of transactions to fetch",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 10
             }
           }
         ],
@@ -2821,31 +3484,19 @@
           }
         ],
         "summary": "Withdraw via invoice",
-        "description": "Withdraw from LN Markets with a Lightning Invoice\n",
+        "description": "Withdraw from LN Markets with a Lightning Invoice",
         "operationId": "V1_User_Withdraw",
         "requestBody": {
-          "description": "Payload that countains all informations to initiate a new withdraw.\n",
+          "description": "Payload that countains all informations to initiate a new withdraw.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
-                  "amount",
                   "invoice"
                 ],
                 "properties": {
-                  "amount": {
-                    "description": "Amount you want to withdraw",
-                    "type": "integer",
-                    "minimum": 1000,
-                    "example": 10000
-                  },
-                  "unit": {
-                    "description": "Unit (Only sat for now)",
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]+$"
-                  },
                   "invoice": {
                     "description": "Bolt 11 invoice with the same amount as the request withdraw amount",
                     "type": "string",
@@ -2853,8 +3504,6 @@
                   }
                 },
                 "example": {
-                  "amount": 1000,
-                  "unit": "sat",
                   "invoice": "lntb100u1p0jr0ykpp5ldx3un8ym6z0uwjxd083mp2rcr04d2dv0fkx729ajs62pq9pfjqqdql23jhxapdwa5hg6rywfshwttjda6hgegcqzpgxq92fjuqsp5m6q0fzynu2qr624mzjc285duurhccmkfg94mcdctc0p9s7qkrq8q9qy9qsqp862cjznpey5r76e7amhlpmhwn2c7xvke59srhv0xf75m4ksjm4hzn8y9xy0zs5ec6gxmsr8gj4q23w8ped32llscjcneyjz2afeapqpu4gamz"
                 }
               }
@@ -2863,7 +3512,7 @@
         },
         "responses": {
           "200": {
-            "description": "Funds are removed from user account and added to user wallet.\n",
+            "description": "Funds are removed from user account and added to user wallet.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2871,6 +3520,10 @@
                   "properties": {
                     "amount": {
                       "description": "Amount withdrawnd",
+                      "type": "integer"
+                    },
+                    "fees": {
+                      "description": "Amount of fees payed",
                       "type": "integer"
                     },
                     "paymentsecret": {
@@ -2924,39 +3577,7 @@
         "operationId": "V1_User_getWithdrawHistory",
         "parameters": [
           {
-            "name": "nbItem",
-            "in": "query",
-            "description": "Maximum length of the returned table.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "example": 15
-            }
-          },
-          {
-            "name": "index",
-            "in": "query",
-            "description": "Which page we want (offset = nbItem * (index - 1)).",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "example": 1
-            }
-          },
-          {
-            "name": "getLength",
-            "in": "query",
-            "description": "Return the length of the date slice given.",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "example": false
-            }
-          },
-          {
-            "name": "start",
+            "name": "from",
             "in": "query",
             "description": "Start of the time interval (UNIX UTC timestamp)",
             "required": false,
@@ -2966,13 +3587,24 @@
             }
           },
           {
-            "name": "end",
+            "name": "to",
             "in": "query",
             "description": "End of the time interval (UNIX UTC timestamp)",
             "required": false,
             "schema": {
               "type": "integer",
               "example": 1603065600000
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "number of transactions to fetch",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 10
             }
           }
         ],
@@ -3060,117 +3692,6 @@
             "description": "Unauthorized"
           }
         }
-      }
-    },
-    "/user/logout": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "Logout",
-        "description": "Delete the session cookie.\n",
-        "operationId": "V1_User_logout",
-        "responses": {
-          "200": {
-            "description": "Sucessfully logged out.\n"
-          }
-        }
-      }
-    },
-    "/user/email-confirm": {
-      "put": {
-        "tags": [
-          "User"
-        ],
-        "security": [
-          {
-            "jwtAuth": [
-              "user"
-            ]
-          },
-          {
-            "cookieAuth": []
-          }
-        ],
-        "deprecated": false,
-        "summary": "Confirm recovery email",
-        "description": "Confirm recovery email so that the user can reset his password if he loses it\n",
-        "operationId": "V1_User_emailConfirm",
-        "requestBody": {
-          "description": "Payload that countains the token to confirm the recovery email.\n",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "confirmationToken"
-                ],
-                "properties": {
-                  "confirmationToken": {
-                    "description": "One-time use token to confirm email address",
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]{64}$"
-                  }
-                },
-                "example": {
-                  "confirmationToken": "682f2afb2a551a4dd5e5e29800b95547ff54b232b2da3ffa9a97173037d464bc"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Recovery Email is confirmed and therfore usable\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "confirmationSuccess",
-                    "confirmedEmail"
-                  ],
-                  "properties": {
-                    "confirmationSuccess": {
-                      "description": "Success of the recovery email confirmation",
-                      "type": "boolean"
-                    },
-                    "confirmedEmail": {
-                      "description": "Recovery email address confirmed",
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "emailConfirmed": "dogecoin@touzemoune.com"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "securitySchemes": {
-      "cookieAuth": {
-        "type": "apiKey",
-        "in": "cookie",
-        "name": "session"
-      },
-      "jwtAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   }
