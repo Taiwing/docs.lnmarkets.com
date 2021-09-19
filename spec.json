@@ -34,7 +34,7 @@
     },
     {
       "name": "LNURL",
-      "description": "Interaction with the lightning network using the [LNURL procotocol](https://github.com/btcontract/lnurl-rfc/)\nLNURL enable simple auth process and easier withdraw\n"
+      "description": "Interaction with the lightning network using the [LNURL procotocol](https://github.com/btcontract/lnurl-rfc/)\nLNURL enable simple auth, withdraw and pay UX / UI\n"
     }
   ],
   "security": [
@@ -144,7 +144,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Auth 2",
+        "summary": "Auth Verify",
         "description": "Verify the public key with the signature and the k1 to create a account or connect into a existing account.\nIf JWT is set to true, a JWT will be returned with by default all scopes and an expiry of 1h, they can be changed by setting the query paramater expiry or scopes like POST /user/jwt.\nElse the connected state will be push over websocketsto the client.\n",
         "operationId": "V1_GET_LNURL_Auth",
         "parameters": [
@@ -284,7 +284,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Auth",
+        "summary": "Auth Request",
         "description": "LNURL string used to create an account or connect to a existing account.\nThe user wallet will sign a message using the provided k1 inside the LNURL.\nYou need to have a session cookie on the browser you are using to log in.\n",
         "operationId": "V1_POST_LNURL_Auth",
         "responses": {
@@ -317,7 +317,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Withdraw 3",
+        "summary": "Withdraw (3) Final",
         "description": "Use LNURL to withdraw from the user balance.",
         "operationId": "V1_LNURL_Withdraw",
         "parameters": [
@@ -366,7 +366,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "Create a LNURL Withdraw",
+        "summary": "Withdraw (1) Create",
         "description": "Create a LNURL Withdraw",
         "operationId": "V1_POST_LNURL_withdraw",
         "responses": {
@@ -405,7 +405,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Withdraw 2",
+        "summary": "Withdraw (2) Request",
         "description": "Ask the Lightning wallet to create an invoice with amount and description.",
         "operationId": "V1_LNURL_WithdrawRequest",
         "parameters": [
@@ -571,7 +571,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "Create a LNURL Pay",
+        "summary": "Pay (1) Create",
         "description": "Create a LNURL Pay",
         "operationId": "V1_POST_LNURL_pay",
         "responses": {
@@ -608,7 +608,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "LNURL Pay",
+        "summary": "Pay (3) Finalize",
         "description": "LNURL Pay",
         "operationId": "V1_LNURL_Pay",
         "parameters": [
@@ -673,9 +673,7 @@
             "in": "query",
             "description": "An optional parameter used to prevent server response caching",
             "schema": {
-              "type": "string",
-              "minLength": 8,
-              "maxLength": 16
+              "type": "string"
             }
           },
           {
@@ -691,6 +689,7 @@
             "in": "query",
             "description": "An optional parameter to pass the LN WALLET user's comment to LN SERVICE",
             "allowEmptyValue": true,
+            "allowReserved": true,
             "schema": {
               "type": "string",
               "nullable": true,
@@ -756,7 +755,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "LNURL Pay request",
+        "summary": "Pay (1) Request",
         "description": "Response from the LNURL",
         "operationId": "V1_LNURL_PayRequest",
         "parameters": [
@@ -909,9 +908,9 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Login via Joule",
-        "description": "Use the browser extension [Joule](https://lightningjoule.com/) to authenticate user.\nThe message has to be obtained using GET /login/joule\n",
-        "operationId": "V1_Login_loginJoule",
+        "summary": "Webln Verify Message",
+        "description": "Use WebLN to authenticate user.\nThe message has to be obtained using GET /login/joule\n",
+        "operationId": "V1_Login_loginWebLN",
         "requestBody": {
           "required": true,
           "content": {
@@ -1005,9 +1004,9 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Request message",
-        "description": "Generates a message that user can sign with POST /login/joule\n",
-        "operationId": "V1_Login_getJouleMessage",
+        "summary": "WebLN request Auth",
+        "description": "Generates a message that user can sign with POST /login/joule",
+        "operationId": "V1_Login_getWebLnMessage",
         "responses": {
           "200": {
             "description": "Message generated",
@@ -3065,7 +3064,7 @@
     "/user/jwt": {
       "get": {
         "tags": [
-          "API Token"
+          "User"
         ],
         "security": [
           {
@@ -3144,7 +3143,7 @@
       },
       "delete": {
         "tags": [
-          "API Token"
+          "User"
         ],
         "security": [
           {
@@ -3180,7 +3179,7 @@
       },
       "post": {
         "tags": [
-          "API Token"
+          "User"
         ],
         "security": [
           {
