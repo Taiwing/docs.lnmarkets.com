@@ -7,13 +7,13 @@ toc_footers:
   - <a href='https://twitter.com/LNMarkets'>Twitter</a>
   - <a href='https://www.t.me/lnmarkets'>Telegram</a>
   - <a href='https://lnmarkets.substack.com/'>Newsletter</a>
-  - <a href='https://github.com/lnmarkets'>Github</a>
+  - <a href='https://github.com/ln-markets'>Github</a>
 
 includes:
   - introduction
-  - authentication
+  - rest
+  - websockets
   - limits
-  - websocket
   - errors
   - api
 
