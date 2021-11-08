@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "LN Markets API Documentation",
   "main": "index.js",
-  "repository": "https://github.com/lnmarkets/api-doc",
+  "repository": "https://github.com/ln-markets/docs",
   "author": "victor.afanassieff@ito.am",
   "license": "MIT",
   "scripts": {
@@ -14,11 +14,11 @@
     "widdershins": "^4.0.1"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^13.1.0",
-    "commitlint": "^13.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "commitlint": "^14.1.0",
     "husky": "^7.0.1",
     "is-ci": "^3.0.0",
-    "is-docker": "^2.2.1",
+    "is-docker": "^3.0.0",
     "lint-staged": "^11.1.1",
     "prettier": "^2.3.2"
   },

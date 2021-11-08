@@ -17,16 +17,20 @@ jobs:
         with:
           node-version: 14
 
-      - name: Cache Node.js modules
+      - name: Cache pnpm modules
         uses: actions/cache@v2
-        id: yarn-cache
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
 
-      - name: Yarn install
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile --prefer-offline
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6
+
+      - name: Install
+        run: pnpm install --frozen-lockfile --ignore-script
 
       - name: Run index.js
         run: node index.js
