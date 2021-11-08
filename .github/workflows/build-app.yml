@@ -5,7 +5,7 @@ on:
     branches: [api-v1]
 
 jobs:
-  build:
+  node:
     runs-on: ubuntu-latest
 
     steps:
