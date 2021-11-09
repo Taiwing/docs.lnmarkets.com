@@ -2,7 +2,9 @@
   "openapi": "3.0.3",
   "info": {
     "title": "API",
-    "description": "Trade derivatives on the **[Lightning Network](https://lightning.network/)**.\nYou can find our website **[here](https://lnmarkets.com/)**.\n",
+    "description": {
+      "$ref": "./description.md"
+    },
     "version": "1.0.0"
   },
   "servers": [
