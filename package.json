@@ -9,10 +9,6 @@
   "scripts": {
     "prepare": "is-docker || is-ci || husky install"
   },
-  "dependencies": {
-    "@apidevtools/swagger-parser": "^10.0.2",
-    "widdershins": "^4.0.1"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^14.1.0",
     "commitlint": "^14.1.0",
@@ -22,20 +18,7 @@
     "lint-staged": "^11.1.1",
     "prettier": "^2.3.2"
   },
-  "prettier": {
-    "printWidth": 80,
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "arrowParens": "always"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "*.js": "prettier --write"
+  "dependencies": {
+    "redoc-cli": "^0.13.0"
   }
 }

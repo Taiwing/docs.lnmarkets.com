@@ -13,10 +13,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Use Node.js 14
+      - name: Use Node.js 16
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Cache pnpm modules
         uses: actions/cache@v2
@@ -36,18 +36,7 @@ jobs:
       - name: Run index.js
         run: node index.js
 
-      - name: Setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-          bundler-cache: true
-          working-directory: ./slate
-
-      - name: Install gem
-        run: bundle install
-        working-directory: ./slate
-
-      - name: Build slate
+      - name: Build Redoc
         run: ./scripts/build.sh
 
       - name: Upload the build artifact
