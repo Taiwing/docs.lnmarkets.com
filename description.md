@@ -1,10 +1,16 @@
 # Introduction
 
-LN Markets opens a simple REST API to integrate with your program or trading bot. This API reference provides information on available endpoints and how to interact with it. 
+[LN Markets](https://lnmarkets.com/) opens a REST and a Websocket API to integrate with your program or trading bot.
+
+This API reference provides information on available endpoints and how to interact with it.
+
+You can find a javascript package [here](https://www.npmjs.com/package/@ln-markets/api) ready to use
 
 # REST API
 
-The API endpoint for mainnet is https://api.lnmarkets.com/v1. If you want to try our API with **testnet** bitcoin use https://api.testnet.lnmarkets.com.
+The API endpoint for mainnet is `https://api.lnmarkets.com/v1`
+
+If you want to try our API with **testnet** bitcoin use `https://api.testnet.lnmarkets.com/v1`
 
 ## Authentication
 
@@ -37,8 +43,6 @@ All REST requests must contain the following headers:
 
 All request bodies should have content type **`application/json`** and be valid JSON.
 
-Example :
-
 ```shell
 curl https://api.lnmarkets.com/v1/user \
   --header "LNM-ACCESS-KEY: <your api key>" \
@@ -53,7 +57,9 @@ curl https://api.lnmarkets.com/v1/user \
 - `method` <u>**MUST**</u> be uppercase.
 - `path` is the request path of the URL, e.g.: _/v1/user_
 
-Here is an example in javascript:
+## Examples
+
+Here is an example on how to do a request to LN Markets :
 
 ```JS
 const https = require('https')
@@ -157,7 +163,11 @@ If you want a full implementation example you can take a look at our npm package
 
 # Websockets API
 
-The websocket endpoint for mainnet is <a>wss://api.lnmarkets.com</a> If you want to try with **testnet** bitcoin use <a>wss://api.testnet.lnmarkets.com</a>. This API follows the [JSON-RPC](https://www.jsonrpc.org/specification) specification.
+The websocket endpoint for **mainnet** is `wss://api.lnmarkets.com`
+
+If you want to try with **testnet** bitcoin use `wss://api.testnet.lnmarkets.com`
+
+This API follows the [JSON-RPC](https://www.jsonrpc.org/specification) specification.
 
 Request sent to the API should be a valid JSON like:
 
@@ -203,7 +213,9 @@ To create an authenticated websocket you need to send a payload once, this paylo
 }
 ```
 
-Here is an example about how to do it in Javascript:
+## Examples
+
+Here is an example on how to do a request to LN Markets :
 
 ```JS
 const Websocket = require('ws')
@@ -273,7 +285,6 @@ There is a maximum of 50 open positions per account.
 Requests to our REST API are rate limited to 1 request per second, endpoints which do not require authentication are limited to 30 requests per minute.
 
 Here are Headers related to rate limitation:
-
 
 <table style="text-align:center">
   <th style="text-align:center">Header</th>
