@@ -26,11 +26,11 @@
     },
     {
       "name": "User",
-      "description": "You can retrieve your user data and modify it"
+      "description": "User endpoint"
     },
     {
-      "name": "State",
-      "description": "LN Markets state with data about our node and api availability"
+      "name": "App",
+      "description": "LN Markets"
     },
     {
       "name": "LNURL",
@@ -630,8 +630,7 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "minimum": 1000000,
-              "maximum": 1000000000
+              "minimum": 1000000
             }
           },
           {
@@ -917,16 +916,14 @@
                     "description": "Margin or quantity should be filled",
                     "type": "integer",
                     "format": "int32",
-                    "minimum": 1,
-                    "maximum": 1000000
+                    "minimum": 1
                   },
                   "leverage": {
                     "description": "Leverage of the order",
                     "type": "number",
                     "format": "double",
                     "multipleOf": 0.01,
-                    "minimum": 1,
-                    "maximum": 100
+                    "minimum": 1
                   },
                   "quantity": {
                     "description": "Quantity or margin should be filled",
@@ -1473,6 +1470,48 @@
         }
       }
     },
+    "/futures/ticker": {
+      "get": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [],
+        "summary": "Ticker",
+        "description": "Retrieves the futures ticker",
+        "operationId": "V1_Futures_Ticker",
+        "responses": {
+          "200": {
+            "description": "Futures ticker successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bid": {
+                      "description": "Last bid",
+                      "type": "number"
+                    },
+                    "offer": {
+                      "description": "Last offer",
+                      "type": "number"
+                    },
+                    "index": {
+                      "description": "Last index",
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "bid": 58000,
+                    "offer": 58000,
+                    "index": 42000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/futures/history/index": {
       "get": {
         "tags": [
@@ -1717,8 +1756,8 @@
                         "description": "Fixing price",
                         "type": "number"
                       },
-                      "fee_bp_value": {
-                        "description": "BP value of fees",
+                      "fee_percent_value": {
+                        "description": "value of fees in %",
                         "type": "number"
                       }
                     }
@@ -1729,7 +1768,7 @@
                         "ts": 1605633250615990,
                         "id": "46b6cd74-d91d-4f25-8a55-1cde32a9341c",
                         "fixing_price": 15885,
-                        "fee_bp_value": 10
+                        "fee_percent_value": 0.01
                       }
                     ]
                   }
@@ -2310,7 +2349,7 @@
     "/futures/leaderboard": {
       "get": {
         "tags": [
-          "State"
+          "App"
         ],
         "security": [],
         "deprecated": false,
@@ -2488,82 +2527,16 @@
         }
       }
     },
-    "/state": {
+    "/app/node": {
       "get": {
         "tags": [
-          "State"
-        ],
-        "security": [],
-        "deprecated": false,
-        "summary": "API",
-        "description": "Shows informations about api.\n",
-        "operationId": "V1_State_apiState",
-        "responses": {
-          "200": {
-            "description": "The API is online.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "ts": {
-                      "description": "Timestamp reported by the API",
-                      "type": "integer",
-                      "format": "int64"
-                    },
-                    "version": {
-                      "type": "object",
-                      "properties": {
-                        "api": {
-                          "description": "API version hash",
-                          "type": "string"
-                        },
-                        "spec": {
-                          "description": "Open API version hash",
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "withdraw": {
-                      "description": "Are withdraw enabled ?",
-                      "type": "boolean"
-                    },
-                    "newposition": {
-                      "description": "Are new position enabled ?",
-                      "type": "boolean"
-                    },
-                    "accountCreation": {
-                      "description": "Are account creation enabled ?",
-                      "type": "boolean"
-                    }
-                  },
-                  "example": {
-                    "ts": 1600244845097,
-                    "version": {
-                      "api": "74958cef7d4416dfa7f2c13fd23cd4aa7b469047",
-                      "soec": "31a4964e0ab4c77e7235ce5a0b458ba32dd8ace8"
-                    },
-                    "withdraw": true,
-                    "newPosition": true,
-                    "accountCreation": true
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/state/node": {
-      "get": {
-        "tags": [
-          "State"
+          "App"
         ],
         "security": [],
         "deprecated": false,
         "summary": "Node",
         "description": "Shows informations about the lightning node.\n",
-        "operationId": "V1_State_nodeState",
+        "operationId": "V1_App_Node",
         "responses": {
           "200": {
             "description": "The Node is online.\n",
@@ -2637,10 +2610,10 @@
         }
       }
     },
-    "/state/announcements": {
+    "/app/announcements": {
       "get": {
         "tags": [
-          "State"
+          "App"
         ],
         "security": [],
         "deprecated": false,
@@ -2681,6 +2654,53 @@
                     "creation_ts": 1607019462532
                   }
                 ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app/configuration": {
+      "get": {
+        "tags": [
+          "App"
+        ],
+        "security": [],
+        "summary": "LNM Markets configuration",
+        "description": "Retrieves the configuration of LN Markets",
+        "operationId": "V1_App_Configuration",
+        "responses": {
+          "200": {
+            "description": "App configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "max_balance_amount": {
+                      "type": "number"
+                    },
+                    "max_deposit_amount": {
+                      "type": "number"
+                    },
+                    "max_withdraw_amount": {
+                      "type": "number"
+                    },
+                    "min_deposit_amount": {
+                      "type": "number"
+                    },
+                    "min_withdraw_amount": {
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "max_withdraw_amount": 2000000,
+                    "max_deposit_amount": 2000000,
+                    "min_withdraw_amount": 1000,
+                    "min_deposit_amount": 1000,
+                    "max_balance_amount": 2000000
+                  }
+                }
               }
             }
           }
@@ -2894,8 +2914,7 @@
                   "amount": {
                     "description": "Amount of sat to deposit on the account",
                     "type": "integer",
-                    "minimum": 1000,
-                    "maximum": 1000000
+                    "minimum": 1000
                   },
                   "unit": {
                     "description": "Should be sat by default",
@@ -2989,6 +3008,7 @@
             "schema": {
               "type": "integer",
               "minimum": 1,
+              "maximum": 100,
               "example": 10
             }
           }
@@ -3192,7 +3212,8 @@
             "schema": {
               "type": "integer",
               "minimum": 1,
-              "example": 10
+              "example": 10,
+              "maximum": 100
             }
           }
         ],
