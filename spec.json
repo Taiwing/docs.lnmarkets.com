@@ -883,7 +883,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "Create",
+        "summary": "New position",
         "description": "Send the order form parameters to add a new position in database.\n**If `type=\"l\"`, the property `price` must be included in the request to know when the position should be filled.**\n**You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you choosed**\n",
         "operationId": "V1_Futures_createPosition",
         "requestBody": {
@@ -1268,7 +1268,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "History",
+        "summary": "Positions",
         "description": "Fetch users positions",
         "operationId": "V1_Futures_getPositionList",
         "parameters": [
@@ -1522,7 +1522,7 @@
           "Futures"
         ],
         "security": [],
-        "summary": "Futures index history",
+        "summary": "Index history",
         "description": "Retrieves index history at most 1000 entries between two given timestamps.",
         "operationId": "V1_Futures_History_Index",
         "parameters": [
@@ -1608,7 +1608,7 @@
           "Futures"
         ],
         "security": [],
-        "summary": "Futures bid and offer history",
+        "summary": "Bid and offer history",
         "description": "Retrieves bid and offer at most 1000 entries between two given timestamps.",
         "operationId": "V1_Futures_History_Bid_Offer",
         "parameters": [
@@ -1699,7 +1699,7 @@
           "Futures"
         ],
         "security": [],
-        "summary": "Futures fixing history",
+        "summary": "Fixing history",
         "description": "Retrieves at most 1000 entries between two given timestamps",
         "operationId": "V1_Futures_History_Fixing",
         "parameters": [
@@ -2502,7 +2502,7 @@
             ]
           }
         ],
-        "summary": "Futures carry fees history",
+        "summary": "Carry fees history",
         "description": "Retrieves carry fees for user",
         "operationId": "V1_Futures_Carry_Fees",
         "parameters": [
@@ -2588,6 +2588,53 @@
           },
           "401": {
             "description": "Unauthorized, you are not allowed to access this ressource"
+          }
+        }
+      }
+    },
+    "/futures/instrument": {
+      "get": {
+        "tags": [
+          "Futures"
+        ],
+        "security": [],
+        "summary": "Instrument",
+        "description": "Retrieves the configuration related to futures trading on the platform",
+        "operationId": "V1_Futures_Instrument",
+        "responses": {
+          "200": {
+            "description": "Futures configuration successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "max_positions_count": {
+                      "description": "The maximum number of open positions a user can have simultaneously",
+                      "type": "number"
+                    },
+                    "max_margin": {
+                      "description": "The maximum total margin a user can have simultaneously",
+                      "type": "number"
+                    },
+                    "max_leverage": {
+                      "description": "The maximum leverage a user can have on a position",
+                      "type": "number"
+                    },
+                    "carry_fees": {
+                      "description": "The carry fees applied by LN Markets",
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "max_positions_count": 50,
+                    "max_margin": 1000000,
+                    "max_leverage": 50,
+                    "carry_fees": 0.1
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -3368,7 +3415,7 @@
         ],
         "security": [],
         "deprecated": false,
-        "summary": "Get current options volatility",
+        "summary": "Volatility",
         "description": "Return the volatility",
         "operationId": "V1_Options_getVolatility",
         "responses": {
@@ -3397,7 +3444,7 @@
           "Options"
         ],
         "security": [],
-        "summary": "Options configuration",
+        "summary": "Instrument",
         "description": "Get the options configuration",
         "operationId": "V1_Options_Instrument",
         "responses": {
@@ -3441,7 +3488,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "Create",
+        "summary": "New trade",
         "description": "Create a new options trade",
         "operationId": "V1_Options_newTrade",
         "requestBody": {
@@ -3620,7 +3667,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "Get",
+        "summary": "Trades",
         "description": "Get user's vanilla options trades",
         "operationId": "V1_Options_GetVanillaTrades",
         "parameters": [
