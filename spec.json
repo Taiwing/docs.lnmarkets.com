@@ -22,7 +22,11 @@
     },
     {
       "name": "Futures",
-      "description": "Interactions with the futures market and retrive your positions"
+      "description": "Interactions with the futures market"
+    },
+    {
+      "name": "Options",
+      "description": "Interactions with the options market"
     },
     {
       "name": "User",
@@ -2354,7 +2358,7 @@
         "security": [],
         "deprecated": false,
         "summary": "Leaderboard",
-        "description": "Queries the database to get the 10 users with the biggest posititve PL\n",
+        "description": "Get the 10 first users by pl broke down by day/week/month/all-time\n",
         "operationId": "V1_Leaderboard_getLeaderboard",
         "responses": {
           "200": {
@@ -2362,63 +2366,124 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "username": {
-                        "type": "string",
-                        "description": "Username or 'Anonymous' if the Leaderboard view is disabled\n"
-                      },
-                      "pl": {
-                        "type": "integer",
-                        "description": "Sum of every profits and losses of the user"
+                  "type": "object",
+                  "properties": {
+                    "weekly": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string",
+                            "description": "Username or 'Anonymous' if the Leaderboard view is disabled\n"
+                          },
+                          "pl": {
+                            "type": "integer",
+                            "description": "Sum of every profits and losses of the user"
+                          },
+                          "direction": {
+                            "type": "integer",
+                            "description": "Positive if the user is moving up the leaderboard,\nnegative if he is moving down and 0 if staying in place\n"
+                          }
+                        }
+                      }
+                    },
+                    "monthly": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string",
+                            "description": "Username or 'Anonymous' if the Leaderboard view is disabled\n"
+                          },
+                          "pl": {
+                            "type": "integer",
+                            "description": "Sum of every profits and losses of the user"
+                          },
+                          "direction": {
+                            "type": "integer",
+                            "description": "Positive if the user is moving up the leaderboard,\nnegative if he is moving down and 0 if staying in place\n"
+                          }
+                        }
+                      }
+                    },
+                    "all-time": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string",
+                            "description": "Username or 'Anonymous' if the Leaderboard view is disabled\n"
+                          },
+                          "pl": {
+                            "type": "integer",
+                            "description": "Sum of every profits and losses of the user"
+                          },
+                          "direction": {
+                            "type": "integer",
+                            "description": "Positive if the user is moving up the leaderboard,\nnegative if he is moving down and 0 if staying in place\n"
+                          }
+                        }
                       }
                     }
                   }
                 },
-                "example": [
-                  {
-                    "username": "Bob",
-                    "pl": 4242424242
-                  },
-                  {
-                    "username": "Jean-Kevin",
-                    "pl": 3491941
-                  },
-                  {
-                    "username": "Roger",
-                    "pl": 24013441
-                  },
-                  {
-                    "username": "Laura",
-                    "pl": 23126094
-                  },
-                  {
-                    "username": "Marcus",
-                    "pl": 1414019
-                  },
-                  {
-                    "username": "Charles",
-                    "pl": 242918
-                  },
-                  {
-                    "username": "Antoine",
-                    "pl": 99999
-                  },
-                  {
-                    "username": "XXxRoBeRtLeBgDu24xXX",
-                    "pl": 61491
-                  },
-                  {
-                    "username": "CRYPTOKING",
-                    "pl": 10000
-                  },
-                  {
-                    "username": "HEY",
-                    "pl": 3
-                  }
-                ]
+                "example": {
+                  "weekly": [
+                    {
+                      "username": "Bob",
+                      "pl": 4242424242,
+                      "direction": 1
+                    },
+                    {
+                      "username": "Jean-Kevin",
+                      "pl": 3491941,
+                      "direction": -1
+                    },
+                    {
+                      "username": "Roger",
+                      "pl": 24013441,
+                      "direction": 0
+                    },
+                    {
+                      "username": "Laura",
+                      "pl": 23126094,
+                      "direction": 5
+                    },
+                    {
+                      "username": "Marcus",
+                      "pl": 1414019,
+                      "direction": 3
+                    },
+                    {
+                      "username": "Charles",
+                      "pl": 242918,
+                      "direction": -2
+                    },
+                    {
+                      "username": "Antoine",
+                      "pl": 99999,
+                      "direction": -1
+                    },
+                    {
+                      "username": "XXxRoBeRtLeBgDu24xXX",
+                      "pl": 61491,
+                      "direction": 0
+                    },
+                    {
+                      "username": "CRYPTOKING",
+                      "pl": 10000,
+                      "direction": 0
+                    },
+                    {
+                      "username": "HEY",
+                      "pl": 3,
+                      "direction": 0
+                    }
+                  ]
+                }
               }
             }
           }
