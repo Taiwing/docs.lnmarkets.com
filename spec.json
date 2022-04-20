@@ -49,7 +49,7 @@
   "components": {
     "securitySchemes": {
       "apiKeyAuth": {
-        "description": "Api key auth is using `LNM-ACCESS-KEY` `LNM-ACCESS-PASSPHRASE` `LNM-ACCESS-TIMESTAMP` `LNM-ACCESS-SIGN` headers",
+        "description": "Api key auth is using `LNM-ACCESS-KEY` `LNM-ACCESS-PASSPHRASE` `LNM-ACCESS-TIMESTAMP` `LNM-ACCESS-SIGN` headers\n(Only one header is shown below because our docs engine does not allow to put more there)\nSee (here)[https://docs.lnmarkets.com/api/v1/#section/REST-API/Authentication]\n",
         "type": "apiKey",
         "in": "header",
         "name": "LNM-ACCESS-KEY"
@@ -381,7 +381,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -568,7 +568,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -887,7 +887,7 @@
         "description": "Send the order form parameters to add a new position in database.\n**If `type=\"l\"`, the property `price` must be included in the request to know when the position should be filled.**\n**You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you choosed**\n",
         "operationId": "V1_Futures_createPosition",
         "requestBody": {
-          "description": "Payload with all the information needed to setup a new position.\n",
+          "description": "Body with all the information needed to setup a new position.",
           "required": true,
           "content": {
             "application/json": {
@@ -1090,7 +1090,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -1173,7 +1173,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -1251,7 +1251,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -1469,7 +1469,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -1597,7 +1597,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -1688,7 +1688,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -1784,7 +1784,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -1866,7 +1866,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -2036,7 +2036,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -2206,7 +2206,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -2280,7 +2280,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -2345,7 +2345,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -2587,7 +2587,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -2731,7 +2731,7 @@
           "App"
         ],
         "security": [],
-        "summary": "LNM Markets configuration",
+        "summary": "Configuration",
         "description": "Retrieves the configuration of LN Markets",
         "operationId": "V1_App_Configuration",
         "responses": {
@@ -2839,7 +2839,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -2944,7 +2944,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -3025,7 +3025,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -3142,7 +3142,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }
@@ -3229,7 +3229,7 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       },
@@ -3356,7 +3356,426 @@
             "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized, you are not allowed to access this ressource"
+          }
+        }
+      }
+    },
+    "/options/volatility": {
+      "get": {
+        "tags": [
+          "Options"
+        ],
+        "security": [],
+        "deprecated": false,
+        "summary": "Get current options volatility",
+        "description": "Return the volatility",
+        "operationId": "V1_Options_getVolatility",
+        "responses": {
+          "200": {
+            "description": "Ticker successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "volatility": {
+                      "type": "number",
+                      "description": "Current volatility"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/options/instrument": {
+      "get": {
+        "tags": [
+          "Options"
+        ],
+        "security": [],
+        "summary": "Options configuration",
+        "description": "Get the options configuration",
+        "operationId": "V1_Options_Instrument",
+        "responses": {
+          "200": {
+            "description": "Options configuration successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "max_trades_count": {
+                      "description": "The maxmimum amount of open trades",
+                      "type": "number"
+                    },
+                    "max_quantity": {
+                      "description": "The maximum of total quantity in open trades",
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "max_trades_count": 50,
+                    "max_quantity": 100000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/options/vanilla": {
+      "post": {
+        "tags": [
+          "Options"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "vanilla_options_order"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Create",
+        "description": "Create a new options trade",
+        "operationId": "V1_Options_newTrade",
+        "requestBody": {
+          "description": "Body with the needed parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "side",
+                  "type",
+                  "quantity",
+                  "strike",
+                  "settlement"
+                ],
+                "properties": {
+                  "side": {
+                    "description": "Side of the order (Only buy currently)",
+                    "type": "string",
+                    "enum": [
+                      "b"
+                    ]
+                  },
+                  "type": {
+                    "description": "Type of the order (Call or Put)",
+                    "type": "string",
+                    "enum": [
+                      "c",
+                      "p"
+                    ]
+                  },
+                  "quantity": {
+                    "description": "Quantity in USD",
+                    "type": "integer",
+                    "format": "int32",
+                    "minimum": 1
+                  },
+                  "strike": {
+                    "description": "Strike",
+                    "type": "number",
+                    "format": "int32",
+                    "multipleOf": 1000
+                  },
+                  "settlement": {
+                    "description": "Type of settlement",
+                    "type": "string",
+                    "enum": [
+                      "physical",
+                      "cash"
+                    ]
+                  }
+                },
+                "example": {
+                  "type": "c",
+                  "side": "b",
+                  "quantity": 100,
+                  "strike": 42000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Trade submited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "id of the trade",
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "type": {
+                      "description": "Trade type [c,p]",
+                      "type": "string"
+                    },
+                    "side": {
+                      "description": "Trade side [s,b]",
+                      "type": "string"
+                    },
+                    "forward": {
+                      "description": "Trade initial forward",
+                      "type": "number"
+                    },
+                    "delta": {
+                      "description": "Trade initial delta",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "strike": {
+                      "description": "Trade strike",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "volatility": {
+                      "description": "Trade volatility",
+                      "type": "number"
+                    },
+                    "quantity": {
+                      "description": "Trade quantity",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "margin": {
+                      "description": "Trade margin paid",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "pl": {
+                      "description": "Trade pl",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "creation_ts": {
+                      "description": "When the trade was created",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "expiry_ts": {
+                      "description": "When the trade was created",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "domestic": {
+                      "description": "domestic currency",
+                      "type": "string"
+                    },
+                    "settlement": {
+                      "description": "How the trade is delivered",
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "pid": "249dc818-f8a5-4713-a3a3-8fe85f2e8969",
+                  "id": 666,
+                  "type": "c",
+                  "side": "b",
+                  "volatility": 0.1337,
+                  "quantity": 1337,
+                  "strike": 69420,
+                  "forward": 1337,
+                  "delta": 13,
+                  "margin": 1234,
+                  "pl": 0,
+                  "domestic": "BTC",
+                  "settlement": "physical",
+                  "creation_ts": 1643385060268,
+                  "expiry_ts": 1643385060268
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized, you are not allowed to access this ressource"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Options"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "vanilla_options_get"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Get",
+        "description": "Get user's vanilla options trades",
+        "operationId": "V1_Options_GetVanillaTrades",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Choose wich kind of positions you need to fetch",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "running",
+                "closed"
+              ],
+              "example": "open",
+              "default": "running"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Starting timestamp (in ms) (only used for closed positions)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162757621
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Ending timestamp (in ms) (only used for closed positions)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1605162857621
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of rows (only used for closed positions)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 100,
+              "example": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vanilla options trade array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "description": "id of the trade",
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "type": {
+                        "description": "Trade type [c,p]",
+                        "type": "string"
+                      },
+                      "side": {
+                        "description": "Trade side [s,b]",
+                        "type": "string"
+                      },
+                      "forward": {
+                        "description": "Trade initial forward",
+                        "type": "number"
+                      },
+                      "delta": {
+                        "description": "Trade initial delta",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "strike": {
+                        "description": "Trade strike",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "volatility": {
+                        "description": "Trade volatility",
+                        "type": "number"
+                      },
+                      "quantity": {
+                        "description": "Trade quantity",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "margin": {
+                        "description": "Trade margin paid",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "pl": {
+                        "description": "Trade pl",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "creation_ts": {
+                        "description": "When the trade was created",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "expiry_ts": {
+                        "description": "When the trade was created",
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "domestic": {
+                        "description": "domestic currency",
+                        "type": "string"
+                      },
+                      "settlement": {
+                        "description": "How the trade is delivered",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "249dc818-f8a5-4713-a3a3-8fe85f2e8969",
+                      "type": "c",
+                      "side": "b",
+                      "volatility": 0.1337,
+                      "quantity": 1337,
+                      "strike": 69420,
+                      "forward": 1337,
+                      "delta": 13,
+                      "margin": 1234,
+                      "pl": 0,
+                      "domestic": "BTC",
+                      "settlement": "physical",
+                      "creation_ts": 1643385060268,
+                      "expiry_ts": 1643385060268
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request query and / or body does not fit the schema requirements. It can also be raised by parameters leading to unexpected behaviour / results."
+          },
+          "401": {
+            "description": "Unauthorized, you are not allowed to access this ressource"
           }
         }
       }

@@ -341,9 +341,13 @@ You can subscribe to differents events using the `subscribe` method. If you wish
 
 We established some limitation across th API to ensure our services integrity.
 
-## Positions
+## Futures
 
 There is a maximum of 50 open positions per account.
+
+## Options
+
+There is a maximum of 50 open trades per account.
 
 ## Rate
 
