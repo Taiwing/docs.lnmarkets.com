@@ -10,15 +10,15 @@
     "prepare": "is-docker || is-ci || husky install"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^14.1.0",
-    "commitlint": "^14.1.0",
+    "@commitlint/config-conventional": "^16.2.1",
+    "commitlint": "^16.2.3",
     "husky": "^7.0.1",
     "is-ci": "^3.0.0",
     "is-docker": "^3.0.0",
-    "lint-staged": "^11.1.1",
-    "prettier": "^2.3.2"
+    "lint-staged": "^12.3.8",
+    "prettier": "^2.6.2"
   },
   "dependencies": {
-    "redoc-cli": "^0.13.0"
+    "redoc-cli": "^0.13.10"
   }
 }
