@@ -7,33 +7,38 @@
   },
   "servers": [
     {
-      "url": "/v1"
+      "url": "https://api.lnmarkets.com/v1",
+      "description": "Mainnet API"
+    },
+    {
+      "url": "https://api.testnet.lnmarkets.com/v1",
+      "description": "Testnet API"
     }
   ],
   "tags": [
     {
       "name": "Login",
-      "description": "Here you can find the different way to auth yourself on LN Markets, mostly use for browser"
+      "description": "Here you can find the different way to auth yourself on LN Markets, mostly use for browser."
     },
     {
       "name": "Futures",
-      "description": "Interactions with the futures market"
+      "description": "Interactions with the futures market."
     },
     {
       "name": "Options",
-      "description": "Interactions with the options market"
+      "description": "Interactions with the options market."
     },
     {
       "name": "User",
-      "description": "User endpoint"
+      "description": "Interaction with your user data."
     },
     {
       "name": "App",
-      "description": "LN Markets application informations"
+      "description": "LN Markets application informations."
     },
     {
       "name": "LNURL",
-      "description": "Interaction with the lightning network using the [LNURL procotocol](https://github.com/btcontract/lnurl-rfc/)\nLNURL enable simple auth, withdraw and pay UX / UI\n"
+      "description": "Interaction with the lightning network using the [LNURL procotocol](https://github.com/btcontract/lnurl-rfc/)\nLNURL enable simple auth, withdraw and pay UX / UI.\n"
     }
   ],
   "security": [
