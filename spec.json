@@ -3364,7 +3364,7 @@
                   "username": {
                     "description": "Username displayed on LN Markets public data",
                     "type": "string",
-                    "pattern": "[a-zA-Z0-9_.]{3,32}$"
+                    "pattern": "[a-zA-Z0-9_.]{1,32}$"
                   }
                 },
                 "example": {
