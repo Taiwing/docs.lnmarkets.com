@@ -34,7 +34,7 @@
     },
     {
       "name": "App",
-      "description": "LN Markets application informations."
+      "description": "LN Markets application information."
     },
     {
       "name": "LNURL",
@@ -103,10 +103,10 @@
         "security": [],
         "deprecated": false,
         "summary": "Node",
-        "description": "Shows informations about the lightning node.\n",
+        "description": "Shows information about the lightning node.",
         "responses": {
           "200": {
-            "description": "The Node is online.\n",
+            "description": "Node informations",
             "content": {
               "application/json": {
                 "schema": {
@@ -152,17 +152,17 @@
                       "type": "integer",
                       "format": "int64"
                     },
-                    "blockHeigth": {
-                      "description": "Node block heigth",
+                    "blockHeight": {
+                      "description": "Node block height",
                       "type": "integer",
                       "format": "int64"
                     }
                   },
                   "example": {
-                    "version": "0.11.0-beta commit=v0.11.0-beta'",
+                    "version": "0.11.0-beta commit=v0.11.0-beta",
                     "alias": "LN Markets",
                     "pubkey": "03bae2db4b57738c1ec1ffa1c5e5a4423968cc592b3b39cddf7d495e72919d6431",
-                    "blockHeigth": 1835008,
+                    "blockHeight": 1835008,
                     "remoteBalance": 266903254,
                     "localBalance": 266903254,
                     "channels": 1337,
@@ -227,7 +227,7 @@
         },
         "responses": {
           "200": {
-            "description": "Margin successfully added and new position informations are sent back.\n",
+            "description": "Margin successfully added and new position information are sent back.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -243,11 +243,19 @@
                     },
                     "type": {
                       "description": "Position type [l,m]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "l",
+                        "m"
+                      ]
                     },
                     "side": {
                       "description": "Side of the position [s,b]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "s",
+                        "b"
+                      ]
                     },
                     "price": {
                       "description": "Entry price of the position",
@@ -277,7 +285,13 @@
                     },
                     "market_wi": {
                       "description": "Market working indicator [filled, running, closed, canceled]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ]
                     },
                     "pl": {
                       "description": "PL of the position",
@@ -285,7 +299,13 @@
                     },
                     "margin_wi": {
                       "description": "Margin working indicator [filled, running, closed, canceled]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ]
                     },
                     "stoploss": {
                       "description": "stoploss level",
@@ -295,6 +315,12 @@
                     "stoploss_wi": {
                       "description": "Stoploss working indicator [filled, running, closed, canceled]",
                       "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ],
                       "nullable": true
                     },
                     "takeprofit": {
@@ -305,6 +331,12 @@
                     "takeprofit_wi": {
                       "description": "Takeprofit working indicator [filled, running, closed, canceled]",
                       "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ],
                       "nullable": true
                     },
                     "creation_ts": {
@@ -514,7 +546,7 @@
                   "type": "object",
                   "properties": {
                     "canceled": {
-                      "description": "Canncel success",
+                      "description": "Cancel success",
                       "type": "boolean"
                     },
                     "closed_ts": {
@@ -600,7 +632,7 @@
                     "type": "object",
                     "properties": {
                       "ts": {
-                        "description": "Timestamp in ms whent the fixing occured",
+                        "description": "Timestamp in ms when the fixing occurred",
                         "type": "integer",
                         "format": "int64"
                       },
@@ -649,7 +681,7 @@
         ],
         "deprecated": false,
         "summary": "Cash-in",
-        "description": "Retrieves part of one running position's PL.\n",
+        "description": "Retrieves part of one running positions PL.\n",
         "requestBody": {
           "description": "Payload with data relative to the process.\n",
           "required": true,
@@ -685,7 +717,7 @@
         },
         "responses": {
           "200": {
-            "description": "Cash-in successfully retrieved and new position informations are sent back.\n",
+            "description": "Cash-in successfully retrieved and new position information are sent back.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -701,11 +733,19 @@
                     },
                     "type": {
                       "description": "Position type [l,m]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "l",
+                        "m"
+                      ]
                     },
                     "side": {
                       "description": "Side of the position [s,b]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "s",
+                        "b"
+                      ]
                     },
                     "price": {
                       "description": "Entry price of the position",
@@ -735,7 +775,13 @@
                     },
                     "market_wi": {
                       "description": "Market working indicator [filled, running, closed, canceled]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ]
                     },
                     "pl": {
                       "description": "PL of the position",
@@ -743,7 +789,13 @@
                     },
                     "margin_wi": {
                       "description": "Margin working indicator [filled, running, closed, canceled]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ]
                     },
                     "stoploss": {
                       "description": "stoploss level",
@@ -753,6 +805,12 @@
                     "stoploss_wi": {
                       "description": "Stoploss working indicator [filled, running, closed, canceled]",
                       "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ],
                       "nullable": true
                     },
                     "takeprofit": {
@@ -763,6 +821,12 @@
                     "takeprofit_wi": {
                       "description": "Takeprofit working indicator [filled, running, closed, canceled]",
                       "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ],
                       "nullable": true
                     },
                     "creation_ts": {
@@ -889,7 +953,7 @@
           {
             "name": "type",
             "in": "query",
-            "description": "Choose wich kind of positions you need to fetch",
+            "description": "Choose which kind of positions you need to fetch",
             "required": true,
             "schema": {
               "type": "string",
@@ -938,7 +1002,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Positions history sucessfully fetched.",
+            "description": "Positions history successfully fetched.",
             "content": {
               "application/json": {
                 "schema": {
@@ -953,11 +1017,19 @@
                       },
                       "type": {
                         "description": "Position type [l,m]",
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "l",
+                          "m"
+                        ]
                       },
                       "side": {
                         "description": "Side of the position [s,b]",
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "s",
+                          "b"
+                        ]
                       },
                       "pl": {
                         "description": "PL of the position",
@@ -985,7 +1057,13 @@
                       },
                       "margin_wi": {
                         "description": "Margin working indicator [filled, running, closed, canceled]",
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "filled",
+                          "running",
+                          "closed",
+                          "canceled"
+                        ]
                       },
                       "market_filled_ts": {
                         "description": "When the order was filled",
@@ -994,7 +1072,13 @@
                       },
                       "market_wi": {
                         "description": "Market working indicator [filled, running, closed, canceled]",
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "filled",
+                          "running",
+                          "closed",
+                          "canceled"
+                        ]
                       },
                       "canceled": {
                         "description": "Is the position canceled",
@@ -1027,6 +1111,12 @@
                       "stoploss_wi": {
                         "description": "Stoploss working indicator [filled, running, closed, canceled]",
                         "type": "string",
+                        "enum": [
+                          "filled",
+                          "running",
+                          "closed",
+                          "canceled"
+                        ],
                         "nullable": true
                       },
                       "takeprofit": {
@@ -1037,6 +1127,12 @@
                       "takeprofit_wi": {
                         "description": "Takeprofit working indicator [filled, running, closed, canceled]",
                         "type": "string",
+                        "enum": [
+                          "filled",
+                          "running",
+                          "closed",
+                          "canceled"
+                        ],
                         "nullable": true
                       },
                       "sum_carry_fees": {
@@ -1094,7 +1190,7 @@
         ],
         "deprecated": false,
         "summary": "New position",
-        "description": "Send the order form parameters to add a new position in database.\n**If `type=\"l\"`, the property `price` must be included in the request to know when the position should be filled.**\n**You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you choosed**\n",
+        "description": "Send the order form parameters to add a new position in database.\n**If `type=\"l\"`, the property `price` must be included in the request to know when the position should be filled.**\n**You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you chose**\n",
         "requestBody": {
           "description": "Body with all the information needed to setup a new position.",
           "required": true,
@@ -1185,7 +1281,7 @@
         },
         "responses": {
           "200": {
-            "description": "Position sucessfully created.\n",
+            "description": "Position successfully created.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -1201,11 +1297,19 @@
                     },
                     "type": {
                       "description": "Position type [l,m]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "l",
+                        "m"
+                      ]
                     },
                     "side": {
                       "description": "Side of the position [s,b]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "s",
+                        "b"
+                      ]
                     },
                     "price": {
                       "description": "Entry price of the position",
@@ -1235,7 +1339,13 @@
                     },
                     "market_wi": {
                       "description": "Market working indicator [filled, running, closed, canceled]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ]
                     },
                     "pl": {
                       "description": "PL of the position",
@@ -1243,7 +1353,13 @@
                     },
                     "margin_wi": {
                       "description": "Margin working indicator [filled, running, closed, canceled]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ]
                     },
                     "stoploss": {
                       "description": "stoploss level",
@@ -1253,6 +1369,12 @@
                     "stoploss_wi": {
                       "description": "Stoploss working indicator [filled, running, closed, canceled]",
                       "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ],
                       "nullable": true
                     },
                     "takeprofit": {
@@ -1263,6 +1385,12 @@
                     "takeprofit_wi": {
                       "description": "Takeprofit working indicator [filled, running, closed, canceled]",
                       "type": "string",
+                      "enum": [
+                        "filled",
+                        "running",
+                        "closed",
+                        "canceled"
+                      ],
                       "nullable": true
                     },
                     "creation_ts": {
@@ -1512,7 +1640,7 @@
                     "type": "object",
                     "properties": {
                       "ts": {
-                        "description": "Timestamp in ms whent the fixing occured",
+                        "description": "Timestamp in ms when the fixing occurred",
                         "type": "integer",
                         "format": "int64"
                       },
@@ -1923,13 +2051,13 @@
             "schema": {
               "type": "string",
               "pattern": "^[0-9]+$",
-              "example": "1599492534790"
+              "example": 1599492534790
             }
           },
           {
             "name": "jwt",
             "in": "query",
-            "description": "Request will responsd with a token",
+            "description": "Request will respond with a token",
             "schema": {
               "type": "boolean",
               "example": true
@@ -1938,7 +2066,7 @@
           {
             "name": "token",
             "in": "query",
-            "description": "Request will responsd with a token",
+            "description": "Request will respond with a token",
             "schema": {
               "type": "boolean",
               "example": true
@@ -1947,14 +2075,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Sucessfuly logged in.",
+            "description": "Successfully logged in.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": {
-                      "description": "Does the request suceed ?",
+                      "description": "Does the request succeed ?",
                       "type": "string"
                     },
                     "event": {
@@ -2074,7 +2202,7 @@
                   "minSendable": 1000,
                   "maxSendable": 1000000,
                   "callback": "https://api.lnmarkets.com/v1/lnurl/pay",
-                  "metadata": "{}"
+                  "metadata": {}
                 }
               }
             }
@@ -2335,7 +2463,7 @@
                   "minSendable": 1000,
                   "maxSendable": 1000000,
                   "callback": "https://api.lnmarkets.com/v1/lnurl/pay",
-                  "metadata": "{}"
+                  "metadata": {}
                 }
               }
             }
@@ -2376,7 +2504,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Sucessfuly withdrawn funds from account."
+            "description": "Successfully withdrawn funds from account."
           }
         }
       }
@@ -2417,7 +2545,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Sucessfuly withdrawn funds from account"
+            "description": "Successfully withdrawn funds from account"
           }
         }
       },
@@ -2577,7 +2705,7 @@
                   "type": "object",
                   "properties": {
                     "max_trades_count": {
-                      "description": "The maxmimum amount of open trades",
+                      "description": "The maximum amount of open trades",
                       "type": "number"
                     },
                     "max_quantity": {
@@ -2740,7 +2868,7 @@
           {
             "name": "status",
             "in": "query",
-            "description": "Choose wich kind of positions you need to fetch",
+            "description": "Choose which kind of positions you need to fetch",
             "required": true,
             "schema": {
               "type": "string",
@@ -2803,11 +2931,19 @@
                       },
                       "type": {
                         "description": "Trade type [c,p]",
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "c",
+                          "p"
+                        ]
                       },
                       "side": {
                         "description": "Trade side [s,b]",
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "s",
+                          "b"
+                        ]
                       },
                       "forward": {
                         "description": "Trade initial forward",
@@ -2918,6 +3054,7 @@
                   "type",
                   "quantity",
                   "strike",
+                  "expiry",
                   "settlement"
                 ],
                 "properties": {
@@ -2948,6 +3085,10 @@
                     "format": "int32",
                     "multipleOf": 1000
                   },
+                  "expiry": {
+                    "description": "Expiry date (either '24H' or a date in RFC3339 full-date format YYYY-MM-DD)",
+                    "type": "string"
+                  },
                   "settlement": {
                     "description": "Type of settlement",
                     "type": "string",
@@ -2961,7 +3102,9 @@
                   "type": "c",
                   "side": "b",
                   "quantity": 100,
-                  "strike": 42000
+                  "strike": 42000,
+                  "expiry": "2016-01-14T00:00:00.000Z",
+                  "settlement": "cash"
                 }
               }
             }
@@ -2982,11 +3125,19 @@
                     },
                     "type": {
                       "description": "Trade type [c,p]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "c",
+                        "p"
+                      ]
                     },
                     "side": {
                       "description": "Trade side [s,b]",
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "s",
+                        "b"
+                      ]
                     },
                     "forward": {
                       "description": "Trade initial forward",
@@ -3073,6 +3224,18 @@
         "deprecated": false,
         "summary": "Volatility",
         "description": "Return the volatility",
+        "parameters": [
+          {
+            "name": "instrument",
+            "in": "query",
+            "description": "Which instrument's volatility to fetch. Omit this parameter to get the volatility index.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "BTC.2016-01-14.20000.C"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Ticker successfully fetched",
@@ -3083,8 +3246,11 @@
                   "properties": {
                     "volatility": {
                       "type": "number",
-                      "description": "Current volatility"
+                      "description": "Current volatility (as decimal number)."
                     }
+                  },
+                  "example": {
+                    "volatility": 1.337
                   }
                 }
               }
@@ -3144,7 +3310,7 @@
         ],
         "responses": {
           "200": {
-            "description": "History sucessfully pulled.\n",
+            "description": "History successfully pulled.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -3176,7 +3342,7 @@
                             "type": "boolean",
                             "example": false
                           },
-                          "sucess_ts": {
+                          "success_ts": {
                             "type": "string",
                             "format": "date-time",
                             "nullable": true,
@@ -3194,7 +3360,7 @@
                         "creation_ts": "020-09-15T10:50:40.332Z",
                         "success": true,
                         "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
-                        "sucess_ts": "020-09-15T10:50:40.332Z"
+                        "success_ts": "020-09-15T10:50:40.332Z"
                       }
                     ]
                   }
@@ -3219,7 +3385,7 @@
         "summary": "Deposit",
         "description": "Add fund to your LN Markets balance",
         "requestBody": {
-          "description": "Payload that contains all informations to initialize a new deposit.\n",
+          "description": "Payload that contains all information to initialize a new deposit.\n",
           "required": true,
           "content": {
             "application/json": {
@@ -3233,17 +3399,10 @@
                     "description": "Amount of sat to deposit on the account",
                     "type": "integer",
                     "minimum": 1000
-                  },
-                  "unit": {
-                    "description": "Should be sat by default",
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]+$",
-                    "default": "sat"
                   }
                 },
                 "example": {
-                  "amount": 1000,
-                  "unit": "sat"
+                  "amount": 1000
                 }
               }
             }
@@ -3290,7 +3449,7 @@
           }
         ],
         "deprecated": false,
-        "summary": "Informations",
+        "summary": "Information",
         "description": "Get the user account Information",
         "responses": {
           "200": {
@@ -3302,19 +3461,21 @@
                   "properties": {
                     "uid": {
                       "description": "User's UUID",
-                      "type": "string"
-                    },
-                    "balance": {
-                      "description": "User current balance (avalaible)",
-                      "type": "string"
+                      "type": "string",
+                      "format": "uuid"
                     },
                     "username": {
                       "description": "Username",
                       "type": "string"
                     },
                     "account_type": {
-                      "description": "One of ['lnurl', 'credentials', 'joule']",
-                      "type": "string"
+                      "description": "One of [lnurl, credentials, joule]",
+                      "type": "string",
+                      "enum": [
+                        "lnurl",
+                        "credentials",
+                        "joule"
+                      ]
                     },
                     "linkingpublickey": {
                       "description": "Public key used for lnurl or joule account",
@@ -3324,7 +3485,7 @@
                   "example": {
                     "uid": "d068f829-26e6-4743-b10d-ebb5a83b3624",
                     "balance": 361086,
-                    "account_type": "Joule",
+                    "account_type": "joule",
                     "username": "Satoshi",
                     "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a"
                   }
@@ -3361,10 +3522,14 @@
                     "description": "Show the user name in the PL leaderboard",
                     "type": "boolean"
                   },
+                  "use_taproot_addresses": {
+                    "description": "Use taproot addresses for on-chain deposits",
+                    "type": "boolean"
+                  },
                   "username": {
                     "description": "Username displayed on LN Markets public data",
                     "type": "string",
-                    "pattern": "[a-zA-Z0-9_.]{1,32}$"
+                    "pattern": "^[a-zA-Z0-9_.]{1,32}$"
                   }
                 },
                 "example": {
@@ -3385,31 +3550,42 @@
                   "properties": {
                     "uid": {
                       "description": "User's UUID",
-                      "type": "string"
+                      "type": "string",
+                      "format": "uuid"
                     },
                     "balance": {
-                      "description": "User current balance (avalaible)",
-                      "type": "string"
+                      "description": "User current balance (available)",
+                      "type": "integer"
                     },
                     "username": {
                       "description": "Username",
                       "type": "string"
                     },
                     "account_type": {
-                      "description": "One of ['lnurl', 'credentials', 'joule']",
-                      "type": "string"
+                      "description": "One of [lnurl, credentials, joule]",
+                      "type": "string",
+                      "enum": [
+                        "lnurl",
+                        "credentials",
+                        "joule"
+                      ]
                     },
                     "linkingpublickey": {
                       "description": "Public key used for lnurl or joule account",
                       "type": "string"
+                    },
+                    "use_taproot_addresses": {
+                      "description": "Use taproot addresses for on-chain deposits",
+                      "type": "boolean"
                     }
                   },
                   "example": {
                     "uid": "d068f829-26e6-4743-b10d-ebb5a83b3624",
                     "balance": 361086,
-                    "account_type": "Joule",
+                    "account_type": "joule",
                     "username": "Satoshi",
-                    "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a"
+                    "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a",
+                    "use_taproot_addresses": true
                   }
                 }
               }
@@ -3469,7 +3645,7 @@
         ],
         "responses": {
           "200": {
-            "description": "History sucessfully pulled.",
+            "description": "History successfully pulled.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3511,7 +3687,7 @@
                             "type": "boolean",
                             "example": false
                           },
-                          "sucess_ts": {
+                          "success_ts": {
                             "type": "string",
                             "format": "date-time",
                             "nullable": true,
@@ -3529,7 +3705,7 @@
                         "creation_ts": "020-09-15T10:50:40.332Z",
                         "success": true,
                         "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
-                        "sucess_ts": "020-09-15T10:50:40.332Z"
+                        "success_ts": "020-09-15T10:50:40.332Z"
                       }
                     ]
                   }
@@ -3553,7 +3729,7 @@
         "summary": "Withdraw via invoice",
         "description": "Withdraw from LN Markets with a Lightning Invoice",
         "requestBody": {
-          "description": "Payload that countains all informations to initiate a new withdraw.",
+          "description": "Payload that contains all information to initiate a new withdraw.",
           "required": true,
           "content": {
             "application/json": {
@@ -3585,14 +3761,14 @@
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "description": "Amount withdrawnd",
+                      "description": "Amount withdrawn",
                       "type": "integer"
                     },
                     "fees": {
                       "description": "Amount of fees payed",
                       "type": "integer"
                     },
-                    "paymentsecret": {
+                    "payment_secret": {
                       "description": "Payment secret of the settled invoice",
                       "type": "string"
                     },
@@ -3600,16 +3776,16 @@
                       "description": "Withdraw ID",
                       "type": "string"
                     },
-                    "paymenthash": {
+                    "payment_hash": {
                       "description": "Payment hash for the settled invoice",
                       "type": "string"
                     }
                   },
                   "example": {
                     "amount": 1000,
-                    "paymentsecret": "1b84c9852e929f99700b6cbabc4ca9d1593afc3736938b348c4d3d143e418bd4",
+                    "payment_secret": "1b84c9852e929f99700b6cbabc4ca9d1593afc3736938b348c4d3d143e418bd4",
                     "id": "3fcbd8b7-c35b-4e83-87bc-111d5bd186b7",
-                    "paymenthash": "fb4d1e4ce4de84fe3a466bcf1d8543c0df56a9ac7a6c6f28bd9434a080a14c80"
+                    "payment_hash": "fb4d1e4ce4de84fe3a466bcf1d8543c0df56a9ac7a6c6f28bd9434a080a14c80"
                   }
                 }
               }
