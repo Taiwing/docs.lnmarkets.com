@@ -2068,8 +2068,7 @@
             "description": "Is the account created with an referral",
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "example": "1ab0df21-18ab-470d-9c61-6d7449f25cc1"
+              "example": "TaoWallet"
             }
           }
         ],
