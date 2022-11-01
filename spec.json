@@ -2045,16 +2045,6 @@
             }
           },
           {
-            "name": "t",
-            "in": "query",
-            "description": "Timestamp.",
-            "schema": {
-              "type": "string",
-              "pattern": "^[0-9]+$",
-              "example": 1599492534790
-            }
-          },
-          {
             "name": "jwt",
             "in": "query",
             "description": "Request will respond with a token",
@@ -2070,6 +2060,16 @@
             "schema": {
               "type": "boolean",
               "example": true
+            }
+          },
+          {
+            "name": "referral",
+            "in": "query",
+            "description": "Is the account created with an referral",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "1ab0df21-18ab-470d-9c61-6d7449f25cc1"
             }
           }
         ],
