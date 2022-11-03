@@ -1986,7 +1986,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Auth Verify",
         "description": "Verify the public key with the signature and the k1 to create a account or connect into a existing account.\nIf token is set to true, a token will be returned\nElse the connected state will be push over websockets the client\n",
         "parameters": [
@@ -2063,12 +2062,21 @@
             }
           },
           {
+            "name": "t",
+            "in": "query",
+            "description": "Timestamp to avoid caching",
+            "schema": {
+              "type": "number",
+              "example": 1605633250615990
+            }
+          },
+          {
             "name": "referral",
             "in": "query",
             "description": "Is the account created with an referral",
             "schema": {
               "type": "string",
-              "example": "TaoWallet"
+              "example": "tao"
             }
           }
         ],
