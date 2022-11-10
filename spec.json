@@ -1882,52 +1882,52 @@
                 "example": {
                   "weekly": [
                     {
-                      "username": "Bob",
+                      "username": "bob",
                       "pl": 4242424242,
                       "direction": 1
                     },
                     {
-                      "username": "Jean-Kevin",
+                      "username": "kevin",
                       "pl": 3491941,
                       "direction": -1
                     },
                     {
-                      "username": "Roger",
+                      "username": "roger",
                       "pl": 24013441,
                       "direction": 0
                     },
                     {
-                      "username": "Laura",
+                      "username": "laura",
                       "pl": 23126094,
                       "direction": 5
                     },
                     {
-                      "username": "Marcus",
+                      "username": "marcus",
                       "pl": 1414019,
                       "direction": 3
                     },
                     {
-                      "username": "Charles",
+                      "username": "charles",
                       "pl": 242918,
                       "direction": -2
                     },
                     {
-                      "username": "Antoine",
+                      "username": "antoine",
                       "pl": 99999,
                       "direction": -1
                     },
                     {
-                      "username": "XXxRoBeRtLeBgDu24xXX",
+                      "username": "beau-gosse-du-74",
                       "pl": 61491,
                       "direction": 0
                     },
                     {
-                      "username": "CRYPTOKING",
+                      "username": "crypto-king",
                       "pl": 10000,
                       "direction": 0
                     },
                     {
-                      "username": "HEY",
+                      "username": "hey",
                       "pl": 3,
                       "direction": 0
                     }
@@ -2503,7 +2503,7 @@
             "in": "query",
             "required": true,
             "description": "Lightning Address username@service.org",
-            "example": "satoshi@lightning.ovh",
+            "example": "satoshi@lnmarkets.com",
             "schema": {
               "type": "string"
             }
@@ -3220,6 +3220,74 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Options"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "options_modify"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Update",
+        "description": "Allows user to update `settlement` parameter in running option trade",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "settlement"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "settlement": {
+                    "description": "Type of settlement",
+                    "type": "string",
+                    "enum": [
+                      "physical",
+                      "cash"
+                    ]
+                  }
+                },
+                "example": {
+                  "id": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
+                  "settlement": "cash"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated the settlement of option trade",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "Option id",
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": "a61faebc-7cc9-47e4-a22d-9d3e95c98323"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/options/volatility": {
@@ -3405,7 +3473,7 @@
                   "amount": {
                     "description": "Amount of sat to deposit on the account",
                     "type": "integer",
-                    "minimum": 1000
+                    "minimum": 1
                   }
                 },
                 "example": {
@@ -3493,7 +3561,7 @@
                     "uid": "d068f829-26e6-4743-b10d-ebb5a83b3624",
                     "balance": 361086,
                     "account_type": "joule",
-                    "username": "Satoshi",
+                    "username": "satoshi",
                     "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a"
                   }
                 }
@@ -3536,12 +3604,20 @@
                   "username": {
                     "description": "Username displayed on LN Markets public data",
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9_.]{1,32}$"
+                    "pattern": "^[a-z0-9\\-_.]{1,32}$"
+                  },
+                  "auto_withdraw_enabled": {
+                    "description": "Automatically withdraw PL of trades automatically closed trades",
+                    "type": "boolean"
+                  },
+                  "auto_withdraw_lightning_address": {
+                    "description": "Lightning Address to automatically withdraw to (if enabled)",
+                    "type": "string"
                   }
                 },
                 "example": {
                   "show_leaderboard": true,
-                  "username": "Cryptoking"
+                  "username": "crypto-king"
                 }
               }
             }
@@ -3590,7 +3666,7 @@
                     "uid": "d068f829-26e6-4743-b10d-ebb5a83b3624",
                     "balance": 361086,
                     "account_type": "joule",
-                    "username": "Satoshi",
+                    "username": "satoshi",
                     "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a",
                     "use_taproot_addresses": true
                   }
