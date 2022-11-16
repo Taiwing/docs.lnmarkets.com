@@ -101,7 +101,6 @@
           "App"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Node",
         "description": "Shows information about the lightning node.",
         "responses": {
@@ -189,7 +188,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Add margin",
         "description": "Add margin to a running position.",
         "requestBody": {
@@ -384,7 +382,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Cancel-all",
         "description": "Cancel all open positions",
         "responses": {
@@ -442,7 +439,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Close-all",
         "description": "Close every user position. The PL will be calculated against the current bid or offer\ndepending on the side of the position.\n",
         "responses": {
@@ -509,7 +505,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Cancel",
         "description": "Cancel the position linked to the given `pid`.**Only works on positions that are not currently filled**.\n",
         "requestBody": {
@@ -679,7 +674,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Cash-in",
         "description": "Retrieves part of one running positions PL.\n",
         "requestBody": {
@@ -874,7 +868,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Close",
         "description": "Close the user position, the PL will be calculated against the current bid or offer\ndepending on the side of the position\n",
         "parameters": [
@@ -946,7 +939,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Positions",
         "description": "Fetch users positions",
         "parameters": [
@@ -1188,7 +1180,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "New position",
         "description": "Send the order form parameters to add a new position in database.\n**If `type=\"l\"`, the property `price` must be included in the request to know when the position should be filled.**\n**You can choose to use the margin or the quantity as a parameter, the other will be calculated with the one you chose**\n",
         "requestBody": {
@@ -1436,7 +1427,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Update",
         "description": "Allows user to modify `stoploss` or `takeprofit` parameters of an existing position.\n",
         "requestBody": {
@@ -1806,7 +1796,6 @@
           "App"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Leaderboard",
         "description": "Get the 10 first users by pl broke down by day/week/month/all-time\n",
         "responses": {
@@ -2116,7 +2105,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Auth Request",
         "description": "LNURL string used to create an account or connect to a existing account.\nThe user wallet will sign a message using the provided k1 inside the LNURL.\nYou need to have a session cookie on the browser you are using to log in.\n",
         "parameters": [
@@ -2158,7 +2146,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Lightning Address",
         "description": "Lightning Address",
         "parameters": [
@@ -2223,7 +2210,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Pay (3) Finalize",
         "description": "LNURL Pay",
         "parameters": [
@@ -2366,7 +2352,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Pay (1) Create",
         "description": "Create a LNURL Pay",
         "responses": {
@@ -2398,7 +2383,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Pay (1) Request",
         "description": "Response from the LNURL",
         "parameters": [
@@ -2484,7 +2468,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Withdraw to Lightning Address",
         "description": "Use Lightning Address to withdraw your sat !",
         "parameters": [
@@ -2522,7 +2505,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Withdraw (3) Final",
         "description": "Use LNURL to withdraw from the user balance.",
         "parameters": [
@@ -2561,7 +2543,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Withdraw (1) Create",
         "description": "Create a LNURL Withdraw",
         "responses": {
@@ -2593,7 +2574,6 @@
           "LNURL"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Withdraw (2) Request",
         "description": "Ask the Lightning wallet to create an invoice with amount and description.",
         "parameters": [
@@ -2743,7 +2723,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Close",
         "description": "Close the user option trade, the PL will be calculated against the current bid or offer\ndepending on the type of the option\n",
         "parameters": [
@@ -2868,7 +2847,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Trades",
         "description": "Get user's vanilla options trades",
         "parameters": [
@@ -3045,7 +3023,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "New trade",
         "description": "Create a new options trade",
         "requestBody": {
@@ -3232,7 +3209,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Update",
         "description": "Allows user to update `settlement` parameter in running option trade",
         "requestBody": {
@@ -3296,7 +3272,6 @@
           "Options"
         ],
         "security": [],
-        "deprecated": false,
         "summary": "Volatility",
         "description": "Return the volatility",
         "parameters": [
@@ -3346,7 +3321,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Deposit History",
         "description": "Get deposit history",
         "parameters": [
@@ -3456,7 +3430,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Deposit",
         "description": "Add fund to your LN Markets balance",
         "requestBody": {
@@ -3523,7 +3496,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Information",
         "description": "Get the user account Information",
         "responses": {
@@ -3581,7 +3553,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Update user",
         "description": "Modifies account parameters",
         "requestBody": {
@@ -3689,7 +3660,6 @@
             ]
           }
         ],
-        "deprecated": false,
         "summary": "Withdraw History",
         "description": "Ge withdraw history\n",
         "parameters": [
