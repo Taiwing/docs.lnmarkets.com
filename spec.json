@@ -3313,6 +3313,205 @@
         }
       }
     },
+    "/swap": {
+      "get": {
+        "tags": [
+          "Swap"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "swap"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Swap History",
+        "description": "Get swap history",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Start of the time interval (UNIX UTC timestamp)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1590969600000
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "End of the time interval (UNIX UTC timestamp)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1603065600000
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "number of swap operations to fetch",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "example": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "History successfully pulled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "description": "Swap ID",
+                        "type": "string"
+                      },
+                      "in_asset": {
+                        "description": "Asset sent by user",
+                        "type": "string"
+                      },
+                      "out_asset": {
+                        "description": "Asset received by user",
+                        "type": "string"
+                      },
+                      "in_amount": {
+                        "description": "Amount sent by user",
+                        "type": "integer"
+                      },
+                      "out_amount": {
+                        "description": "Amount received by user",
+                        "type": "integer"
+                      },
+                      "ts": {
+                        "description": "When the transaction was initiated",
+                        "type": "number",
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "269157f3-d4a1-4493-afcb-5e8fdaa49288",
+                      "in_asset": "USD",
+                      "out_asset": "BTC",
+                      "in_amount": 50,
+                      "out_amount": 250000,
+                      "creation_ts": 1630568137340
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "swap"
+            ]
+          }
+        ],
+        "deprecated": false,
+        "summary": "Swap",
+        "description": "Swap between sats and synthetic assets",
+        "requestBody": {
+          "description": "Payload that contains all information to initialize a swap.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "in_asset",
+                  "out_asset"
+                ],
+                "minProperties": 3,
+                "maxProperties": 3,
+                "properties": {
+                  "in_asset": {
+                    "description": "Which asset you send",
+                    "type": "string"
+                  },
+                  "out_asset": {
+                    "description": "Which asset you receive",
+                    "type": "string"
+                  },
+                  "in_amount": {
+                    "description": "Amount of in_asset you send",
+                    "type": "number"
+                  },
+                  "out_amount": {
+                    "description": "Amount of out_asset you receive",
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "in_asset": "btc",
+                  "out_asset": "usd",
+                  "out_amount": 100
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Swap successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "in_asset": {
+                      "description": "Asset the user sent",
+                      "type": "string"
+                    },
+                    "in_amount": {
+                      "description": "Amount sent by user",
+                      "type": "integer"
+                    },
+                    "out_asset": {
+                      "description": "Asset the user received",
+                      "type": "string"
+                    },
+                    "out_amount": {
+                      "description": "Amount received by user",
+                      "type": "integer"
+                    },
+                    "exchange_rate": {
+                      "description": "The exchange rate at which the swap was performed",
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "in_asset": "btc",
+                  "in_amount": 1000000,
+                  "out_asset": "usd",
+                  "out_amount": 20,
+                  "exchange_rate": 20000
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user/deposit": {
       "get": {
         "tags": [
