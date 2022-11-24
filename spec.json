@@ -33,6 +33,10 @@
       "description": "Interaction with your user data."
     },
     {
+      "name": "Swap",
+      "description": "Swap your sats for a synthetic USD"
+    },
+    {
       "name": "App",
       "description": "LN Markets application information."
     },
@@ -3409,7 +3413,7 @@
                         "creation_ts": "020-09-15T10:50:40.332Z",
                         "success": true,
                         "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
-                        "success_ts": "020-09-15T10:50:40.332Z"
+                        "success_ts": "2020-09-15T10:50:40.332Z"
                       }
                     ]
                   }
@@ -3758,7 +3762,7 @@
                         "creation_ts": "020-09-15T10:50:40.332Z",
                         "success": true,
                         "payment_hash": "33f45c13c7ddcae46c6732414552893ca599f9399c62ffc2cfae209e8b17c5c3",
-                        "success_ts": "020-09-15T10:50:40.332Z"
+                        "success_ts": "2020-09-15T10:50:40.332Z"
                       }
                     ]
                   }
