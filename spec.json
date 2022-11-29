@@ -43,6 +43,10 @@
     {
       "name": "LNURL",
       "description": "Interaction with the lightning network using the [LNURL procotocol](https://github.com/btcontract/lnurl-rfc/)\nLNURL enable simple auth, withdraw and pay UX / UI.\n"
+    },
+    {
+      "name": "Slashtags",
+      "description": "Related to the [Slashtags protocol](https://github.com/synonymdev/slashtags), enabling simple auth and data feeds.\n"
     }
   ],
   "security": [
@@ -229,7 +233,7 @@
         },
         "responses": {
           "200": {
-            "description": "Margin successfully added and new position information are sent back.\n",
+            "description": "Child position information",
             "content": {
               "application/json": {
                 "schema": {
@@ -413,17 +417,17 @@
                         "type": "string"
                       }
                     }
-                  },
-                  "example": {
-                    "data": [
-                      {
-                        "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
-                        "canceled_ts": "020-10-15T10:50:40.332Z",
-                        "canceled": true,
-                        "margin": 1337
-                      }
-                    ]
                   }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0c",
+                      "canceled_ts": "020-10-15T10:50:40.332Z",
+                      "canceled": true,
+                      "margin": 1337
+                    }
+                  ]
                 }
               }
             }
@@ -447,7 +451,7 @@
         "description": "Close every user position. The PL will be calculated against the current bid or offer\ndepending on the side of the position.\n",
         "responses": {
           "200": {
-            "description": "Every position has been successfully closed\n",
+            "description": "Every position has been successfully closed",
             "content": {
               "application/json": {
                 "schema": {
@@ -478,18 +482,18 @@
                         "type": "integer"
                       }
                     }
-                  },
-                  "example": {
-                    "data": [
-                      {
-                        "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
-                        "exit_price": 2000,
-                        "closed_ts": "020-10-15T10:50:40.332Z",
-                        "closed": true,
-                        "pl": 1337
-                      }
-                    ]
                   }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "pid": "a2ca6172-1078-463d-ae3f-8733f36a9b0g",
+                      "exit_price": 2000,
+                      "closed_ts": "020-10-15T10:50:40.332Z",
+                      "closed": true,
+                      "pl": 1337
+                    }
+                  ]
                 }
               }
             }
@@ -510,7 +514,7 @@
           }
         ],
         "summary": "Cancel",
-        "description": "Cancel the position linked to the given `pid`.**Only works on positions that are not currently filled**.\n",
+        "description": "Cancel an open position",
         "requestBody": {
           "description": "Payload containing the position id that will be cancelled.",
           "required": true,
@@ -538,7 +542,7 @@
         },
         "responses": {
           "200": {
-            "description": "Position is canceled\n",
+            "description": "Canceled position",
             "content": {
               "application/json": {
                 "schema": {
@@ -679,9 +683,8 @@
           }
         ],
         "summary": "Cash-in",
-        "description": "Retrieves part of one running positions PL.\n",
+        "description": "Cash-in a portion of a position PL",
         "requestBody": {
-          "description": "Payload with data relative to the process.\n",
           "required": true,
           "content": {
             "application/json": {
@@ -715,7 +718,7 @@
         },
         "responses": {
           "200": {
-            "description": "Cash-in successfully retrieved and new position information are sent back.\n",
+            "description": "Successful cash-in",
             "content": {
               "application/json": {
                 "schema": {
@@ -889,7 +892,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Position is closed\n",
+            "description": "Position is closed",
             "content": {
               "application/json": {
                 "schema": {
@@ -1276,7 +1279,7 @@
         },
         "responses": {
           "200": {
-            "description": "Position successfully created.\n",
+            "description": "Position successfully created",
             "content": {
               "application/json": {
                 "schema": {
@@ -1432,7 +1435,7 @@
           }
         ],
         "summary": "Update",
-        "description": "Allows user to modify `stoploss` or `takeprofit` parameters of an existing position.\n",
+        "description": "Allows user to modify stoploss or takeprofit on a position",
         "requestBody": {
           "required": true,
           "content": {
@@ -1474,7 +1477,7 @@
         },
         "responses": {
           "200": {
-            "description": "Says whether or not the position was updated.\n",
+            "description": "Is position updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -1801,7 +1804,7 @@
         ],
         "security": [],
         "summary": "Leaderboard",
-        "description": "Get the 10 first users by pl broke down by day/week/month/all-time\n",
+        "description": "Get the 10 first users by pl broke down by day/week/month/all-time",
         "responses": {
           "200": {
             "description": "Leaderboard successfully fetched",
@@ -2744,16 +2747,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Trade is closed\n",
+            "description": "Trade is closed",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "trade": {
-                      "description": "Trade id",
-                      "type": "string"
-                    },
                     "quantity": {
                       "description": "Quantity (in USD)",
                       "type": "integer"
@@ -2816,24 +2815,23 @@
                       "description": "Trade fixing price",
                       "type": "integer"
                     }
-                  },
-                  "example": {
-                    "trade": "a61faebc-7cc9-47e4-a22d-9d3e95c98323",
-                    "quantity": 100,
-                    "pl": -1575,
-                    "type": "c",
-                    "strike": 32000,
-                    "volatility": 0.757,
-                    "id": "a61faebc-7cc9-47e4-a22d-9d3e95c98323",
-                    "uid": "b1d31a25-df43-4120-b0b4-8634db8860d2",
-                    "creation_ts": "2022-06-01T07:49:48.304Z",
-                    "expiry_ts": "2022-06-02T07:49:00.000Z",
-                    "closed": true,
-                    "closed_ts": "2022-06-01T07:49:58.989Z",
-                    "forward": 31031,
-                    "settlement": "cash",
-                    "fixing_price": 30969
                   }
+                },
+                "example": {
+                  "quantity": 100,
+                  "pl": -1575,
+                  "type": "c",
+                  "strike": 32000,
+                  "volatility": 0.757,
+                  "id": "a61faebc-7cc9-47e4-a22d-9d3e95c98322",
+                  "uid": "b1d31a25-df43-4120-b0b4-8634db8860d2",
+                  "creation_ts": "2022-06-01T07:49:48.304Z",
+                  "expiry_ts": "2022-06-02T07:49:00.000Z",
+                  "closed": true,
+                  "closed_ts": "2022-06-01T07:49:58.989Z",
+                  "forward": 31031,
+                  "settlement": "cash",
+                  "fixing_price": 30969
                 }
               }
             }
@@ -3238,11 +3236,11 @@
                       "cash"
                     ]
                   }
-                },
-                "example": {
-                  "id": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
-                  "settlement": "cash"
                 }
+              },
+              "example": {
+                "id": "a2ca6172-1078-463d-ae3f-8733f36a9b0e",
+                "settlement": "cash"
               }
             }
           }
@@ -3259,9 +3257,6 @@
                       "description": "Option id",
                       "type": "string"
                     }
-                  },
-                  "example": {
-                    "id": "a61faebc-7cc9-47e4-a22d-9d3e95c98323"
                   }
                 }
               }
@@ -3445,11 +3440,19 @@
                 "properties": {
                   "in_asset": {
                     "description": "Which asset you send",
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "USD",
+                      "BTC"
+                    ]
                   },
                   "out_asset": {
                     "description": "Which asset you receive",
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "USD",
+                      "BTC"
+                    ]
                   },
                   "in_amount": {
                     "description": "Amount of in_asset you send",
@@ -3562,7 +3565,7 @@
         ],
         "responses": {
           "200": {
-            "description": "History successfully pulled.\n",
+            "description": "Deposit history",
             "content": {
               "application/json": {
                 "schema": {
@@ -3636,7 +3639,7 @@
         "summary": "Deposit",
         "description": "Add fund to your LN Markets balance",
         "requestBody": {
-          "description": "Payload that contains all information to initialize a new deposit.\n",
+          "description": "Payload that contains all information to initialize a new deposit.",
           "required": true,
           "content": {
             "application/json": {
@@ -3661,7 +3664,7 @@
         },
         "responses": {
           "200": {
-            "description": "New deposit entry in database waiting for payment. Using `paymentRequest` afterwards, user will confirm the deposit and funds will be added to his account.\n",
+            "description": "New deposit entry in database waiting for payment.\nUsing `paymentRequest` afterwards, user will confirm the deposit and funds will be added to his account.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -3703,7 +3706,7 @@
         "description": "Get the user account Information",
         "responses": {
           "200": {
-            "description": "User information\n",
+            "description": "User information",
             "content": {
               "application/json": {
                 "schema": {
@@ -3799,7 +3802,7 @@
         },
         "responses": {
           "200": {
-            "description": "User information\n",
+            "description": "User information",
             "content": {
               "application/json": {
                 "schema": {
@@ -3864,7 +3867,7 @@
           }
         ],
         "summary": "Withdraw History",
-        "description": "Ge withdraw history\n",
+        "description": "Get withdraw history",
         "parameters": [
           {
             "name": "from",
