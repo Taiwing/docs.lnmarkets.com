@@ -2074,6 +2074,15 @@
               "type": "string",
               "example": "tao"
             }
+          },
+          {
+            "name": "hardwareWallet",
+            "in": "query",
+            "description": "Does the signature come from an hardware wallet (e.g. Ledger)",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
           }
         ],
         "responses": {
