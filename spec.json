@@ -47,6 +47,10 @@
     {
       "name": "Slashtags",
       "description": "Related to the [Slashtags protocol](https://github.com/synonymdev/slashtags), enabling simple auth and data feeds.\n"
+    },
+    {
+      "name": "Nostr",
+      "description": "Related to the [Nostr protocol](https://github.com/nostr-protocol/nips)\n"
     }
   ],
   "security": [
@@ -3799,11 +3803,18 @@
                   "auto_withdraw_lightning_address": {
                     "description": "Lightning Address to automatically withdraw to (if enabled)",
                     "type": "string"
+                  },
+                  "nostr_pubkey": {
+                    "description": "Nostr pubkey that username should resolve",
+                    "type": "string",
+                    "minLength": 64,
+                    "maxLength": 64
                   }
                 },
                 "example": {
                   "show_leaderboard": true,
-                  "username": "crypto-king"
+                  "username": "crypto-king",
+                  "nostr_pubkey": "bfef3e7ac61fa5450f80f346579234cbb06891e910d1a208b91bf0fd40ab3cc6"
                 }
               }
             }
@@ -3854,7 +3865,8 @@
                     "account_type": "joule",
                     "username": "satoshi",
                     "linkingpublickey": "035555cbdd2b5642bbd196b31df477fad20125ae99119fd5ffb1d42c7f4811dd3a",
-                    "use_taproot_addresses": true
+                    "use_taproot_addresses": true,
+                    "nostr_pubkey": "bfef3e7ac61fa5450f80f346579234cbb06891e910d1a208b91bf0fd40ab3cc6"
                   }
                 }
               }
